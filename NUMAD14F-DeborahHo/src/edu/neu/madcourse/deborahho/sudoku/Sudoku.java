@@ -66,7 +66,7 @@ public class Sudoku extends Activity implements OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
-    	case R.id.settings:
+    	case R.id.sudoku_settings:
     		startActivity(new Intent(this, Prefs.class));
     		return true;
     // More items go here (if any) ...
@@ -96,5 +96,16 @@ public class Sudoku extends Activity implements OnClickListener {
     	
     }
     
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	Music.play(this, R.raw.main);
+    }
+    
+   @Override
+   protected void onPause() {
+	   super.onPause();
+	   Music.stop(this);
+   }
 }
 

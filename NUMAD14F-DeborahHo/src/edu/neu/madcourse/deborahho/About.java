@@ -4,9 +4,11 @@ import edu.neu.madcourse.deborahho.R;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.widget.ImageView;
 
 public class About extends Activity {
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -14,6 +16,11 @@ public class About extends Activity {
 		
 		ImageView image = (ImageView) findViewById(R.id.headshot);
 		image.setImageResource(R.drawable.headshot);
+		
+		TelephonyManager manager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+		String imei = manager.getDeviceId();
 	}
+	
+	
 
 }

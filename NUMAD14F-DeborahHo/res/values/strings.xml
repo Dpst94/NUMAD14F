@@ -18,8 +18,7 @@
         <i>Exchange student at NEU </i> \n
         <b>School: </b>Vrije Universiteit Amsterdam \n
         <b>Year: </b> Senior \n
-        <b>Major: </b>Econometrics \n 
-        <b>IMEI: </b> 353888064857494 \n </string> 
+        <b>Major: </b>Econometrics \n </string> 
     
     <string name="sudoku_about_text"> 
         Sudoku is a logic-based number placement puzzle.
@@ -30,13 +29,13 @@
 		1 to 9 exactly once. </string>
 	<string name="sudoku_about_title">About Sudoku</string>	
     
-    <string name="settings_label">Settings</string>
-	<string name="settings_title">Sudoku settings</string>
-	<string name="settings_shortcut">s</string>
-	<string name="music_title">Music</string>
-	<string name="music_summary">Play background music</string>
-	<string name="hints_title">Hints</string>
-	<string name="hints_summary">Show hints during play</string>
+    <string name="sudoku_settings_label">Settings</string>
+	<string name="sudoku_settings_title">Sudoku settings</string>
+	<string name="sudoku_settings_shortcut">s</string>
+	<string name="sudoku_music_title">Music</string>
+	<string name="sudoku_music_summary">Play background music</string>
+	<string name="sudoku_hints_title">Hints</string>
+	<string name="sudoku_hints_summary">Show hints during play</string>
 
 	<string name="new_game_title">Difficulty</string>
 	<string name="easy_label">Easy</string>

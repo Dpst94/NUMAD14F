@@ -204,10 +204,17 @@ public class Game extends Activity {
 	protected static final int DIFFICULTY_CONTINUE = -1;
 	
 	@Override
+	protected void onResume() {
+		super.onResume();
+		Music.play(this, R.raw.game);
+	}
+	
+	@Override
 	protected void onPause() {
 		super.onPause();
 		Log.d(TAG, "onPause" );
 		Music.stop(this);
+		
 		// Save the current puzzle
 		getPreferences(MODE_PRIVATE).edit().putString(PREF_PUZZLE,
 				toPuzzleString(puzzle)).commit();
