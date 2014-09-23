@@ -39,6 +39,10 @@
         <activity android:name="edu.neu.madcourse.deborahho.sudoku.SudokuAbout"
             android:label="@string/sudoku_about_title"
             android:theme="@android:style/Theme.Dialog" />
+        
+ 		<activity android:name="edu.neu.madcourse.deborahho.dictionary.Dictionary"
+ 		    android:label="@string/dictionary_label" />
+ 		
     </application>
 
 </manifest>

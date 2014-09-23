@@ -3,6 +3,7 @@ package edu.neu.madcourse.deborahho;
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.sudoku.Game;
 import edu.neu.madcourse.deborahho.sudoku.Sudoku;
+import edu.neu.madcourse.deborahho.dictionary.*;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -32,6 +33,9 @@ public class MainActivity extends Activity implements OnClickListener {
         sudokuButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
+        
+        View dictionaryButton = findViewById(R.id.dictionary_button);
+        dictionaryButton.setOnClickListener(this);
      
     }
 
@@ -59,6 +63,10 @@ public class MainActivity extends Activity implements OnClickListener {
     		break;
     	case R.id.error_button:
     		int error = 6/0;
+    		break;
+    	case R.id.dictionary_button:
+    		Intent k = new Intent(this, Dictionary.class);
+    		startActivity(k);
     		break;
     	}
     }
