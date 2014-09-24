@@ -53,4 +53,5 @@
 	<string name="dict_clear_label">Clear</string>
 	<string name="dict_return_label">Return to menu</string>
 	<string name="dict_acknowledgements_label">Acknowledgements</string>
+	<string name="dict_found_words_text">Found words</string>
 </resources>

@@ -42,6 +42,8 @@
         
  		<activity android:name="edu.neu.madcourse.deborahho.dictionary.Dictionary"
  		    android:label="@string/dictionary_label" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.dictionary.DictAcknowledgements"
+ 		    android:label="@string/dict_acknowledgements_label" />
  		
     </application>
 

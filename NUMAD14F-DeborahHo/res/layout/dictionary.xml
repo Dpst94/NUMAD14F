@@ -13,10 +13,20 @@
         android:text="@string/enter_text" />
     
     <EditText
-        android:id="@+id/text"
+        android:id="@+id/text_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text" />
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dict_found_words_text"/>
+    
+    <TextView
+        android:id="@+id/found_words"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
      
     <LinearLayout 
         android:orientation="vertical"
