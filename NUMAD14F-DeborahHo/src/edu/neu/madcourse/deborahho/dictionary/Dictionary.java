@@ -5,7 +5,6 @@ import edu.neu.madcourse.deborahho.dictionary.Music;
 import android.os.Bundle;
 import android.app.Activity; 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,11 +26,10 @@ public class Dictionary extends Activity implements OnClickListener {
 	String TAG = "Dictionary";
 	
 	int formerLengthWord = 0;
-	String[] wordsFound = new String[100];
+	String[] wordsFound = new String[50];
 	int nrOfWords = 0;
 	
 	BloomFilter<String> bloomFilter;
-	BloomFilter<String> bftest = null;
     double falsePositiveProb = 0.01;
     int expectedNrOfElements = 17000;
 
@@ -46,56 +44,7 @@ public class Dictionary extends Activity implements OnClickListener {
         return_button.setOnClickListener(this);
         View acknowledgements_button = findViewById(R.id.dict_acknowledgements_button);
         acknowledgements_button.setOnClickListener(this);
-        
-        AssetManager am = getAssets();
-        ByteArrayOutputStream outputStream = null;
-        InputStream inputStream = null;
-        try {
-            inputStream = am.open("test.txt");
-            ObjectInputStream ois = new ObjectInputStream(inputStream);
-			bftest = (BloomFilter<String>) ois.readObject();
-			ois.close();
-            outputStream = new ByteArrayOutputStream();
-            byte buf[] = new byte[1024];
-            int len;
-            try {
-                while ((len = inputStream.read(buf)) != -1) {
-                    outputStream.write(buf, 0, len);
-                }
-                outputStream.close();
-                inputStream.close();
-            } catch (IOException e) {
-            }
-        } catch (IOException e) {
-        } catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-      if(bftest.contains("text")){
-    	Log.d(TAG, "Found word: text");
-    }
-        
-//        try {
-//        	InputStream in_test = getResources().openRawResource(R.raw.test);
-//			ObjectInputStream ois = new ObjectInputStream(in_test);
-//			bftest = (BloomFilter<String>) ois.readObject();
-//			ois.close();
-//		} catch (StreamCorruptedException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			//
-//		}
-//        if(bftest.contains("text")){
-//        	Log.d(TAG, "Found word: text");
-//        }
-        
+
         tv = (TextView) findViewById(R.id.found_words);
         wordText = (EditText) findViewById(R.id.text_field);
 
@@ -139,11 +88,8 @@ public class Dictionary extends Activity implements OnClickListener {
     			if (!Arrays.asList(wordsFound).contains(word)) {
     				LookUpWord(word);
     			}
-    		}
-       		
+    		}	
        		formerLengthWord = word.length();
-    			
-
     	}
     });	
 		
@@ -276,11 +222,13 @@ public class Dictionary extends Activity implements OnClickListener {
     @Override
     protected void onResume() {
     	super.onResume();
+    	for(int i=0; i<nrOfWords; i++){
+    		tv.append("\n" + wordsFound[i]);
+    	}
     }
     
    @Override
    protected void onPause() {
 	   super.onPause();
    }
-
 }
