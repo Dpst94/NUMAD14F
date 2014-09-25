@@ -1,7 +1,7 @@
 package edu.neu.madcourse.deborahho.dictionary;
 
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.sudoku.Music;
+import edu.neu.madcourse.deborahho.dictionary.Music;
 import android.os.Bundle;
 import android.app.Activity; 
 import android.content.Intent;
@@ -12,8 +12,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,6 +24,9 @@ public class Dictionary extends Activity implements OnClickListener {
 	TextView tv;
 	int resourceFile; 
 	String TAG = "Dictionary";
+	BloomFilter<String> bloomFilter;
+    double falsePositiveProb = 0.01;
+    int expectedNrOfElements = 17000;
 
 	@Override    
 	protected void onCreate(Bundle savedInstanceState) { 
@@ -41,33 +42,50 @@ public class Dictionary extends Activity implements OnClickListener {
 
         tv = (TextView) findViewById(R.id.found_words);
         wordText = (EditText) findViewById(R.id.text_field);
+
         wordText.addTextChangedListener(new TextWatcher () {
-        	
-        	@Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+    	
+    	@Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                // TODO Auto-generated method stub
-            }
+            // TODO Auto-generated method stub
+        }
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                // TODO Auto-generated method stub
-            }
-        	
-        	@Override
-        	public void afterTextChanged(Editable s) {
+            // TODO Auto-generated method stub
+        }
+    	
+    	@Override
+    	public void afterTextChanged(Editable s) {
 
-        		String word = wordText.getText().toString();
-           		if (word.length() == 1){
-           			char firstLetter = word.charAt(0);
-           			resourceFile = GetResourceFile(firstLetter);
-        		} else if (word.length() > 2){
-        			searchWords(word, resourceFile);
-        		}
-	
-        	}
-        });
+    		String word = wordText.getText().toString();
+       		if (word.length() == 1){
+       			char firstLetter = word.charAt(0);
+       			resourceFile = GetResourceFile(firstLetter);
+       			
+       			bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
+       			InputStream in = getResources().openRawResource(resourceFile);
+       			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+       			
+       			try {
+       			String line;
+       			while ((line = reader.readLine()) != null) {
+       				bloomFilter.add(line);
+       				Log.d(TAG, "Found word: " + line);
+       			}
+       			} catch (IOException e) {
+       				// TODO Auto-generated catch block
+       				e.printStackTrace();
+       			}
+    		} else if (word.length() > 2){
+    			LookUpWord(word);
+    		}
+
+    	}
+    });	
+		
 	}
         
 	@Override
@@ -181,32 +199,15 @@ public class Dictionary extends Activity implements OnClickListener {
 		}
 		return resourceFile;
 	}
-	
-	public void searchWords(String word, int resourceFile) {
-		
-		InputStream in = getResources().openRawResource(resourceFile);
-		//BufferedInputStream bin = new BufferedInputStream(in);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		
-		try {
-		String line;
-		while ((line = reader.readLine()) != null) {
-			Log.d(TAG, "word read: "+line);
-			if(line.equals(word)) {
-				Log.d(TAG, "Found word: "+word);
-				tv.append("\n"+word);
-				Music.play(this, R.raw.beep);
-				break;
-			}
-		}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Music.stop(this);
 
+	public void LookUpWord(String text) {
+   		if (bloomFilter.contains(text)) {
+			Log.d(TAG, "Found word: " + text);
+			tv.append("\n" + text);
+			Music.play(this, R.raw.beep);
+		}
 	}
-	
+
     @Override
     protected void onResume() {
     	super.onResume();
@@ -215,7 +216,6 @@ public class Dictionary extends Activity implements OnClickListener {
    @Override
    protected void onPause() {
 	   super.onPause();
-	   Music.stop(this);
    }
 
 }

@@ -46,10 +46,13 @@
 	<string name="no_moves_label">No moves</string>
 	<string name="keypad_title">Keypad</string>
 	
-	<string name="dictionary_label">Dictionary</string>
+	<string name="dictionary_label">Test Dictionary</string>
 	<string name="enter_text">Enter Text</string>
 	
-	<string name="dict_acknowledgements">Source textbox implementation: http://www.simplecodestuffs.com/all-tutorials-2/create-and-edit-text-box/</string>
+	<string name="dict_acknowledgements">Source textbox implementation: http://www.simplecodestuffs.com/all-tutorials-2/create-and-edit-text-box/
+	    			bloomfilter https://github.com/MagnusS/Java-BloomFilter
+	    			bloomfilter https://code.google.com/p/java-bloomfilter/
+	    			Dinesh and Juhi for splitting files and bloomfilter </string>
 	<string name="dict_clear_label">Clear</string>
 	<string name="dict_return_label">Return to menu</string>
 	<string name="dict_acknowledgements_label">Acknowledgements</string>
