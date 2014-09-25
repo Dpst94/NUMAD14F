@@ -1,11 +1,13 @@
 package edu.neu.madcourse.deborahho.dictionary;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.sudoku.Music;
 import android.os.Bundle;
 import android.app.Activity; 
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu; 
 import android.view.MenuInflater;
 import android.view.View;
@@ -22,6 +24,8 @@ public class Dictionary extends Activity implements OnClickListener {
         
 	EditText wordText;
 	TextView tv;
+	int resourceFile; 
+	String TAG = "Dictionary";
 
 	@Override    
 	protected void onCreate(Bundle savedInstanceState) { 
@@ -53,8 +57,15 @@ public class Dictionary extends Activity implements OnClickListener {
         	
         	@Override
         	public void afterTextChanged(Editable s) {
+
         		String word = wordText.getText().toString();
-        		tv.append("\n"+word);
+           		if (word.length() == 1){
+           			char firstLetter = word.charAt(0);
+           			resourceFile = GetResourceFile(firstLetter);
+        		} else if (word.length() > 2){
+        			searchWords(word, resourceFile);
+        		}
+	
         	}
         });
 	}
@@ -72,8 +83,11 @@ public class Dictionary extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.dict_clear_button:
+			tv.setText(null);
+			wordText.setText("");
 			break;
 		case R.id.dict_return_button:
+			Music.stop(this);
 			finish();
 			break;
 		case R.id.dict_acknowledgements_button:
@@ -83,5 +97,125 @@ public class Dictionary extends Activity implements OnClickListener {
 		}
 	}
 	
+	int GetResourceFile(char firstLetter) {
+		int resourceFile = 0;
+		switch (firstLetter) {
+		case 'a':
+			resourceFile = R.raw.a;
+			break;
+		case 'b':
+			resourceFile = R.raw.b;
+			break;
+		case 'c':
+			resourceFile = R.raw.c;
+			break;
+		case 'd':
+			resourceFile = R.raw.d;
+			break;
+		case 'e':
+			resourceFile = R.raw.e;
+			break;
+		case 'f':
+			resourceFile = R.raw.f;
+			break;
+		case 'g':
+			resourceFile = R.raw.g;
+			break;
+		case 'h':
+			resourceFile = R.raw.h;
+			break;
+		case 'i':
+			resourceFile = R.raw.i;
+			break;
+		case 'j':
+			resourceFile = R.raw.j;
+			break;
+		case 'k':
+			resourceFile = R.raw.k;
+			break;
+		case 'l':
+			resourceFile = R.raw.l;
+			break;
+		case 'm':
+			resourceFile = R.raw.m;
+			break;
+		case 'n':
+			resourceFile = R.raw.n;
+			break;
+		case 'o':
+			resourceFile = R.raw.o;
+			break;
+		case 'p':
+			resourceFile = R.raw.p;
+			break;
+		case 'q':
+			resourceFile = R.raw.q;
+			break;
+		case 'r':
+			resourceFile = R.raw.r;
+			break;
+		case 's':
+			resourceFile = R.raw.s;
+			break;
+		case 't':
+			resourceFile = R.raw.t;
+			break;
+		case 'u':
+			resourceFile = R.raw.u;
+			break;
+		case 'v':
+			resourceFile = R.raw.v;
+			break;
+		case 'w':
+			resourceFile = R.raw.w;
+			break;
+		case 'x':
+			resourceFile = R.raw.x;
+			break;
+		case 'y':
+			resourceFile = R.raw.y;
+			break;
+		case 'z':
+			resourceFile = R.raw.z;
+			break;
+		}
+		return resourceFile;
+	}
+	
+	public void searchWords(String word, int resourceFile) {
+		
+		InputStream in = getResources().openRawResource(resourceFile);
+		//BufferedInputStream bin = new BufferedInputStream(in);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		
+		try {
+		String line;
+		while ((line = reader.readLine()) != null) {
+			Log.d(TAG, "word read: "+line);
+			if(line.equals(word)) {
+				Log.d(TAG, "Found word: "+word);
+				tv.append("\n"+word);
+				Music.play(this, R.raw.beep);
+				break;
+			}
+		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Music.stop(this);
+
+	}
+	
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    }
+    
+   @Override
+   protected void onPause() {
+	   super.onPause();
+	   Music.stop(this);
+   }
 
 }
