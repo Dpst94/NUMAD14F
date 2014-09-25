@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.*;
+import java.util.Arrays;
 
 
 public class Dictionary extends Activity implements OnClickListener { 
@@ -24,6 +25,11 @@ public class Dictionary extends Activity implements OnClickListener {
 	TextView tv;
 	int resourceFile; 
 	String TAG = "Dictionary";
+	
+	int formerLengthWord = 0;
+	String[] wordsFound = new String[20];
+	int nrOfWords = 0;
+	
 	BloomFilter<String> bloomFilter;
     double falsePositiveProb = 0.01;
     int expectedNrOfElements = 17000;
@@ -61,7 +67,7 @@ public class Dictionary extends Activity implements OnClickListener {
     	public void afterTextChanged(Editable s) {
 
     		String word = wordText.getText().toString();
-       		if (word.length() == 1){
+       		if (word.length() == 1 && formerLengthWord < word.length()){
        			char firstLetter = word.charAt(0);
        			resourceFile = GetResourceFile(firstLetter);
        			
@@ -73,15 +79,19 @@ public class Dictionary extends Activity implements OnClickListener {
        			String line;
        			while ((line = reader.readLine()) != null) {
        				bloomFilter.add(line);
-       				Log.d(TAG, "Found word: " + line);
        			}
        			} catch (IOException e) {
        				// TODO Auto-generated catch block
        				e.printStackTrace();
        			}
     		} else if (word.length() > 2){
-    			LookUpWord(word);
+    			if (!Arrays.asList(wordsFound).contains(word)) {
+    				LookUpWord(word);
+    			}
     		}
+       		
+       		formerLengthWord = word.length();
+    			
 
     	}
     });	
@@ -103,6 +113,8 @@ public class Dictionary extends Activity implements OnClickListener {
 		case R.id.dict_clear_button:
 			tv.setText(null);
 			wordText.setText("");
+			wordsFound = null;
+			nrOfWords = 0;
 			break;
 		case R.id.dict_return_button:
 			Music.stop(this);
@@ -203,6 +215,8 @@ public class Dictionary extends Activity implements OnClickListener {
 	public void LookUpWord(String text) {
    		if (bloomFilter.contains(text)) {
 			Log.d(TAG, "Found word: " + text);
+			wordsFound[nrOfWords] = text;
+			nrOfWords++;
 			tv.append("\n" + text);
 			Music.play(this, R.raw.beep);
 		}
