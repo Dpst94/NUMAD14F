@@ -66,27 +66,38 @@ public class Dictionary extends Activity implements OnClickListener {
     	public void afterTextChanged(Editable s) {
 
     		String word = wordText.getText().toString();
+    		word.trim();
        		if (word.length() == 1 && formerLengthWord < word.length()){
        			char firstLetter = word.charAt(0);
-       			resourceFile = GetResourceFile(firstLetter);
-       			
-       			bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
-       			InputStream in = getResources().openRawResource(resourceFile);
-       			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-       			
-       			try {
-       			String line;
-       			while ((line = reader.readLine()) != null) {
-       				bloomFilter.add(line);
+       			if(Character.isLetter(firstLetter)) {
+           			resourceFile = GetResourceFile(firstLetter);
+           			
+           			bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
+           			InputStream in = getResources().openRawResource(resourceFile);
+           			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+           			
+           			try {
+           			String line;
+           			while ((line = reader.readLine()) != null) {
+           				bloomFilter.add(line);
+           			}
+           			} catch (IOException e) {
+           				// TODO Auto-generated catch block
+           				e.printStackTrace();
+           			}
+           			
+       				
+       			} else {
+       				wordText.setText("");
        			}
-       			} catch (IOException e) {
-       				// TODO Auto-generated catch block
-       				e.printStackTrace();
-       			}
+
     		} else if (word.length() > 2){
-    			Log.d(TAG, "Found word: " + word);
-    			if (!Arrays.asList(wordsFound).contains(word)) {
-    				LookUpWord(word);
+    			if(Character.isLetter(word.charAt(0))) {
+        			Log.d(TAG, "Found word: " + word);
+        			word.trim();
+        			if (!Arrays.asList(wordsFound).contains(word)) {
+        				LookUpWord(word);
+        			}
     			}
     		}	
        		formerLengthWord = word.length();

@@ -60,6 +60,9 @@
 		\n\n
 		I would also like to acknowledge Dinesh Chandramohan and Juhi Paralkar for giving me ideas of how to implement the dictionary. The suggested ideas were to split the files and to implement a bloom filter. 
 		\n\n
+		The mp3 of the beep can be downloaded from the following website, called Beep 7:
+		\n <url>http://www.soundjay.com/beep-sounds-1.html</url>
+		\n\n
 	    Finally, the icon for my app can be found here:
 	    \n <url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
 	<string name="dict_clear_label">Clear</string>
