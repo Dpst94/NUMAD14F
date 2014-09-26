@@ -66,7 +66,8 @@ public class Dictionary extends Activity implements OnClickListener {
     	public void afterTextChanged(Editable s) {
 
     		String word = wordText.getText().toString();
-    		word.trim();
+    		word = word.trim();
+    		word = word.toLowerCase();
        		if (word.length() == 1 && formerLengthWord < word.length()){
        			char firstLetter = word.charAt(0);
        			if(Character.isLetter(firstLetter)) {
@@ -94,7 +95,7 @@ public class Dictionary extends Activity implements OnClickListener {
     		} else if (word.length() > 2){
     			if(Character.isLetter(word.charAt(0))) {
         			Log.d(TAG, "Found word: " + word);
-        			word.trim();
+        			//word.trim();
         			if (!Arrays.asList(wordsFound).contains(word)) {
         				LookUpWord(word);
         			}

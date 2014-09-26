@@ -49,24 +49,24 @@
 	<string name="dictionary_label">Test Dictionary</string>
 	<string name="enter_text">Enter Text</string>
 	
-	<string name="dict_acknowledgements">\
-	    <b>This assignment would not be completed if it were not for the following sources: </b> 
-	    \n\n
-	    I have used the following code to implement the textbox on my app: 
-	    \n <url>http://www.simplecodestuffs.com/all-tutorials-2/create-and-edit-text-box/ </url> 
-	    \n\n
-	    The code for the bloom filter can be found here and all credits go to the authors of this code: 
+	<string name="dict_acknowledgements">
+	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
+	    \n
+	    \nI have used the following code to implement the textbox on my app: 
+	    \n<url>http://www.simplecodestuffs.com/all-tutorials-2/create-and-edit-text-box/ </url> 
+	    \n
+	    \nThe code for the bloom filter can be found here and all credits go to the authors of this code: 
 	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 
-		\n\n
-		I would also like to acknowledge Dinesh Chandramohan and Juhi Paralkar for giving me ideas of how to implement the dictionary. The suggested ideas were to split the files and to implement a bloom filter. 
-		\n\n
-		The mp3 of the beep can be downloaded from the following website, called Beep 7:
-		\n <url>http://www.soundjay.com/beep-sounds-1.html</url>
-		\n\n
-	    Finally, the icon for my app can be found here:
-	    \n <url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
+		\n
+		\nI would also like to acknowledge Dinesh Chandramohan and Juhi Paralkar for giving me ideas of how to implement the dictionary. The suggested ideas were to split the files and to implement a bloom filter. 
+		\n
+		\nThe mp3 of the beep can be downloaded from the following website, called Beep 7:
+		\n<url>http://www.soundjay.com/beep-sounds-1.html</url>
+		\n
+	    \nFinally, the icon for my app can be found here:
+	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
 	<string name="dict_clear_label">Clear</string>
 	<string name="dict_return_label">Return to menu</string>
 	<string name="dict_acknowledgements_label">Acknowledgements</string>
-	<string name="dict_found_words_text">Found words</string>
+	<string name="dict_found_words_text">\n Found words</string>
 </resources>

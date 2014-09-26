@@ -5,29 +5,48 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:background="@color/background"
-    android:padding="10dip" >
+    android:padding="10dip" 
+    android:windowSoftInputMode="adjustPan">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
     
     <TextView
+        android:id="@+id/enter_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/enter_text" />
-    
+     
+    <Button
+        android:id="@+id/dict_clear_button" 
+    	android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true"
+		android:text="@string/dict_clear_label" />
+       
     <EditText
         android:id="@+id/text_field"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
-    
+        android:inputType="text"
+        android:layout_toLeftOf="@+id/dict_clear_button" 
+        android:layout_below="@+id/enter_text"/>
+
     <TextView 
+        android:id="@+id/found_words_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/text_field"
         android:text="@string/dict_found_words_text"/>
+   </RelativeLayout>
     
    <ScrollView
        android:id="@+id/searchScrollView"
        android:layout_width="fill_parent"
-       android:layout_height="200dp"
-       android:gravity ="center"
+       android:layout_height="200dip"
+       android:gravity=""
        android:orientation="vertical" >
         
     <TextView
@@ -36,17 +55,13 @@
         android:layout_height="wrap_content"/>
     
     </ScrollView>
-     
+    
     <LinearLayout 
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="bottom">
-    <Button
-        android:id="@+id/dict_clear_button" 
-    	android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/dict_clear_label" />
+
     <Button
         android:id="@+id/dict_return_button" 
 		android:layout_width="fill_parent"
@@ -59,4 +74,5 @@
 		android:layout_height="wrap_content"
 		android:text="@string/dict_acknowledgements_label" />
 </LinearLayout>
+
 </LinearLayout>
