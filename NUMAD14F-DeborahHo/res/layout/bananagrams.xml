@@ -13,17 +13,17 @@
 		android:layout_width="fill_parent"
 		android:layout_gravity="center" >
 		<Button
-			android:id="@+id/sudoku_continue_button"
+			android:id="@+id/banana_continue_button"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/continue_label" />
 		<Button
-			android:id="@+id/sudoku_new_button"
+			android:id="@+id/banana_new_button"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/new_game_label" />
 		<Button
-			android:id="@+id/sudoku_about_button"
+			android:id="@+id/banana_about_button"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/about_label" />
@@ -32,8 +32,10 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/exit_label" />
-
-
-
-</LinearLayout>
+		<Button
+		    android:id="@+id/banana_acknowledgements_button"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/acknowledgements_label"/>
+	</LinearLayout>
 </LinearLayout>

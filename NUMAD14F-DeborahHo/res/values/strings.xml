@@ -5,8 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="main_title">Deborah Ho</string>
-    <string name="sudoku_continue_label">Continue</string>
-    <string name="sudoku_new_game_label">New Game</string>
+    <string name="continue_label">Continue</string>
+    <string name="new_game_label">New Game</string>
     <string name="about_label">About</string>
     <string name="exit_label">Quit</string>
     <string name="about_title">About Me</string>
@@ -46,7 +46,8 @@
 	<string name="no_moves_label">No moves</string>
 	<string name="keypad_title">Keypad</string>
 	
-	<string name="dictionary_label">Test Dictionary</string>
+	<string name="dictionary_label">Dictionary</string>
+	<string name="test_dictionary_label">Test Dictionary</string>
 	<string name="enter_text">Enter Text</string>
 	
 	<string name="dict_acknowledgements">
@@ -66,7 +67,9 @@
 	    \nFinally, the icon for my app can be found here:
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
 	<string name="dict_clear_label">Clear</string>
-	<string name="dict_return_label">Return to menu</string>
-	<string name="dict_acknowledgements_label">Acknowledgements</string>
+	<string name="return_label">Return to menu</string>
+	<string name="acknowledgements_label">Acknowledgements</string>
 	<string name="dict_found_words_text">\n Words Found In Dictionary</string>
+	
+	<string name="bananagrams_label">Bananagrams</string>
 </resources>

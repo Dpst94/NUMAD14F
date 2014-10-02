@@ -24,10 +24,10 @@
         <TableRow>
 	    <Button
 		android:id="@+id/sudoku_continue_button"
-		android:text="@string/sudoku_continue_label" />
+		android:text="@string/continue_label" />
 		<Button
 		android:id="@+id/sudoku_new_button"
-		android:text="@string/sudoku_new_game_label" />
+		android:text="@string/new_game_label" />
 		</TableRow>
 		<TableRow>
 		<Button

@@ -66,13 +66,13 @@
         android:id="@+id/dict_return_button" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/dict_return_label" />
+		android:text="@string/return_label" />
     
     <Button
         android:id="@+id/dict_acknowledgements_button" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/dict_acknowledgements_label" />
+		android:text="@string/acknowledgements_label" />
 </LinearLayout>
 
 </LinearLayout>

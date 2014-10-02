@@ -17,7 +17,7 @@
         <activity
             android:name="edu.neu.madcourse.deborahho.MainActivity"
             android:label="@string/main_title" >
-            <intent-filter>
+            <intent-filter android:label="@string/app_name" >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -41,9 +41,13 @@
             android:theme="@android:style/Theme.Dialog" />
         
  		<activity android:name="edu.neu.madcourse.deborahho.dictionary.Dictionary"
- 		    android:label="@string/dictionary_label" />
+ 		    android:label="@string/test_dictionary_label"
+ 		    android:screenOrientation="portrait" />
  		<activity android:name="edu.neu.madcourse.deborahho.dictionary.DictAcknowledgements"
- 		    android:label="@string/dict_acknowledgements_label" />
+ 		    android:label="@string/acknowledgements_label" />
+ 		
+ 		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.Bananagrams"
+ 		    android:label="@string/bananagrams_label" />
  		
     </application>
 
