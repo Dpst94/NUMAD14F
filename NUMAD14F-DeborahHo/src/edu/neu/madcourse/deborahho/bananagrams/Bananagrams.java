@@ -1,11 +1,11 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.sudoku.Game;
 import edu.neu.madcourse.deborahho.sudoku.SudokuAbout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -46,6 +46,7 @@ public class Bananagrams extends Activity implements OnClickListener {
     		startActivity(i);
     		break;
     	case R.id.banana_new_button:
+    		startNewGame();
     		//openNewGameDialog();
     		break;
     	case R.id.exit_button:
@@ -55,6 +56,15 @@ public class Bananagrams extends Activity implements OnClickListener {
     		//startGame(Game.DIFFICULTY_CONTINUE);
     		break;
     	}
+    }
+    
+    private static final String TAG = "Bananagrams";
+    
+    private void startNewGame() {
+    	Log.d(TAG, "Start Game");
+    	Intent intent = new Intent(Bananagrams.this, Game.class);
+    	startActivity(intent);
+    	
     }
     
 }
