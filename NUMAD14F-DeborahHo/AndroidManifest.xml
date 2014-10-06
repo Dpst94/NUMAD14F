@@ -48,6 +48,8 @@
  		
  		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.Bananagrams"
  		    android:label="@string/bananagrams_label" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananaGame"
+ 		    android:label="@string/bananagrams_label" />
  		
     </application>
 

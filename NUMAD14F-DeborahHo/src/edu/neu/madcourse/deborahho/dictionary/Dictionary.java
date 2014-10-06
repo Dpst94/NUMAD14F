@@ -113,7 +113,7 @@ public class Dictionary extends Activity implements OnClickListener {
 		super.onCreateOptionsMenu(menu);    
 
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);      
+		inflater.inflate(R.menu.sudoku_settings, menu);      
 		return true;
 	}
 	

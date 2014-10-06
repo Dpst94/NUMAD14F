@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background" >
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent" >
+        
+        <!--  add buttons -->
+        
+        <TextView 
+            android:id="@+id/banana_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/banana_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <Button
+			android:id="@+id/banana_pause_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/pause_label" />
+        
+        <Button
+            android:id="@+id/banana_quit_button"
+            android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/exit_label" />
+    </LinearLayout>
+    
+
+</LinearLayout>

@@ -1,7 +1,8 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
-import edu.neu.madcourse.deborahho.bananagrams.Game;
+import edu.neu.madcourse.deborahho.bananagrams.BananaGame;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -21,11 +22,11 @@ public class BananaPuzzleView extends View{
 	private int selY;       // Y index of selection
 	private final Rect selRect = new Rect();	
 	
-	private final Game game;
+	private final BananaGame game;
 	
 	public BananaPuzzleView(Context context) {
 		super(context);
-		this.game = (Game) context;
+		this.game = (BananaGame) context;
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 		      
@@ -60,6 +61,11 @@ public class BananaPuzzleView extends View{
 	      Log.d(TAG, "onSizeChanged: width " + width + ", height "
 	            + height);
 	      super.onSizeChanged(w, h, oldw, oldh);
+	   }
+	   
+	   @Override
+	   protected void onDraw(Canvas canvas) {
+		   
 	   }
 	   
 	   private void getRect(int x, int y, Rect rect) {

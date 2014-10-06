@@ -41,7 +41,7 @@ public class Sudoku extends Activity implements OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         super.onCreateOptionsMenu(menu);
     	MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.sudoku_settings, menu);
         return true;
     }
     
