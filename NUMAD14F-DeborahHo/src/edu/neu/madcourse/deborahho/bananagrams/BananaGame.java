@@ -1,5 +1,7 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
+import java.util.concurrent.TimeUnit;
+
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ public class BananaGame extends Activity implements OnClickListener {
 	private static final String TAG = "Bananagrams" ;
 	private CountDownTimer countDownTimer;
 	public TextView timerText; 
+	public TextView score; 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,9 @@ public class BananaGame extends Activity implements OnClickListener {
         exitButton.setOnClickListener(this);
         
         timerText = (TextView) this.findViewById(R.id.banana_timer);
-        countDownTimer = new CountDownTimer(60000, 1000) {
+        score = (TextView) this.findViewById(R.id.banana_score);
+        score.setText("Score: 0	");
+        countDownTimer = new CountDownTimer(90000, 1000) {
 
 			@Override
 			public void onFinish() {
@@ -37,7 +42,10 @@ public class BananaGame extends Activity implements OnClickListener {
 
 			@Override
 			public void onTick(long millisUntilFinished) {
-				timerText.setText(" " + millisUntilFinished/1000);
+				timerText.setText(" " + String.format("%d:%d", 
+	                    TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+	                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
+	                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 				
 			}
         	
