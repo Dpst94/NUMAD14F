@@ -152,6 +152,13 @@ public class BananaPuzzleView extends View{
 		               * width + x, j * height + y, foreground);
 		      }
 		   }
+		   
+		      // Draw the selection...
+		      Log.d(TAG, "selRect=" + selRect);
+		      Paint selected = new Paint();
+		      selected.setColor(getResources().getColor(
+		            R.color.puzzle_selected));
+		      canvas.drawRect(selRect, selected);		   
 		      
 	   }
 	   
