@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
@@ -35,6 +36,17 @@ public class BananaPuzzleView extends View{
 		      // ...
 		      //setId(ID); 
 		}	
+	
+	public BananaPuzzleView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		this.game = (BananaGame) context;
+		
+	}
+	
+	public BananaPuzzleView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		this.game = (BananaGame) context;
+	}
 	
 	   @Override
 	   protected Parcelable onSaveInstanceState() { 
