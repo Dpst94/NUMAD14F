@@ -1,8 +1,10 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
+import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.bananagrams.BananaGame;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -29,7 +31,7 @@ public class BananaPuzzleView extends View{
 		this.game = (BananaGame) context;
 		setFocusable(true);
 		setFocusableInTouchMode(true);
-		      
+    
 		      // ...
 		      //setId(ID); 
 		}	
@@ -55,8 +57,8 @@ public class BananaPuzzleView extends View{
 
 	   @Override
 	   protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-	      width = w / 20f;
-	      height = w / 20f;
+	      width = w / 15f;
+	      height = h / 15f;
 	      getRect(selX, selY, selRect);
 	      Log.d(TAG, "onSizeChanged: width " + width + ", height "
 	            + height);
@@ -65,6 +67,29 @@ public class BananaPuzzleView extends View{
 	   
 	   @Override
 	   protected void onDraw(Canvas canvas) {
+		   // Draw the background
+		   Paint background = new Paint();
+		   background.setColor(getResources().getColor(R.color.puzzle_background));
+		   canvas.drawRect(0, 0, getWidth(), getHeight(), background);
+		   
+		   // Define colors for the grid lines
+		   Paint dark = new Paint();
+		   dark.setColor(getResources().getColor(R.color.puzzle_dark));
+		   
+		   Paint hilite = new Paint();
+		   hilite.setColor(getResources().getColor(R.color.puzzle_hilite));
+		   
+		   Paint light = new Paint();
+		   light.setColor(getResources().getColor(R.color.puzzle_light));
+		   
+		   // Draw the grid lines
+		   for (int i=0; i<15; i++) {
+			   canvas.drawLine(0, i*height, getWidth(), i*height, light);
+			   canvas.drawLine(0, i*height + 1, getWidth(), i*height + 1, hilite);
+			   canvas.drawLine(i*width, 0, i*width, getHeight(), light);
+			   canvas.drawLine(i*width + 1, 0, i*width +1, getHeight(), hilite);
+			   
+		   }
 		   
 	   }
 	   
@@ -73,5 +98,9 @@ public class BananaPuzzleView extends View{
 		            * width + width), (int) (y * height + height));
 	   }	
 	   
-	   
+	   @Override
+	   protected void onFinishInflate() {
+	       // TODO Auto-generated method stub
+	       super.onFinishInflate();
+	   } 
 }

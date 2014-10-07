@@ -3,6 +3,7 @@ package edu.neu.madcourse.deborahho.bananagrams;
 import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.sudoku.PuzzleView;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class BananaGame extends Activity implements OnClickListener {
@@ -23,7 +25,13 @@ public class BananaGame extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bananagame);
         
-       // Set up click listeners for all the buttons
+        LinearLayout banana_layout = (LinearLayout) findViewById(R.id.banana_puzzle_view);
+        BananaPuzzleView bananaView = new BananaPuzzleView(this.getApplicationContext());
+        banana_layout.addView(bananaView);
+        
+        //((LinearLayout)findViewById(R.id.banana_puzzle_view)).addView(new BananaPuzzleView(this));
+        
+        // Set up click listeners for all the buttons
         View pauseButton = findViewById(R.id.banana_pause_button);
         pauseButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.banana_quit_button);
