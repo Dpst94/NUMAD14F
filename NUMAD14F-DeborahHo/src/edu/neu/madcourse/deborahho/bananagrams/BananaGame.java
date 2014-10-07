@@ -3,15 +3,14 @@ package edu.neu.madcourse.deborahho.bananagrams;
 import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.sudoku.PuzzleView;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class BananaGame extends Activity implements OnClickListener {
@@ -19,18 +18,14 @@ public class BananaGame extends Activity implements OnClickListener {
 	private CountDownTimer countDownTimer;
 	public TextView timerText; 
 	public TextView score; 
+	
+	private char puzzle[] = new char[8 * 8];
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bananagame);
-        
-        LinearLayout banana_layout = (LinearLayout) findViewById(R.id.banana_puzzle_view);
-        BananaPuzzleView bananaView = new BananaPuzzleView(this.getApplicationContext());
-        banana_layout.addView(bananaView);
-        
-        //((LinearLayout)findViewById(R.id.banana_puzzle_view)).addView(new BananaPuzzleView(this));
-        
+
         // Set up click listeners for all the buttons
         View pauseButton = findViewById(R.id.banana_pause_button);
         pauseButton.setOnClickListener(this);
@@ -58,6 +53,8 @@ public class BananaGame extends Activity implements OnClickListener {
 			}
         	
         }.start();
+        
+        puzzle = fromLettersString(startLetters);
     }
     
     @Override
@@ -78,5 +75,32 @@ public class BananaGame extends Activity implements OnClickListener {
     	}
 		
 	}
+	
+	private final String startLetters = "aeebtxlpowidgrtf";
+	
+	static protected char[] fromLettersString(String string) {
+		char[] puz = new char[64];
+		for (int i = puz.length-16; i < puz.length; i++) {
+			puz[i] = string.charAt(i-48);
+		}
+		Log.d(TAG, "puzzle string long: " + puz);
+		return puz;
+	}
+	
+	private char getTile(int x, int y) {
+		return puzzle[y * 8 + x];
+	}
+		
+	private void setTile(int x, int y, char value) {
+		puzzle[y * 8 + x] = value;
+	}
+	
+	protected String getTileString(int x, int y) {
+		char v = getTile(x, y);
+		if (v == 0)
+			return "" ;
+		else
+			return String.valueOf(v);
+	}	
 
 }
