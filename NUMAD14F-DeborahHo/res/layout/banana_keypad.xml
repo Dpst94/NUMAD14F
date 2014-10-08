@@ -8,93 +8,93 @@
 	android:stretchColumns="*" >
 	<TableRow>
 		<Button android:id="@+id/keypad_a"
-			android:text="a" >
+			android:text="A" >
 		</Button>
 		<Button android:id="@+id/keypad_b"
-			android:text="b" >
+			android:text="B" >
 		</Button>
 		<Button android:id="@+id/keypad_c"
-			android:text="c" >
+			android:text="C" >
 		</Button>
 		<Button android:id="@+id/keypad_d"
-			android:text="d" >
+			android:text="D" >
 		</Button>
 		<Button android:id="@+id/keypad_e"
-			android:text="e" >
+			android:text="E" >
 		</Button>			
 	</TableRow>
 	<TableRow>
 		<Button android:id="@+id/keypad_f"
-			android:text="f" >
+			android:text="F" >
 		</Button>	    
 		<Button android:id="@+id/keypad_g"
-			android:text="g" >
+			android:text="G" >
 		</Button>
 		<Button android:id="@+id/keypad_h"
-			android:text="h" >
+			android:text="H" >
 		</Button>
 		<Button android:id="@+id/keypad_i"
-			android:text="i" >
+			android:text="I" >
 		</Button>
 		<Button android:id="@+id/keypad_j"
-			android:text="j" >
+			android:text="J" >
 		</Button>
 	</TableRow>
 	<TableRow>
 		<Button android:id="@+id/keypad_k"
-			android:text="k" >
+			android:text="K" >
 		</Button>
 		<Button android:id="@+id/keypad_l"
-			android:text="l" >
+			android:text="L" >
 		</Button>	    
 		<Button android:id="@+id/keypad_m"
-			android:text="m" >
+			android:text="M" >
 		</Button>
 		<Button android:id="@+id/keypad_n"
-			android:text="n" >
+			android:text="N" >
 		</Button>
 		<Button android:id="@+id/keypad_o"
-			android:text="o" >
+			android:text="O" >
 		</Button>			
 	</TableRow>
 	<TableRow>
 		<Button android:id="@+id/keypad_p"
-			android:text="p" >
+			android:text="P" >
 		</Button>	
 		<Button android:id="@+id/keypad_q"
-			android:text="q" >
+			android:text="Q" >
 		</Button>
 		<Button android:id="@+id/keypad_r"
-			android:text="r" >
+			android:text="R" >
 		</Button>	    
 		<Button android:id="@+id/keypad_s"
-			android:text="s" >
+			android:text="S" >
 		</Button>
 		<Button android:id="@+id/keypad_t"
-			android:text="t" >
+			android:text="T" >
 		</Button>
 				
 	</TableRow>	
 	<TableRow>
 		<Button android:id="@+id/keypad_u"
-			android:text="u" >
+			android:text="U" >
 		</Button>
 		<Button android:id="@+id/keypad_v"
-			android:text="v" >
+			android:text="V" >
 		</Button>	
 		<Button android:id="@+id/keypad_w"
-			android:text="w" >
+			android:text="W" >
 		</Button>
 		<Button android:id="@+id/keypad_x"
-			android:text="x" >
+			android:text="X" >
 		</Button>		    
 	    <Button android:id="@+id/keypad_y" 
-	        android:text="y" >
+	        android:text="Y" >
 	    </Button>
 	</TableRow>
 	<TableRow>
 	    <Button android:id="@+id/keypad_z" 
-	        android:text="z" >
+	        android:text="Z" >
 	    </Button>	    
 	</TableRow>
 </TableLayout>

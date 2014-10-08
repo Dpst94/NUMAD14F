@@ -4,6 +4,7 @@ import edu.neu.madcourse.deborahho.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -21,12 +22,13 @@ public class Keypad extends Dialog {
 		super(context);
 		this.useds = useds;
 		this.puzzleView = puzzleView;
+		Log.d(TAG, "show my view: " + puzzleView);
 	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		Log.d(TAG, "show my view in oncreate: " + puzzleView);
 		setTitle(R.string.keypad_title);
 		setContentView(R.layout.keypad);
 		findViews();

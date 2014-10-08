@@ -66,7 +66,6 @@ public class PuzzleView extends View {
       select(bundle.getInt(SELX), bundle.getInt(SELY));
       super.onRestoreInstanceState(bundle.getParcelable(VIEW_STATE));
    }
-   
 
    @Override
    protected void onSizeChanged(int w, int h, int oldw, int oldh) {

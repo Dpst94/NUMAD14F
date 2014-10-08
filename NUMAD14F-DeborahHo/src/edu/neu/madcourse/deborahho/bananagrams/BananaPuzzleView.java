@@ -14,7 +14,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 
 public class BananaPuzzleView extends View{
 	private static final String TAG = "Bananagram";
@@ -74,7 +73,7 @@ public class BananaPuzzleView extends View{
 	   protected void onRestoreInstanceState(Parcelable state) { 
 	      Log.d(TAG, "onRestoreInstanceState");
 	      Bundle bundle = (Bundle) state;
-	      //select(bundle.getInt(SELX), bundle.getInt(SELY));
+	      select(bundle.getInt(SELX), bundle.getInt(SELY));
 	      super.onRestoreInstanceState(bundle.getParcelable(VIEW_STATE));
 	   }
 
@@ -117,16 +116,6 @@ public class BananaPuzzleView extends View{
 			   
 		   }
 		   
-//		   for (int row=0; row<nrOfColumns; row++) {
-//			   canvas.drawLine(row*width, 0, row*width, height_field, dark);
-//			   canvas.drawLine(row*width + 1, 0, row*width +1, height_field, hilite);
-//		   }
-//		   
-//		   for (int column=0; column<nrOfRows+1; column++) {
-//			   canvas.drawLine(0, column*height, width_field, column*height, dark);
-//			   canvas.drawLine(0, column*height+1, width_field, column*height+1, hilite);
-//		   }
-		   
 		   dark.setStyle(Paint.Style.STROKE);
 		   canvas.drawLine(0, (nrOfColumns-2)*height, width_field, (nrOfColumns-2)*height, dark);
 		      
@@ -149,7 +138,7 @@ public class BananaPuzzleView extends View{
 		   float y = height / 2 - (fm.ascent + fm.descent) / 2;
 		   for (int i = 0; i < nrOfColumns; i++) {
 		      for (int j = 0; j <  nrOfColumns; j++) {
-		         canvas.drawText(this.game.getTileString(i, j), i
+		         canvas.drawText(this.game.getTile(i, j), i
 		               * width + x, j * height + y, foreground);
 		      }
 		   }
@@ -181,10 +170,18 @@ public class BananaPuzzleView extends View{
 
 	      select((int) (event.getX() / width),
 	            (int) (event.getY() / height));
-	      game.showKeypad(selX, selY);
+	      game.showKeypad();
 	      Log.d(TAG, "onTouchEvent: x " + selX + ", y " + selY);
 	      return true;
 	   }
+	   
+	   public void setSelectedTile(String tile) {
+		   Log.d(TAG, "setSelectedTile x: " + selX + ", y " + selY);
+		   if(game.setTileIfValid(selX, selY, tile)) {
+			   invalidate();// may change hints   
+		   }
+ 
+	   }	   
 	   
 	   private void select(int x, int y) {
 		      invalidate(selRect);
@@ -192,11 +189,7 @@ public class BananaPuzzleView extends View{
 		      selY = Math.min(Math.max(y, 0), (int)nrOfColumns-1);
 		      getRect(selX, selY, selRect);
 		      invalidate(selRect);
-		      }
+	   }
 	   
-	   public void setSelectedTile(char tile) {
-		      game.setTile(selX, selY, tile); 
-		         invalidate();// may change hints
 
-		   }
 }

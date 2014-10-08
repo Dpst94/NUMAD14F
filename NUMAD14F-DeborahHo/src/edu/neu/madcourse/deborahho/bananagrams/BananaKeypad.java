@@ -1,9 +1,12 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
+import java.util.Arrays;
+
 import edu.neu.madcourse.deborahho.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class BananaKeypad extends Dialog {
@@ -13,22 +16,35 @@ public class BananaKeypad extends Dialog {
 	private final View keys[] = new View[26];
 	private View keypad;
 	
-	private final char useds[];
+	private final String lettersToUse[];
+
 	private final BananaPuzzleView bananaView;
 	
-	public BananaKeypad(Context context, char useds[], BananaPuzzleView bananaView) {
+	public BananaKeypad(Context context, String[] lettersToUse, BananaPuzzleView bananaView) {
 		super(context);
-		this.useds = useds;
+		this.lettersToUse = lettersToUse;
 		this.bananaView = bananaView;
+		Log.d(TAG, "show my view: " + bananaView);
 	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		Log.d(TAG, "show my view in oncreate: " + bananaView);
 		setTitle(R.string.keypad_title);
 		setContentView(R.layout.banana_keypad);
 		findViews();
+		Log.d(TAG, "lettersToUse" + lettersToUse);
+		for (int i=0; i<26; i++) {
+			keys[i].setVisibility(View.INVISIBLE);
+			String letter = Character.toString((char)(i+65));
+			Log.d(TAG, "letters to use " + Arrays.asList(lettersToUse));
+			if(Arrays.asList(lettersToUse).contains(letter)) {
+				Log.d(TAG, "show letters");
+				keys[i].setVisibility(View.VISIBLE);	
+			}
+		}
+
 		setListeners();
 	}
 	
@@ -61,23 +77,26 @@ public class BananaKeypad extends Dialog {
 		keys[24] = findViewById(R.id.keypad_y);
 		keys[25] = findViewById(R.id.keypad_z);	
 	}
+	
 	// Error here!! In returnResult(c)....
 	private void setListeners() {
 		for (int i = 0; i < keys.length; i++) {
 			final int t = i + 1;
 			keys[i].setOnClickListener(new View.OnClickListener(){
 				public void onClick(View v) {
-					char c = (char) ((char) t+97);
+					String c = Character.toString((char)(t+64));
+					Log.d(TAG, "place " + c + v);
 					returnResult(c);
 				}});
 		}
 		keypad.setOnClickListener(new View.OnClickListener(){
 			public void onClick(View v) {
-				returnResult('\0');
+				returnResult(" ");
 			}});
 	}
 	
-	private void returnResult(char tile) {
+	private void returnResult(String tile) {
+		Log.d(TAG, "place this tile: " + tile);
 		bananaView.setSelectedTile(tile);
 		dismiss();
 	}
