@@ -3,7 +3,10 @@ package edu.neu.madcourse.deborahho.bananagrams;
 import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.bananagrams.BananaKeypad;
+import edu.neu.madcourse.deborahho.bananagrams.BananaPuzzleView;
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -12,14 +15,17 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BananaGame extends Activity implements OnClickListener {
 	private static final String TAG = "Bananagrams" ;
 	private CountDownTimer countDownTimer;
 	public TextView timerText; 
 	public TextView score; 
+	public BananaPuzzleView bananaPuzzleView;
+	public static int nrOfColumns = 8;
 	
-	private char puzzle[] = new char[8 * 8];
+	private char puzzle[] = new char[nrOfColumns * nrOfColumns];
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,20 +85,20 @@ public class BananaGame extends Activity implements OnClickListener {
 	private final String startLetters = "aeebtxlpowidgrtf";
 	
 	static protected char[] fromLettersString(String string) {
-		char[] puz = new char[64];
-		for (int i = puz.length-16; i < puz.length; i++) {
-			puz[i] = string.charAt(i-48);
+		char[] puz = new char[nrOfColumns*nrOfColumns];
+		for (int i = puz.length-nrOfColumns*2; i < puz.length; i++) {
+			puz[i] = string.charAt(i-nrOfColumns*(nrOfColumns-2));
 		}
 		Log.d(TAG, "puzzle string long: " + puz);
 		return puz;
 	}
 	
 	private char getTile(int x, int y) {
-		return puzzle[y * 8 + x];
+		return puzzle[y * nrOfColumns + x];
 	}
 		
-	private void setTile(int x, int y, char value) {
-		puzzle[y * 8 + x] = value;
+	void setTile(int x, int y, char value) {
+		puzzle[y * nrOfColumns + x] = value;
 	}
 	
 	protected String getTileString(int x, int y) {
@@ -101,6 +107,11 @@ public class BananaGame extends Activity implements OnClickListener {
 			return "" ;
 		else
 			return String.valueOf(v);
-	}	
+	}
+	
+	protected void showKeypad(int x, int y) {
+		Dialog v = new BananaKeypad(this, puzzle, bananaPuzzleView);
+		v.show();
+	}
 
 }

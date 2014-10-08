@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 
 public class BananaPuzzleView extends View{
 	private static final String TAG = "Bananagram";
@@ -180,7 +181,7 @@ public class BananaPuzzleView extends View{
 
 	      select((int) (event.getX() / width),
 	            (int) (event.getY() / height));
-	      //game.showKeypadOrError(selX, selY);
+	      game.showKeypad(selX, selY);
 	      Log.d(TAG, "onTouchEvent: x " + selX + ", y " + selY);
 	      return true;
 	   }
@@ -191,5 +192,11 @@ public class BananaPuzzleView extends View{
 		      selY = Math.min(Math.max(y, 0), (int)nrOfColumns-1);
 		      getRect(selX, selY, selRect);
 		      invalidate(selRect);
+		      }
+	   
+	   public void setSelectedTile(char tile) {
+		      game.setTile(selX, selY, tile); 
+		         invalidate();// may change hints
+
 		   }
 }

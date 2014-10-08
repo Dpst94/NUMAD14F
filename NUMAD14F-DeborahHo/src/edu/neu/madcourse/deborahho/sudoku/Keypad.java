@@ -1,9 +1,6 @@
 package edu.neu.madcourse.deborahho.sudoku;
 
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.R.id;
-import edu.neu.madcourse.deborahho.R.layout;
-import edu.neu.madcourse.deborahho.R.string;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;

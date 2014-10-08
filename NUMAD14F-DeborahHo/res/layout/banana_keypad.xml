@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/keypad"
+	android:orientation="vertical"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*" >
+	<TableRow>
+		<Button android:id="@+id/keypad_a"
+			android:text="a" >
+		</Button>
+		<Button android:id="@+id/keypad_b"
+			android:text="b" >
+		</Button>
+		<Button android:id="@+id/keypad_c"
+			android:text="c" >
+		</Button>
+		<Button android:id="@+id/keypad_d"
+			android:text="d" >
+		</Button>
+		<Button android:id="@+id/keypad_e"
+			android:text="e" >
+		</Button>			
+	</TableRow>
+	<TableRow>
+		<Button android:id="@+id/keypad_f"
+			android:text="f" >
+		</Button>	    
+		<Button android:id="@+id/keypad_g"
+			android:text="g" >
+		</Button>
+		<Button android:id="@+id/keypad_h"
+			android:text="h" >
+		</Button>
+		<Button android:id="@+id/keypad_i"
+			android:text="i" >
+		</Button>
+		<Button android:id="@+id/keypad_j"
+			android:text="j" >
+		</Button>
+	</TableRow>
+	<TableRow>
+		<Button android:id="@+id/keypad_k"
+			android:text="k" >
+		</Button>
+		<Button android:id="@+id/keypad_l"
+			android:text="l" >
+		</Button>	    
+		<Button android:id="@+id/keypad_m"
+			android:text="m" >
+		</Button>
+		<Button android:id="@+id/keypad_n"
+			android:text="n" >
+		</Button>
+		<Button android:id="@+id/keypad_o"
+			android:text="o" >
+		</Button>			
+	</TableRow>
+	<TableRow>
+		<Button android:id="@+id/keypad_p"
+			android:text="p" >
+		</Button>	
+		<Button android:id="@+id/keypad_q"
+			android:text="q" >
+		</Button>
+		<Button android:id="@+id/keypad_r"
+			android:text="r" >
+		</Button>	    
+		<Button android:id="@+id/keypad_s"
+			android:text="s" >
+		</Button>
+		<Button android:id="@+id/keypad_t"
+			android:text="t" >
+		</Button>
+				
+	</TableRow>	
+	<TableRow>
+		<Button android:id="@+id/keypad_u"
+			android:text="u" >
+		</Button>
+		<Button android:id="@+id/keypad_v"
+			android:text="v" >
+		</Button>	
+		<Button android:id="@+id/keypad_w"
+			android:text="w" >
+		</Button>
+		<Button android:id="@+id/keypad_x"
+			android:text="x" >
+		</Button>		    
+	    <Button android:id="@+id/keypad_y" 
+	        android:text="y" >
+	    </Button>
+	</TableRow>
+	<TableRow>
+	    <Button android:id="@+id/keypad_z" 
+	        android:text="z" >
+	    </Button>	    
+	</TableRow>
+</TableLayout>
