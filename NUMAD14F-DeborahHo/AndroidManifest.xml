@@ -56,6 +56,9 @@
  		    android:label="@string/acknowledgements_label" />
  		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.Prefs"
  		    android:label="@string/game_title" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananaInstructions"
+            android:label="@string/instructions_label"
+            android:theme="@android:style/Theme.Dialog" />
  		
     </application>
 

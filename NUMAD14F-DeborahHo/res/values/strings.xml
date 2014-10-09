@@ -91,7 +91,13 @@
 		\nThe mp3 of the beep can be downloaded from the following website, called Beep 7:
 		\n<url>http://www.soundjay.com/beep-sounds-1.html</url>
 		\n
+		\nThe background music on the main screen is by Josh Gray called Classical, which can be downloaded here:
+		\n<url>http://www.last.fm/music/+free-music-downloads/instrumental+guitar</url>
+		\n
+		\nThe background music during the game is by Yiruma called Lord... Hold My Hand, and can be downloaded here:
+		\n<url>http://mp3skull.com/mp3/yiruma.html</url>
+		\n
 	    \nFinally, the icon for my app can be found here:
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
-	<string name="banana_instructions_text">This word game is based on Bananagrams.</string>
+	<string name="banana_instructions_text">This word game is based on the game Bananagrams. Make words that are connected with eachother and score as many points as you can in 90 seconds. The words should be horizontally or vertically lined. </string>
 </resources>
