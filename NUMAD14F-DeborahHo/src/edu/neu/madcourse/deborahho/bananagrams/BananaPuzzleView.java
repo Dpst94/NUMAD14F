@@ -171,6 +171,7 @@ public class BananaPuzzleView extends View{
 		   if(game.setTileIfValid(selX, selY, tile)) {
 			   invalidate();   
 		   }
+		   invalidate();
  
 	   }	   
 	   

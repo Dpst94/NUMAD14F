@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 
 public class Music {
    private static MediaPlayer mp = null;
+   private static MediaPlayer mpOnce = null;
 
    /** Stop old song and start new one */
    
@@ -12,8 +13,15 @@ public class Music {
 	 stop(context);
          mp = MediaPlayer.create(context, resource);
          mp.setLooping(true);
-         mp.start();
-      
+         mp.start();    
+   }
+   
+   public static void playOnce(Context context, int resource) {
+	   stop(context);
+       mpOnce = MediaPlayer.create(context, resource);
+       mpOnce.setLooping(false);
+       mpOnce.start();
+	   
    }
    
    /** Stop the music */

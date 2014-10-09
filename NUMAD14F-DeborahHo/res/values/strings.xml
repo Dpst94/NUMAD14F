@@ -84,6 +84,9 @@
 	    \nThe code for the bloom filter that is also used in the dictionary, can be found here and all credits go to the authors of this code: 
 	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 
 		\n
+		\nThe code for the countdown timer and vibrating at the last five seconds can be found here:
+		\n<url>http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds</url>
+		\n
 		\nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the idea I had for the main screen of the word game. 
 		\n
 		\nFurthermore I would like to thank the students in the Mobile App Development course for their help on Piazza. 

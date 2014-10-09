@@ -13,8 +13,10 @@ import edu.neu.madcourse.deborahho.dictionary.BloomFilter;
 import edu.neu.madcourse.deborahho.bananagrams.Music;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,6 +29,7 @@ public class BananaGame extends Activity implements OnClickListener {
 	private CountDownTimer countDownTimer;
 	public TextView timerText; 
 	public TextView score; 
+	public int points;
 	private BananaPuzzleView bananaPuzzleView;
 	public static int nrOfColumns = 8;
 	public String lettersToUse[] = new String[nrOfColumns*nrOfColumns];
@@ -51,7 +54,7 @@ public class BananaGame extends Activity implements OnClickListener {
         
         timerText = (TextView) this.findViewById(R.id.banana_timer);
         score = (TextView) this.findViewById(R.id.banana_score);
-        score.setText("Score: 0	");
+        score.setText("Score: 0");
         countDownTimer = new CountDownTimer(90000, 1000) {
 
 			@Override
@@ -67,6 +70,15 @@ public class BananaGame extends Activity implements OnClickListener {
 	                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
 	                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 				
+				 if((TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished)==0) &&
+		                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
+		                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))==5)
+		            {
+
+		            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		            // Vibrate for 500 milliseconds
+		            v.vibrate(5000);
+		            }
 			}
         	
         }.start();
@@ -132,7 +144,7 @@ public class BananaGame extends Activity implements OnClickListener {
 	
 	protected boolean setTileIfValid(int x, int y, String value) {
 		setTile(x, y, value);
-		Music.play(this, R.raw.beep);
+		Music.playOnce(this, R.raw.beep);
 		findWordsOnBoard();
 		
 		// Erase used letter and get a new letter	
@@ -144,7 +156,8 @@ public class BananaGame extends Activity implements OnClickListener {
 			
 		}
 		
-		// do other stuff as erasing tile etc. 
+		score.setText("Score: " + points); 
+		
 		return true;
 	}	
 	
@@ -158,6 +171,7 @@ public class BananaGame extends Activity implements OnClickListener {
 		int verticalWordLength = 0;
 		String horizontalWord = "";
 		String verticalWord = "";
+		points = 0;
 		
 		for (int row=0; row<nrOfColumns-2; row++) {
 			for (int column=0; column<nrOfColumns; column++) {
@@ -169,9 +183,10 @@ public class BananaGame extends Activity implements OnClickListener {
 					//Check word
 					Log.d(TAG, "check word: " + horizontalWord);
 					if(lookUpWord(horizontalWord)) {
+						points += horizontalWordLength;
 						horizontalWordLength = 0;
 						horizontalWord = "";
-						// Get points
+						
 						Log.d(TAG, "word is approved");
 					}
 	
@@ -183,6 +198,7 @@ public class BananaGame extends Activity implements OnClickListener {
 					Log.d(TAG, "check word: " + verticalWord);
 					//Check word
 					if(lookUpWord(verticalWord)) {
+						points += verticalWordLength;
 						verticalWordLength = 0;
 						verticalWord = "";
 						// Get points
