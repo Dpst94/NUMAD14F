@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.bananagrams.BananaKeypad;
-import edu.neu.madcourse.deborahho.bananagrams.BananaPuzzleView;
-import edu.neu.madcourse.deborahho.dictionary.Dictionary;
 import edu.neu.madcourse.deborahho.dictionary.BloomFilter;
-import edu.neu.madcourse.deborahho.dictionary.Music;
+import edu.neu.madcourse.deborahho.bananagrams.Music;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -25,7 +21,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class BananaGame extends Activity implements OnClickListener {
 	private static final String TAG = "Bananagrams" ;
@@ -191,6 +186,7 @@ public class BananaGame extends Activity implements OnClickListener {
 						verticalWordLength = 0;
 						verticalWord = "";
 						// Get points
+						
 						Log.d(TAG, "word is approved");
 					}
 				}else if(vLetter != " ") {
@@ -329,12 +325,14 @@ public class BananaGame extends Activity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		Music.play(this, R.raw.banana);
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
 		Log.d(TAG, "onPause" );
+		Music.stop(this);
 		
 		// Save the current puzzle
 		getPreferences(MODE_PRIVATE).edit().commit();

@@ -29,7 +29,8 @@
 		1 to 9 exactly once. </string>
 	<string name="sudoku_about_title">About Sudoku</string>	
     
-    <string name="sudoku_settings_label">Settings</string>
+	<string name="instructions_label">Instructions</string>
+    <string name="settings_label">Settings</string>
 	<string name="sudoku_settings_title">Sudoku settings</string>
 	<string name="sudoku_settings_shortcut">s</string>
 	<string name="sudoku_music_title">Music</string>
@@ -73,4 +74,24 @@
 	
 	<string name="bananagrams_label">Word Game</string>
 	<string name="pause_label">Pause</string>
+	<string name="banana_settings_title">Word Game settings</string>
+	<string name="banana_settings_shortcut">s</string>
+	<string name="banana_acknowledgements">
+	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
+	    \n
+	    \nThe majority of my code is based on the Sudoku app described in the book \'Hello, Android\' by Ed Burnette (3rd Edition).  
+	    \n
+	    \nThe code for the bloom filter that is also used in the dictionary, can be found here and all credits go to the authors of this code: 
+	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 
+		\n
+		\nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the idea I had for the main screen of the word game. 
+		\n
+		\nFurthermore I would like to thank the students in the Mobile App Development course for their help on Piazza. 
+		\n
+		\nThe mp3 of the beep can be downloaded from the following website, called Beep 7:
+		\n<url>http://www.soundjay.com/beep-sounds-1.html</url>
+		\n
+	    \nFinally, the icon for my app can be found here:
+	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
+	<string name="banana_instructions_text">This word game is based on Bananagrams.</string>
 </resources>
