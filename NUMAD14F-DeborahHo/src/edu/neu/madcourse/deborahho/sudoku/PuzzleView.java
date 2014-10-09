@@ -229,6 +229,7 @@ public class PuzzleView extends View {
    }
 
    public void setSelectedTile(int tile) {
+	  Log.d(TAG, "setSelectedTile x: " + selX + ", y " + selY);
       if (game.setTileIfValid(selX, selY, tile)) {
          invalidate();// may change hints
       } else {

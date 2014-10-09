@@ -1,5 +1,9 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,7 +12,9 @@ import java.util.concurrent.TimeUnit;
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.bananagrams.BananaKeypad;
 import edu.neu.madcourse.deborahho.bananagrams.BananaPuzzleView;
-import edu.neu.madcourse.deborahho.sudoku.PuzzleView;
+import edu.neu.madcourse.deborahho.dictionary.Dictionary;
+import edu.neu.madcourse.deborahho.dictionary.BloomFilter;
+import edu.neu.madcourse.deborahho.dictionary.Music;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -131,6 +137,16 @@ public class BananaGame extends Activity implements OnClickListener {
 	
 	protected boolean setTileIfValid(int x, int y, String value) {
 		setTile(x, y, value);
+		findWordsOnBoard();
+		
+		// Erase used letter and get a new letter	
+		for(int i=lettersToUse.length-nrOfColumns*2; i < lettersToUse.length; i++) {
+			if (lettersToUse[i].equals(value)) {
+				lettersToUse[i] = Character.toString(getNewLetter());
+				break;
+			}
+			
+		}
 		
 		// do other stuff as erasing tile etc. 
 		return true;
@@ -139,6 +155,188 @@ public class BananaGame extends Activity implements OnClickListener {
 	protected void showKeypad() {
 		Dialog v = new BananaKeypad(this, puzzle, bananaPuzzleView);
 		v.show();
+	}
+	
+	public void findWordsOnBoard() {
+		int horizontalWordLength = 0;
+		int verticalWordLength = 0;
+		String horizontalWord = "";
+		String verticalWord = "";
+		
+		for (int row=0; row<nrOfColumns-2; row++) {
+			for (int column=0; column<nrOfColumns; column++) {
+				
+				String hLetter = puzzle[row*nrOfColumns+column];
+				String vLetter = puzzle[column*nrOfColumns+row];
+				//Log.d(TAG, "check letter: " + hLetter + " vletter: " + vLetter);
+				if(horizontalWordLength>2 && hLetter.equals(" ")) {
+					//Check word
+					Log.d(TAG, "check word: " + horizontalWord);
+					if(lookUpWord(horizontalWord)) {
+						horizontalWordLength = 0;
+						horizontalWord = "";
+						// Get points
+						Log.d(TAG, "word is approved");
+					}
+	
+				}else if(hLetter != " ") {
+					horizontalWordLength++;
+					horizontalWord += hLetter;
+				}				
+				if(verticalWordLength>2 && vLetter.equals(" ")) {
+					Log.d(TAG, "check word: " + verticalWord);
+					//Check word
+					if(lookUpWord(verticalWord)) {
+						verticalWordLength = 0;
+						verticalWord = "";
+						// Get points
+						Log.d(TAG, "word is approved");
+					}
+				}else if(vLetter != " ") {
+					//Log.d(TAG, "vletter++ " + vLetter);
+					verticalWordLength++;
+					verticalWord += vLetter;
+				}
+
+			}	
+			horizontalWordLength = 0;
+			verticalWordLength = 0;
+			horizontalWord = "";
+			verticalWord = "";
+		}
+	}
+	
+	public boolean lookUpWord(String word) {
+		BloomFilter<String> bloomFilter;
+	    double falsePositiveProb = 0.01;
+	    int expectedNrOfElements = 17000;
+	    
+	    word = word.toLowerCase();
+	    char firstLetter = word.charAt(0);
+	    
+	    int resourceFile = GetResourceFile(firstLetter);
+			
+		bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
+		InputStream in = getResources().openRawResource(resourceFile);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			
+		try {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				bloomFilter.add(line);
+		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (bloomFilter.contains(word)) {
+			Log.d(TAG, "Found word: " + word);
+			Music.play(this, R.raw.beep);
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	int GetResourceFile(char firstLetter) {
+		int resourceFile = 0;
+		switch (firstLetter) {
+		case 'a':
+			resourceFile = R.raw.a;
+			break;
+		case 'b':
+			resourceFile = R.raw.b;
+			break;
+		case 'c':
+			resourceFile = R.raw.c;
+			break;
+		case 'd':
+			resourceFile = R.raw.d;
+			break;
+		case 'e':
+			resourceFile = R.raw.e;
+			break;
+		case 'f':
+			resourceFile = R.raw.f;
+			break;
+		case 'g':
+			resourceFile = R.raw.g;
+			break;
+		case 'h':
+			resourceFile = R.raw.h;
+			break;
+		case 'i':
+			resourceFile = R.raw.i;
+			break;
+		case 'j':
+			resourceFile = R.raw.j;
+			break;
+		case 'k':
+			resourceFile = R.raw.k;
+			break;
+		case 'l':
+			resourceFile = R.raw.l;
+			break;
+		case 'm':
+			resourceFile = R.raw.m;
+			break;
+		case 'n':
+			resourceFile = R.raw.n;
+			break;
+		case 'o':
+			resourceFile = R.raw.o;
+			break;
+		case 'p':
+			resourceFile = R.raw.p;
+			break;
+		case 'q':
+			resourceFile = R.raw.q;
+			break;
+		case 'r':
+			resourceFile = R.raw.r;
+			break;
+		case 's':
+			resourceFile = R.raw.s;
+			break;
+		case 't':
+			resourceFile = R.raw.t;
+			break;
+		case 'u':
+			resourceFile = R.raw.u;
+			break;
+		case 'v':
+			resourceFile = R.raw.v;
+			break;
+		case 'w':
+			resourceFile = R.raw.w;
+			break;
+		case 'x':
+			resourceFile = R.raw.x;
+			break;
+		case 'y':
+			resourceFile = R.raw.y;
+			break;
+		case 'z':
+			resourceFile = R.raw.z;
+			break;
+		}
+		return resourceFile;
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.d(TAG, "onPause" );
+		
+		// Save the current puzzle
+		getPreferences(MODE_PRIVATE).edit().commit();
 	}
 
 }

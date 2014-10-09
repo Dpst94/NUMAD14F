@@ -21,11 +21,12 @@ public class BananaPuzzleView extends View{
 	private static final String SELX = "selX"; 
 	private static final String SELY = "selY";
 	private static final String VIEW_STATE = "viewState";
+	private static final int ID = 42;
 	
 	private float width;    // width of one tile
 	private float height;   // height of one tile
-	private int selX;       // X index of selection
-	private int selY;       // Y index of selection
+	private static int selX;       // X index of selection
+	private static int selY;       // Y index of selection
 	private final Rect selRect = new Rect();	
 	public float width_field;
 	public float height_field;
@@ -41,22 +42,17 @@ public class BananaPuzzleView extends View{
 		setFocusableInTouchMode(true);
     
 		      // ...
-		      //setId(ID); 
+		      setId(ID); 
 		}	
 	
 	public BananaPuzzleView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.game = (BananaGame) context;
 		setFocusable(true);
-		setFocusableInTouchMode(true);		
+		setFocusableInTouchMode(true);	
+		
+		setId(ID);
 	}
-	
-	public BananaPuzzleView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		this.game = (BananaGame) context;
-		setFocusable(true);
-		setFocusableInTouchMode(true);		
-	}	
 	
 	   @Override
 	   protected Parcelable onSaveInstanceState() { 
@@ -158,12 +154,6 @@ public class BananaPuzzleView extends View{
 	   }	
 	   
 	   @Override
-	   protected void onFinishInflate() {
-	       // TODO Auto-generated method stub
-	       super.onFinishInflate();
-	   } 
-	   
-	   @Override
 	   public boolean onTouchEvent(MotionEvent event) {
 	      if (event.getAction() != MotionEvent.ACTION_DOWN)
 	         return super.onTouchEvent(event);
@@ -177,13 +167,15 @@ public class BananaPuzzleView extends View{
 	   
 	   public void setSelectedTile(String tile) {
 		   Log.d(TAG, "setSelectedTile x: " + selX + ", y " + selY);
+		   Log.d(TAG, "selected rec: " + selRect);
 		   if(game.setTileIfValid(selX, selY, tile)) {
-			   invalidate();// may change hints   
+			   invalidate();   
 		   }
  
 	   }	   
 	   
 	   private void select(int x, int y) {
+		   Log.d(TAG, "select() x: " + selX + ", y " + selY);
 		      invalidate(selRect);
 		      selX = Math.min(Math.max(x, 0), (int)nrOfColumns-1);
 		      selY = Math.min(Math.max(y, 0), (int)nrOfColumns-1);

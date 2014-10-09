@@ -38,9 +38,9 @@ public class BananaKeypad extends Dialog {
 		for (int i=0; i<26; i++) {
 			keys[i].setVisibility(View.INVISIBLE);
 			String letter = Character.toString((char)(i+65));
-			Log.d(TAG, "letters to use " + Arrays.asList(lettersToUse));
+			//Log.d(TAG, "letters to use " + Arrays.asList(lettersToUse));
 			if(Arrays.asList(lettersToUse).contains(letter)) {
-				Log.d(TAG, "show letters");
+				//Log.d(TAG, "show letters");
 				keys[i].setVisibility(View.VISIBLE);	
 			}
 		}

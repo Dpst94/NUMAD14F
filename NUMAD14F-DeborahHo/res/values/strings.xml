@@ -71,6 +71,6 @@
 	<string name="acknowledgements_label">Acknowledgements</string>
 	<string name="dict_found_words_text">\n Words Found In Dictionary</string>
 	
-	<string name="bananagrams_label">Bananagrams</string>
+	<string name="bananagrams_label">Word Game</string>
 	<string name="pause_label">Pause</string>
 </resources>
