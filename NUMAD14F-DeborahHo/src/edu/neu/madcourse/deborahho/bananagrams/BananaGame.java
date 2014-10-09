@@ -137,6 +137,7 @@ public class BananaGame extends Activity implements OnClickListener {
 	
 	protected boolean setTileIfValid(int x, int y, String value) {
 		setTile(x, y, value);
+		Music.play(this, R.raw.beep);
 		findWordsOnBoard();
 		
 		// Erase used letter and get a new letter	
@@ -232,7 +233,7 @@ public class BananaGame extends Activity implements OnClickListener {
 		
 		if (bloomFilter.contains(word)) {
 			Log.d(TAG, "Found word: " + word);
-			Music.play(this, R.raw.beep);
+			
 			return true;
 		}
 		
