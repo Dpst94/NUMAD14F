@@ -60,6 +60,8 @@
  		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananaInstructions"
             android:label="@string/instructions_label"
             android:theme="@android:style/Theme.Dialog" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananPause"
+ 		    android:label="@string/pause_label" />
  		
     </application>
 

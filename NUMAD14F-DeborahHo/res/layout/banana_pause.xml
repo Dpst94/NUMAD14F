@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@color/background"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent"
+	android:padding="30dip"
+	android:orientation="horizontal" >
+
+	<TextView
+	    android:id="@+id/banana_pause_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/banana_pause_text" />	
+	<Button
+	    android:id="@+id/banana_resume_button"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/resume_label" />
+
+</LinearLayout>

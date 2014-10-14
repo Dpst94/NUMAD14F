@@ -69,6 +69,7 @@
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
 	<string name="dict_clear_label">Clear</string>
 	<string name="return_label">Return to menu</string>
+	<string name="resume_label">Resume</string>
 	<string name="acknowledgements_label">Acknowledgements</string>
 	<string name="dict_found_words_text">\n Words Found In Dictionary</string>
 	
@@ -103,4 +104,5 @@
 	    \nFinally, the icon for my app can be found here:
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
 	<string name="banana_instructions_text">This word game is based on the game Bananagrams. Make words that are connected with eachother and score as many points as you can in 90 seconds. The words should be horizontally or vertically lined. </string>
+	<string name="banana_pause_text">This game has been paused.</string>
 </resources>

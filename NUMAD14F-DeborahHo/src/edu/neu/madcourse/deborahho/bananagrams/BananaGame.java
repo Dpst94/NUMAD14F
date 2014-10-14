@@ -14,6 +14,7 @@ import edu.neu.madcourse.deborahho.bananagrams.Music;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
@@ -77,7 +78,7 @@ public class BananaGame extends Activity implements OnClickListener {
 
 		            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		            // Vibrate for 500 milliseconds
-		            v.vibrate(5000);
+		            //v.vibrate(5000);
 		            }
 			}
         	
@@ -102,6 +103,10 @@ public class BananaGame extends Activity implements OnClickListener {
     	switch (v.getId()) {
     	case R.id.banana_quit_button:
     		finish();
+    		break;
+    	case R.id.banana_pause_button:
+    		Intent i = new Intent(this, BananaPause.class);
+    		startActivity(i);
     		break;
     	}
 		
