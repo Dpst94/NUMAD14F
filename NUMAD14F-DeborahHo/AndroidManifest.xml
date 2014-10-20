@@ -10,6 +10,10 @@
     
 	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.READ_PHONE_DATA" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
     <application
         android:icon="@drawable/bunny_toothbrush"
@@ -62,6 +66,9 @@
             android:theme="@android:style/Theme.Dialog" />
  		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananaPause"
  		    android:label="@string/pause_label" />
+ 		
+ 		<activity android:name="edu.neu.madcourse.deborahho.communication.Communication"
+ 		    android:label="@string/communication_label" />
  		
     </application>
 

@@ -1,7 +1,6 @@
 package edu.neu.madcourse.deborahho.bananagrams;
 
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.sudoku.SudokuAbout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

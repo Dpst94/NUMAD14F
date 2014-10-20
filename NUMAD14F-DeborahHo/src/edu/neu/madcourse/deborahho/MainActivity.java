@@ -1,9 +1,9 @@
 package edu.neu.madcourse.deborahho;
 
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.sudoku.Game;
 import edu.neu.madcourse.deborahho.sudoku.Sudoku;
 import edu.neu.madcourse.deborahho.bananagrams.Bananagrams;
+import edu.neu.madcourse.deborahho.communication.Communication;
 import edu.neu.madcourse.deborahho.dictionary.*;
 
 import android.os.Bundle;
@@ -11,12 +11,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.util.Log;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -39,6 +35,8 @@ public class MainActivity extends Activity implements OnClickListener {
         dictionaryButton.setOnClickListener(this);
         View bananagramsButton = findViewById(R.id.bananagrams_button);
         bananagramsButton.setOnClickListener(this);
+        View communicationButton = findViewById(R.id.communication_button);
+        communicationButton.setOnClickListener(this);
      
     }
 
@@ -75,6 +73,9 @@ public class MainActivity extends Activity implements OnClickListener {
     		Intent l = new Intent(this, Bananagrams.class);
     		startActivity(l);
     		break;
+    	case R.id.communication_button:
+    		Intent m = new Intent(this, Communication.class);
+    		startActivity(m);
     	}
     }
     

@@ -6,7 +6,7 @@
 	android:layout_height="fill_parent"
 	android:layout_width="fill_parent"
 	android:padding="30dip"
-	android:orientation="horizontal" >
+	android:orientation="vertical" >
 
 	<TextView
 	    android:id="@+id/banana_pause_text"

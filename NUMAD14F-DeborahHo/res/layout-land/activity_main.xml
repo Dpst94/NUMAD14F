@@ -37,6 +37,14 @@
 		android:id="@+id/dictionary_button"
 		android:text="@string/dictionary_label" />
         </TableRow>
+        <TableRow>
+		<Button
+		android:id="@+id/bananagrams_button"
+		android:text="@string/bananagrams_label" />
+		<Button
+		android:id="@+id/communication_button"
+		android:text="@string/communication_label" />
+        </TableRow>
         <TableRow >
         <Button
 		android:id="@+id/exit_button"

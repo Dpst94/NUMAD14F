@@ -105,4 +105,9 @@
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
 	<string name="banana_instructions_text">This word game is based on the game Bananagrams. Make words that are connected with eachother and score as many points as you can in 90 seconds. The words should be horizontally or vertically lined. </string>
 	<string name="banana_pause_text">This game has been paused.</string>
+	
+	<string name="communication_label">Communication</string>
+	<string name="register_label">Register</string>
+	<string name="connect_label">Connect with other player</string>
+	<string name="send_data_label">Send data</string>
 </resources>
