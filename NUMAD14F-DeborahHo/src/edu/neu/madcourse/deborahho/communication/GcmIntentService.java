@@ -31,6 +31,7 @@ public class GcmIntentService extends IntentService {
 		String contentText = "";
 
 		Bundle extras = intent.getExtras();
+		Log.d(TAG, "IntentService value of extras size: " +String.valueOf(extras.size()));
 		Log.d(String.valueOf(extras.size()), extras.toString());
 		if (!extras.isEmpty()) {
 			alertText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "alertText");

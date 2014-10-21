@@ -114,4 +114,13 @@
 	<string name="hint_message">Input message here...</string>
 	<string name="send_label">Send</string>
 	<string name="find_contacts_label">Find contacts</string>
+	<string name="com_acknowledgements">
+	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
+	    \n
+	    \nThe majority of my code is based on the Sudoku app described in the book \'Hello, Android\' by Ed Burnette (3rd Edition).  
+	    \n
+		\nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the idea I had for the main screen of the word game. 
+		\n
+	    \nFinally, the icon for my app can be found here:
+	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
 </resources>

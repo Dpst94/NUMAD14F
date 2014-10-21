@@ -78,8 +78,11 @@
  		    android:label="@string/pause_label" />
  		
  		<activity android:name="edu.neu.madcourse.deborahho.communication.Communication"
- 		    android:label="@string/communication_label" />
- 		
+ 		    android:label="@string/communication_label" 
+ 		    android:screenOrientation="portrait" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.communication.ComAcknowledgements"
+ 		    android:label="@string/acknowledgements_label" />
+ 		 		
 		<receiver
             android:name="edu.neu.madcourse.deborahho.communication.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >

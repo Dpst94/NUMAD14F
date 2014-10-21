@@ -11,6 +11,7 @@ import java.util.Map;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -29,7 +30,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import edu.neu.mhealth.api.KeyValueAPI;
-import edu.neu.mobileClass.*;
 
 public class Communication extends Activity implements OnClickListener{
 	
@@ -52,21 +52,22 @@ public class Communication extends Activity implements OnClickListener{
 	String PASSWORD = "patricia";
 	
 	TextView mDisplay;
+	EditText mUsername;
 	EditText mMessage;
 	GoogleCloudMessaging gcm;
 	SharedPreferences prefs;
 	Context context;
 	String regid;	
+	String username;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communication);
-
-        PhoneCheckAPI.doAuthorization(this);
         
-		//mDisplay = (TextView) findViewById(R.id.communication_display);
-		//mMessage = (EditText) findViewById(R.id.communication_edit_message);
+		mDisplay = (TextView) findViewById(R.id.communication_display);
+		mUsername = (EditText) findViewById(R.id.communication_username);
+		mMessage = (EditText) findViewById(R.id.communication_edit_message);
 		gcm = GoogleCloudMessaging.getInstance(this);
 		context = getApplicationContext();
         
@@ -80,6 +81,8 @@ public class Communication extends Activity implements OnClickListener{
         sendDataButton.setOnClickListener(this);
         View clearButton = findViewById(R.id.communication_clear);
         clearButton.setOnClickListener(this);
+        View acknowledgementsButton = findViewById(R.id.com_acknowledgements_button);
+        acknowledgementsButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this); 
 	}	
@@ -88,6 +91,7 @@ public class Communication extends Activity implements OnClickListener{
 	private String getRegistrationId(Context context) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		String registrationId = prefs.getString(PROPERTY_REG_ID, "");
+		Log.i(TAG, "registrationId " + registrationId);
 		if (registrationId.isEmpty()) {
 			Log.i(TAG, "Registration not found.");
 			return "";
@@ -124,6 +128,7 @@ public class Communication extends Activity implements OnClickListener{
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
+				Log.d(TAG, "mDisplay: " + msg);
 				try {
 					if (gcm == null) {
 						gcm = GoogleCloudMessaging.getInstance(context);
@@ -134,7 +139,9 @@ public class Communication extends Activity implements OnClickListener{
 							"Register");
 					KeyValueAPI.put(TEAM_NAME, PASSWORD, "contentText",
 							"Registering Successful!");
+					
 					regid = gcm.register(SENDER_ID);
+					
 					int cnt = 0;
 					if (KeyValueAPI.isServerAvailable()) {
 						if (!KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt")
@@ -159,7 +166,7 @@ public class Communication extends Activity implements OnClickListener{
 							KeyValueAPI.put(TEAM_NAME, PASSWORD, "regid"
 									+ String.valueOf(cnt + 1), regid);
 						}
-						msg = "Device registered, registration ID=" + regid;
+						msg = "Device registered, registration ID=" + regid + " ;Username=" + username;
 					} else {
 						msg = "Error :" + "Backup Server is not available";
 						return msg;
@@ -169,6 +176,7 @@ public class Communication extends Activity implements OnClickListener{
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}
+				Log.d(TAG, "mDisplay: " + msg);
 				return msg;
 			}
 
@@ -180,7 +188,8 @@ public class Communication extends Activity implements OnClickListener{
 	}
 
 	private void sendRegistrationIdToBackend() {
-		// Your implementation here.
+		KeyValueAPI.put(TEAM_NAME, PASSWORD, "user1", username);
+		KeyValueAPI.put(TEAM_NAME, PASSWORD, username, regid);
 	}
 
 	private void storeRegistrationId(Context context, String regId) {
@@ -213,15 +222,42 @@ public class Communication extends Activity implements OnClickListener{
     public void onClick(View v) {
     	switch (v.getId()) {
     	case R.id.communication_register_button:
-			if (checkPlayServices()) {
-				regid = getRegistrationId(context);
-				if (TextUtils.isEmpty(regid)) {
-					registerInBackground();
-				}
+    		username = ((EditText) findViewById(R.id.communication_username))
+    		.getText().toString();
+    		Log.d(TAG, "username: " + username);
+    		if (username != "" && username != null) {
+    			if (checkPlayServices()) {
+    				regid = getRegistrationId(context);
+    				if (TextUtils.isEmpty(regid)) {
+    					registerInBackground();
+    				}
+    			}
+			} else {
+				Toast.makeText(context, "Input username!", Toast.LENGTH_LONG).show();
 			}
+    		break;
+    	case R.id.communication_unregister_button:
+    		unregister();
+    		break;
+    	case R.id.communication_send:
+    		String message = ((EditText) findViewById(R.id.communication_edit_message))
+			.getText().toString();
+    		if (message != "") {
+    			sendMessage(message);
+    		} else {
+    			Toast.makeText(context, "Sending Context Empty!",
+				Toast.LENGTH_LONG).show();
+    		}
+    		break;
+    	case R.id.communication_clear:
+    		mMessage.setText("");
     		break;
     	case R.id.exit_button:
     		finish();
+    		break;
+    	case R.id.com_acknowledgements_button:
+    		Intent i = new Intent(this, ComAcknowledgements.class);
+    		startActivity(i);
     		break;
     	}
     }
