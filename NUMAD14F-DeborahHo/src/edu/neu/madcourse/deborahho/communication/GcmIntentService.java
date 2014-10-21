@@ -16,6 +16,9 @@ public class GcmIntentService extends IntentService {
 	private NotificationManager mNotificationManager;
 	NotificationCompat.Builder builder;
 	static final String TAG = "GCM_Communication";
+	
+	String TEAM_NAME = "DeborahHo";
+	String PASSWORD = "patricia";
 
 	public GcmIntentService() {
 		super("GcmIntentService");
@@ -30,9 +33,9 @@ public class GcmIntentService extends IntentService {
 		Bundle extras = intent.getExtras();
 		Log.d(String.valueOf(extras.size()), extras.toString());
 		if (!extras.isEmpty()) {
-			alertText = KeyValueAPI.get("pbj1203", "1312789", "alertText");
-			titleText = KeyValueAPI.get("pbj1203", "1312789", "titleText");
-			contentText = KeyValueAPI.get("pbj1203", "1312789", "contentText");
+			alertText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "alertText");
+			titleText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "titleText");
+			contentText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "contentText");
 			sendNotification(alertText, titleText, contentText);
 		}
 		// Release the wake lock provided by the WakefulBroadcastReceiver.

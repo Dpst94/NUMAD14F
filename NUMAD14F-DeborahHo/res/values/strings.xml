@@ -108,6 +108,10 @@
 	
 	<string name="communication_label">Communication</string>
 	<string name="register_label">Register</string>
-	<string name="connect_label">Connect with other player</string>
-	<string name="send_data_label">Send data</string>
+	<string name="unregister_label">Unregister</string>
+	<string name="clear_label">Clear</string>
+	<string name="hint_username">Username</string>
+	<string name="hint_message">Input message here...</string>
+	<string name="send_label">Send</string>
+	<string name="find_contacts_label">Find contacts</string>
 </resources>
