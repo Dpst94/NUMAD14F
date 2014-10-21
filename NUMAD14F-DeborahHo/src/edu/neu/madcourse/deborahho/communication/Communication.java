@@ -348,17 +348,17 @@ public class Communication extends Activity implements OnClickListener{
 				//		String.valueOf(nIcon));
 				KeyValueAPI.put(TEAM_NAME, PASSWORD, "nType",
 						String.valueOf(nType));
-//				GcmNotification gcmNotification = new GcmNotification();
-//				for (int i = 1; i <= cnt; i++) {
-//					regIds.clear();
-//					reg_device = KeyValueAPI.get("pbj1203", "1312789", "regid"
-//							+ String.valueOf(i));
-//					Log.d(String.valueOf(i), reg_device);
-//					regIds.add(reg_device);
-//					gcmNotification.sendNotification(msgParams, regIds,
-//							edu.neu.madcourse.deborahho.communication.Communication.this);
-//					Log.d(String.valueOf(i), regIds.toString());
-//				}
+				//GcmNotification gcmNotification = new GcmNotification();
+				for (int i = 1; i <= cnt; i++) {
+					regIds.clear();
+					reg_device = KeyValueAPI.get("pbj1203", "1312789", "regid"
+							+ String.valueOf(i));
+					Log.d(String.valueOf(i), reg_device);
+					regIds.add(reg_device);
+					//gcmNotification.sendNotification(msgParams, regIds,
+					//		edu.neu.madcourse.deborahho.communication.Communication.this);
+					Log.d(String.valueOf(i), regIds.toString());
+				}
 				msg = "sending information...";
 				return msg;
 			}
