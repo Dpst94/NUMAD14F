@@ -15,6 +15,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -59,6 +61,7 @@ public class Communication extends Activity implements OnClickListener{
 	Context context;
 	String regid;	
 	String username;
+	int nrOfUsers = 1;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -166,7 +169,11 @@ public class Communication extends Activity implements OnClickListener{
 							KeyValueAPI.put(TEAM_NAME, PASSWORD, "regid"
 									+ String.valueOf(cnt + 1), regid);
 						}
-						msg = "Device registered, registration ID=" + regid + " ;Username=" + username;
+						KeyValueAPI.put(TEAM_NAME, PASSWORD, "user" + String.valueOf(cnt+1), username);
+						KeyValueAPI.put(TEAM_NAME, PASSWORD, username, regid);
+						
+						
+						msg = "Device registered, username = " + username; //registration ID=" + regid + " ;
 					} else {
 						msg = "Error :" + "Backup Server is not available";
 						return msg;
@@ -188,8 +195,7 @@ public class Communication extends Activity implements OnClickListener{
 	}
 
 	private void sendRegistrationIdToBackend() {
-		KeyValueAPI.put(TEAM_NAME, PASSWORD, "user1", username);
-		KeyValueAPI.put(TEAM_NAME, PASSWORD, username, regid);
+
 	}
 
 	private void storeRegistrationId(Context context, String regId) {
@@ -303,9 +309,24 @@ public class Communication extends Activity implements OnClickListener{
 		editor.commit();
 		regid = null;
 	}
+	
+	public boolean isOnline() {
+	    ConnectivityManager cm =
+	        (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	    if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+	        return true;
+	    }
+	    return false;
+	}
 
 	@SuppressLint("NewApi")
 	private void sendMessage(final String message) {
+		if (!isOnline()) {
+			Toast.makeText(this, "Failed to connect to the Internet", Toast.LENGTH_LONG)
+			.show();
+			return;			
+		}
 		if (regid == null || regid.equals("")) {
 			Toast.makeText(this, "You must register first", Toast.LENGTH_LONG)
 					.show();
@@ -348,15 +369,15 @@ public class Communication extends Activity implements OnClickListener{
 				//		String.valueOf(nIcon));
 				KeyValueAPI.put(TEAM_NAME, PASSWORD, "nType",
 						String.valueOf(nType));
-				//GcmNotification gcmNotification = new GcmNotification();
+				GcmNotification gcmNotification = new GcmNotification();
 				for (int i = 1; i <= cnt; i++) {
 					regIds.clear();
-					reg_device = KeyValueAPI.get("pbj1203", "1312789", "regid"
+					reg_device = KeyValueAPI.get(TEAM_NAME, PASSWORD, "regid"
 							+ String.valueOf(i));
 					Log.d(String.valueOf(i), reg_device);
 					regIds.add(reg_device);
-					//gcmNotification.sendNotification(msgParams, regIds,
-					//		edu.neu.madcourse.deborahho.communication.Communication.this);
+					gcmNotification.sendNotification(msgParams, regIds,
+							edu.neu.madcourse.deborahho.communication.Communication.this);
 					Log.d(String.valueOf(i), regIds.toString());
 				}
 				msg = "sending information...";

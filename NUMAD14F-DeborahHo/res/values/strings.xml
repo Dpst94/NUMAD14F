@@ -110,16 +110,21 @@
 	<string name="register_label">Register</string>
 	<string name="unregister_label">Unregister</string>
 	<string name="clear_label">Clear</string>
-	<string name="hint_username">Username</string>
-	<string name="hint_message">Input message here...</string>
+	<string name="hint_username">Enter username</string>
+	<string name="hint_message">Enter message</string>
 	<string name="send_label">Send</string>
 	<string name="find_contacts_label">Find contacts</string>
+	<string name="userList_label">List of users</string>
 	<string name="com_acknowledgements">
 	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
 	    \n
-	    \nThe majority of my code is based on the Sudoku app described in the book \'Hello, Android\' by Ed Burnette (3rd Edition).  
+	    \nThe majority of my code is based on the GCMDemo described on the Android Developer website:
+	    \n<url>http://developer.android.com/google/gcm/client.html</url> 
 	    \n
-		\nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the idea I had for the main screen of the word game. 
+	    \nTo check if the phone is connected to the Internet, I have used the following code from StackOverflow:
+	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url>
+		\n
+	    \nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the server and how to send messages between users. 
 		\n
 	    \nFinally, the icon for my app can be found here:
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
