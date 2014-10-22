@@ -289,6 +289,7 @@ public class Communication extends Activity implements OnClickListener{
 					KeyValueAPI.put(TEAM_NAME, PASSWORD, "contentText",
 							"Unregistering Successful!");
 					gcm.unregister();
+					
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}
