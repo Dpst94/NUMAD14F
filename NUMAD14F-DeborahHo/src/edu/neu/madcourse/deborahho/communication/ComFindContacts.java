@@ -2,32 +2,10 @@ package edu.neu.madcourse.deborahho.communication;
 
 import edu.neu.madcourse.deborahho.R;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import edu.neu.mhealth.api.KeyValueAPI;
 
@@ -45,10 +23,10 @@ public class ComFindContacts extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.com_find_contacts);
         
-        getUsersList();
+        findContacts();
 	}	
 	
-	private void getUsersList(){
+	private void findContacts(){
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
@@ -62,7 +40,7 @@ public class ComFindContacts extends Activity {
 				msg = KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt");
 				return msg;
 			}			
-			//ME
+			
 			for (int i = 1; i <= cnt; i++) {
 			userList = userList + "\n" + KeyValueAPI.get(TEAM_NAME, PASSWORD, "user"
 					+ String.valueOf(i));
