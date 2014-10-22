@@ -235,7 +235,10 @@ public class Communication extends Activity implements OnClickListener{
     				regid = getRegistrationId(context);
     				if (TextUtils.isEmpty(regid)) {
     					registerInBackground();
+    				} else {
+    					Toast.makeText(context, "You are already registered!", Toast.LENGTH_LONG).show();
     				}
+    					
     			}
 			} else {
 				Toast.makeText(context, "Input username!", Toast.LENGTH_LONG).show();
