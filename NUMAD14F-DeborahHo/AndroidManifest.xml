@@ -83,6 +83,8 @@
  		    android:screenOrientation="portrait" />
  		<activity android:name="edu.neu.madcourse.deborahho.communication.ComAcknowledgements"
  		    android:label="@string/acknowledgements_label" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.communication.ComFindContacts"
+ 		    android:label="@string/find_contacts_label" />
  		 		
 		<receiver
             android:name="edu.neu.madcourse.deborahho.communication.GcmBroadcastReceiver"

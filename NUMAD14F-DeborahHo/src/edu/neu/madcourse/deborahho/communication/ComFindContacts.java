@@ -31,27 +31,28 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import edu.neu.mhealth.api.KeyValueAPI;
 
-public class ComFindContacts extends Activity implements OnClickListener {
+public class ComFindContacts extends Activity {
 	
 	String GCM_API_KEY = "AIzaSyAJUK8ioj2HAOyDBKMTMJ80DDShn5UUDIQ";
 	String SENDER_ID = "341143421214";
 	String TEAM_NAME = "DeborahHo";
 	String PASSWORD = "patricia";
 	
-	String userList;
+	String userList = "";
 	
 	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.com_find_contacts);
+        
+        getUsersList();
+	}	
 	
 	private void getUsersList(){
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
 			String msg = "";
-			userList = "List of registered users:\n";
 			int cnt = 0;
 			if (!KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt").contains(
 					"Error"))
@@ -71,7 +72,6 @@ public class ComFindContacts extends Activity implements OnClickListener {
 
 		@Override
 		protected void onPostExecute(String msg) {
-			//ME
 			((TextView) findViewById(R.id.communication_users))
 			.setText(userList);
 		}

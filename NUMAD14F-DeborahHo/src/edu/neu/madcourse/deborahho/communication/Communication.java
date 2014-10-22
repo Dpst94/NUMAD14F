@@ -228,10 +228,9 @@ public class Communication extends Activity implements OnClickListener{
     public void onClick(View v) {
     	switch (v.getId()) {
     	case R.id.communication_register_button:
-    		username = ((EditText) findViewById(R.id.communication_username))
-    		.getText().toString();
+    		username = mUsername.getText().toString();
     		Log.d(TAG, "username: " + username);
-    		if (username != "" && username != null) {
+    		if (!username.equals("")) {
     			if (checkPlayServices()) {
     				regid = getRegistrationId(context);
     				if (TextUtils.isEmpty(regid)) {
@@ -265,6 +264,10 @@ public class Communication extends Activity implements OnClickListener{
     		Intent i = new Intent(this, ComAcknowledgements.class);
     		startActivity(i);
     		break;
+    	case R.id.find_contacts:
+    		Intent j = new Intent(this, ComFindContacts.class);
+    		startActivity(j);
+    		break;		
     	}
     }
     
