@@ -1,6 +1,5 @@
 package edu.neu.madcourse.deborahho.communication;
 
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;

@@ -112,6 +112,7 @@
 	<string name="clear_label">Clear</string>
 	<string name="hint_username">Enter username</string>
 	<string name="hint_message">Enter message</string>
+	<string name="hint_message_user">Input username receiver</string>
 	<string name="send_label">Send</string>
 	<string name="find_contacts_label">Find contacts</string>
 	<string name="userList_label">List of users</string>
@@ -120,6 +121,9 @@
 	    \n
 	    \nThe majority of my code is based on the GCMDemo described on the Android Developer website:
 	    \n<url>http://developer.android.com/google/gcm/client.html</url> 
+	    \n
+	    \nTo store data, I have used the following server:
+	    \n<url>https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit</url>
 	    \n
 	    \nTo check if the phone is connected to the Internet, I have used the following code from StackOverflow:
 	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url>

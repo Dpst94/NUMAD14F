@@ -1,7 +1,5 @@
 package edu.neu.madcourse.deborahho.communication;
 
-import edu.neu.madcourse.deborahho.R;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,10 +29,11 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import edu.neu.madcourse.deborahho.R;
 import edu.neu.mhealth.api.KeyValueAPI;
 
-public class Communication extends Activity implements OnClickListener{
-	
+public class Communication extends Activity implements OnClickListener {
+
 	public static final String EXTRA_MESSAGE = "message";
 	public static final String PROPERTY_REG_ID = "registration_id";
 	private static final String PROPERTY_APP_VERSION = "appVersion";
@@ -45,56 +44,43 @@ public class Communication extends Activity implements OnClickListener{
 
 	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	static final String TAG = "GCM_Communication";
-    static final String TAG_GLOBAL = "GCM_Globals";
-    static final int SIMPLE_NOTIFICATION = 22;
-	
-	String GCM_API_KEY = "AIzaSyAJUK8ioj2HAOyDBKMTMJ80DDShn5UUDIQ";
-	String SENDER_ID = "341143421214";
-	String TEAM_NAME = "DeborahHo";
-	String PASSWORD = "patricia";
 	
 	TextView mDisplay;
-	EditText mUsername;
 	EditText mMessage;
+	EditText mUsername;
+	EditText mContact;
 	GoogleCloudMessaging gcm;
 	SharedPreferences prefs;
 	Context context;
-	String regid;	
-	String username;
-	int nrOfUsers = 1;
-	
+	String regid;
+	String username = "";
+	String contact = "";
+
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.communication);
-        
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.communication);
 		mDisplay = (TextView) findViewById(R.id.communication_display);
 		mUsername = (EditText) findViewById(R.id.communication_username);
 		mMessage = (EditText) findViewById(R.id.communication_edit_message);
+		mContact = (EditText) findViewById(R.id.communication_contact);
 		gcm = GoogleCloudMessaging.getInstance(this);
 		context = getApplicationContext();
-        
-        View registerButton = findViewById(R.id.communication_register_button);
-        registerButton.setOnClickListener(this);
-        View unregisterButton = findViewById(R.id.communication_unregister_button);
-        unregisterButton.setOnClickListener(this);
-        View findContactsButton = findViewById(R.id.find_contacts);
+		
+		View findContactsButton = findViewById(R.id.find_contacts);
         findContactsButton.setOnClickListener(this);
-        View sendDataButton = findViewById(R.id.communication_send);
-        sendDataButton.setOnClickListener(this);
-        View clearButton = findViewById(R.id.communication_clear);
-        clearButton.setOnClickListener(this);
-        View acknowledgementsButton = findViewById(R.id.com_acknowledgements_button);
-        acknowledgementsButton.setOnClickListener(this);
-        View exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(this); 
-	}	
+	    View acknowledgementsButton = findViewById(R.id.com_acknowledgements_button);
+	    acknowledgementsButton.setOnClickListener(this);
+	    View exitButton = findViewById(R.id.exit_button);
+	    exitButton.setOnClickListener(this); 
+		
+	}
 
 	@SuppressLint("NewApi")
 	private String getRegistrationId(Context context) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		String registrationId = prefs.getString(PROPERTY_REG_ID, "");
-		Log.i(TAG, "registrationId " + registrationId);
 		if (registrationId.isEmpty()) {
 			Log.i(TAG, "Registration not found.");
 			return "";
@@ -131,49 +117,45 @@ public class Communication extends Activity implements OnClickListener{
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
-				Log.d(TAG, "mDisplay: " + msg);
 				try {
 					if (gcm == null) {
 						gcm = GoogleCloudMessaging.getInstance(context);
 					}
-					KeyValueAPI.put(TEAM_NAME, PASSWORD, "alertText",
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "alertText",
 							"Register Notification");
-					KeyValueAPI.put(TEAM_NAME, PASSWORD, "titleText",
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "titleText",
 							"Register");
-					KeyValueAPI.put(TEAM_NAME, PASSWORD, "contentText",
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText",
 							"Registering Successful!");
-					
-					regid = gcm.register(SENDER_ID);
-					
+					regid = gcm.register(CommunicationConstants.GCM_SENDER_ID);
 					int cnt = 0;
 					if (KeyValueAPI.isServerAvailable()) {
-						if (!KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt")
+						if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt")
 								.contains("Error")) {
-							Log.d("????", KeyValueAPI.get(TEAM_NAME, PASSWORD,
+							Log.d("????", KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD,
 									"cnt"));
-							cnt = Integer.parseInt(KeyValueAPI.get(TEAM_NAME,
-									PASSWORD, "cnt"));
+							cnt = Integer.parseInt(KeyValueAPI.get(CommunicationConstants.TEAM_NAME,
+									CommunicationConstants.PASSWORD, "cnt"));
 						}
 						String getString;
 						boolean flag = false;
 						for (int i = 1; i <= cnt; i++) {
-							getString = KeyValueAPI.get(TEAM_NAME, PASSWORD,
+							getString = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD,
 									"regid" + String.valueOf(i));
 							Log.d(String.valueOf(i), getString);
 							if (getString.equals(regid))
 								flag = true;
 						}
 						if (!flag) {
-							KeyValueAPI.put(TEAM_NAME, PASSWORD, "cnt",
+							KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt",
 									String.valueOf(cnt + 1));
-							KeyValueAPI.put(TEAM_NAME, PASSWORD, "regid"
+							KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "regid"
 									+ String.valueOf(cnt + 1), regid);
 						}
-						KeyValueAPI.put(TEAM_NAME, PASSWORD, "user" + String.valueOf(cnt+1), username);
-						KeyValueAPI.put(TEAM_NAME, PASSWORD, username, regid);
+						KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "user" + String.valueOf(cnt+1), username);
+						KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, username, regid);
 						
-						
-						msg = "Device registered, username = " + username; //registration ID=" + regid + " ;
+						msg = "Device registered, username = " + username;
 					} else {
 						msg = "Error :" + "Backup Server is not available";
 						return msg;
@@ -183,7 +165,6 @@ public class Communication extends Activity implements OnClickListener{
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}
-				Log.d(TAG, "mDisplay: " + msg);
 				return msg;
 			}
 
@@ -195,7 +176,7 @@ public class Communication extends Activity implements OnClickListener{
 	}
 
 	private void sendRegistrationIdToBackend() {
-
+		// Your implementation here.
 	}
 
 	private void storeRegistrationId(Context context, String regId) {
@@ -223,12 +204,25 @@ public class Communication extends Activity implements OnClickListener{
 		}
 		return true;
 	}
-	
-    @Override
-    public void onClick(View v) {
-    	switch (v.getId()) {
-    	case R.id.communication_register_button:
-    		username = mUsername.getText().toString();
+
+	@Override
+	public void onClick(final View view) {
+		if (view == findViewById(R.id.communication_send)) {
+			String message = ((EditText) findViewById(R.id.communication_edit_message))
+					.getText().toString();
+			if (message != "") {
+				sendMessage(message);
+			} else {
+				Toast.makeText(context, "Sending Context Empty!",
+						Toast.LENGTH_LONG).show();
+			}
+		} else if (view == findViewById(R.id.communication_clear)) {
+			mMessage.setText("");
+			mContact.setText("");
+		} else if (view == findViewById(R.id.communication_unregister_button)) {
+			unregister();
+		} else if (view == findViewById(R.id.communication_register_button)) {
+			username = mUsername.getText().toString();
     		Log.d(TAG, "username: " + username);
     		if (!username.equals("")) {
     			if (checkPlayServices()) {
@@ -243,23 +237,18 @@ public class Communication extends Activity implements OnClickListener{
 			} else {
 				Toast.makeText(context, "Input username!", Toast.LENGTH_LONG).show();
 			}
-    		break;
-    	case R.id.communication_unregister_button:
-    		unregister();
-    		break;
-    	case R.id.communication_send:
-    		String message = ((EditText) findViewById(R.id.communication_edit_message))
-			.getText().toString();
-    		if (message != "") {
-    			sendMessage(message);
-    		} else {
-    			Toast.makeText(context, "Sending Context Empty!",
-				Toast.LENGTH_LONG).show();
-    		}
-    		break;
-    	case R.id.communication_clear:
-    		mMessage.setText("");
-    		break;
+		}
+//		} else if (view == findViewById(R.id.com_acknowledgements_button)) {
+//			Intent i = new Intent(this, ComAcknowledgements.class);
+//			startActivity(i);
+//		} else if (view == findViewById(R.id.find_contacts)) {
+//			Intent j = new Intent(this, ComFindContacts.class);
+//			startActivity(j);
+//		} else if (view == findViewById (R.id.exit_button)) {
+//			finish();
+//		}
+		
+		switch (view.getId()) {
     	case R.id.exit_button:
     		finish();
     		break;
@@ -268,28 +257,58 @@ public class Communication extends Activity implements OnClickListener{
     		startActivity(i);
     		break;
     	case R.id.find_contacts:
-    		Intent j = new Intent(this, ComFindContacts.class);
-    		startActivity(j);
-    		break;		
-    	}
-    }
-    
-    private void unregister() {
-		Log.d(TAG_GLOBAL, "UNREGISTER USERID: " + regid);
+    		if (!isOnline()) {
+    			Toast.makeText(this, "Failed to connect to the Internet",
+    					Toast.LENGTH_LONG).show();
+    			return;
+    		} else {
+    			Intent j = new Intent(this, ComFindContacts.class);
+    			startActivity(j);
+    			break;	
+    		}
+		
+		}
+		
+
+	}
+
+	private void unregister() {
+		Log.d(CommunicationConstants.TAG, "UNREGISTER USERID: " + regid);
+		if (!isOnline()) {
+			Toast.makeText(this, "Phone is not connected to the Internet",
+					Toast.LENGTH_LONG).show();
+			return;
+		}
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
 				try {
 					msg = "Sent unregistration";
-					KeyValueAPI.put(TEAM_NAME, PASSWORD, "alertText",
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "alertText",
 							"Notification");
-					KeyValueAPI.put(TEAM_NAME, PASSWORD, "titleText",
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "titleText",
 							"Unregister");
-					KeyValueAPI.put(TEAM_NAME, PASSWORD, "contentText",
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText",
 							"Unregistering Successful!");
-					gcm.unregister();
+					//KeyValueAPI.clear(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD);
+					int cnt = 0;
+					if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt").contains(
+							"Error")){
+						cnt = Integer.parseInt(KeyValueAPI.get(CommunicationConstants.TEAM_NAME,
+								CommunicationConstants.PASSWORD, "cnt"));
+						for (int i = 1; i <= cnt; i++) {
+							if(username.equals(KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "user"+ String.valueOf(i)))){
+								KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "user"+ String.valueOf(i));
+								KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "regid"+ String.valueOf(i));
+								KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, username);
+								KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD,"cnt", String.valueOf(cnt-1));
+							}
+						}
+					}
 					
+					gcm.unregister();
+					KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "username");
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}
@@ -309,7 +328,7 @@ public class Communication extends Activity implements OnClickListener{
 	private void removeRegistrationId(Context context) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		int appVersion = getAppVersion(context);
-		Log.i(TAG_GLOBAL, "Removig regId on app version "
+		Log.i(CommunicationConstants.TAG, "Removig regId on app version "
 				+ appVersion);
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.remove(PROPERTY_REG_ID);
@@ -329,11 +348,6 @@ public class Communication extends Activity implements OnClickListener{
 
 	@SuppressLint("NewApi")
 	private void sendMessage(final String message) {
-		if (!isOnline()) {
-			Toast.makeText(this, "Failed to connect to the Internet", Toast.LENGTH_LONG)
-			.show();
-			return;			
-		}
 		if (regid == null || regid.equals("")) {
 			Toast.makeText(this, "You must register first", Toast.LENGTH_LONG)
 					.show();
@@ -343,50 +357,61 @@ public class Communication extends Activity implements OnClickListener{
 			Toast.makeText(this, "Empty Message", Toast.LENGTH_LONG).show();
 			return;
 		}
+		contact = mContact.getText().toString();
+		if (contact.isEmpty()) {
+			Toast.makeText(this, "Input Contact User", Toast.LENGTH_LONG).show();
+			return;
+		}
+		if (!isOnline()) {
+			Toast.makeText(this, "Failed to connect to the Internet",
+					Toast.LENGTH_LONG).show();
+			return;
+		}
 
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
 				int cnt = 0;
-				if (!KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt").contains(
+				if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt").contains(
 						"Error"))
-					cnt = Integer.parseInt(KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt"));
+					cnt = Integer.parseInt(KeyValueAPI.get(CommunicationConstants.TEAM_NAME,
+							CommunicationConstants.PASSWORD, "cnt"));
 				else {
-					msg = KeyValueAPI.get(TEAM_NAME, PASSWORD, "cnt");
+					msg = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt");
 					return msg;
 				}
 				List<String> regIds = new ArrayList<String>();
 				String reg_device = regid;
-				//int nIcon = R.drawable.ic_stat_cloud;
-				int nType = SIMPLE_NOTIFICATION;
+				int nIcon = R.drawable.ic_stat_cloud;
+				int nType = CommunicationConstants.SIMPLE_NOTIFICATION;
 				Map<String, String> msgParams;
 				msgParams = new HashMap<String, String>();
 				msgParams.put("data.alertText", "Notification");
 				msgParams.put("data.titleText", "Notification Title");
 				msgParams.put("data.contentText", message);
-				//msgParams.put("data.nIcon", String.valueOf(nIcon));
+				msgParams.put("data.nIcon", String.valueOf(nIcon));
 				msgParams.put("data.nType", String.valueOf(nType));
-				KeyValueAPI.put(TEAM_NAME, PASSWORD, "alertText",
+				KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "alertText",
 						"Message Notification");
-				KeyValueAPI.put(TEAM_NAME, PASSWORD, "titleText",
+				KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "titleText",
 						"Sending Message");
-				KeyValueAPI.put(TEAM_NAME, PASSWORD, "contentText", message);
-				//KeyValueAPI.put("pbj1203", "1312789", "nIcon",
-				//		String.valueOf(nIcon));
-				KeyValueAPI.put(TEAM_NAME, PASSWORD, "nType",
+				KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText", message);
+				KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "nIcon",
+						String.valueOf(nIcon));
+				KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "nType",
 						String.valueOf(nType));
 				GcmNotification gcmNotification = new GcmNotification();
-				for (int i = 1; i <= cnt; i++) {
-					regIds.clear();
-					reg_device = KeyValueAPI.get(TEAM_NAME, PASSWORD, "regid"
-							+ String.valueOf(i));
-					Log.d(String.valueOf(i), reg_device);
-					regIds.add(reg_device);
-					gcmNotification.sendNotification(msgParams, regIds,
-							edu.neu.madcourse.deborahho.communication.Communication.this);
-					Log.d(String.valueOf(i), regIds.toString());
-				}
+				
+				regIds.clear();
+				reg_device = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, contact);
+				regIds.add(reg_device);
+				
+				gcmNotification
+						.sendNotification(
+								msgParams,
+								regIds,
+								edu.neu.madcourse.deborahho.communication.Communication.this);
 				msg = "sending information...";
 				return msg;
 			}
@@ -397,5 +422,4 @@ public class Communication extends Activity implements OnClickListener{
 			}
 		}.execute(null, null, null);
 	}
-
 }

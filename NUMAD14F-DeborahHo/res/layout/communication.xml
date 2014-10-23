@@ -45,6 +45,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
         android:text="@string/find_contacts_label"/>
+    
+    <EditText
+        android:id="@+id/communication_contact"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_message_user"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:textColorHint="#238745"
+        android:textSize="16sp" />
+        
 
     <EditText
         android:id="@+id/communication_edit_message"

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import edu.neu.madcourse.deborahho.R;
 import edu.neu.mhealth.api.KeyValueAPI;
 
 public class GcmIntentService extends IntentService {
@@ -16,9 +17,6 @@ public class GcmIntentService extends IntentService {
 	private NotificationManager mNotificationManager;
 	NotificationCompat.Builder builder;
 	static final String TAG = "GCM_Communication";
-	
-	String TEAM_NAME = "DeborahHo";
-	String PASSWORD = "patricia";
 
 	public GcmIntentService() {
 		super("GcmIntentService");
@@ -34,9 +32,9 @@ public class GcmIntentService extends IntentService {
 		Log.d(TAG, "IntentService value of extras size: " +String.valueOf(extras.size()));
 		Log.d(String.valueOf(extras.size()), extras.toString());
 		if (!extras.isEmpty()) {
-			alertText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "alertText");
-			titleText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "titleText");
-			contentText = KeyValueAPI.get(TEAM_NAME, PASSWORD, "contentText");
+			alertText = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "alertText");
+			titleText = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "titleText");
+			contentText = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText");
 			sendNotification(alertText, titleText, contentText);
 		}
 		// Release the wake lock provided by the WakefulBroadcastReceiver.
@@ -61,6 +59,7 @@ public class GcmIntentService extends IntentService {
 
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 				this)
+				.setSmallIcon(R.drawable.ic_stat_cloud)
 				.setContentTitle(titleText)
 				.setStyle(
 						new NotificationCompat.BigTextStyle()
