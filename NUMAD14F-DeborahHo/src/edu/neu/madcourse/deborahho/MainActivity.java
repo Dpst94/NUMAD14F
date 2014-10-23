@@ -19,6 +19,7 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.main_title);
         setContentView(R.layout.activity_main);
         
        // Set up click listeners for all the buttons
