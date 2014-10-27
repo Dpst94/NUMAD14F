@@ -32,6 +32,8 @@ public class BananaPuzzleView extends View{
 	public float height_field;
 	public float nrOfColumns = 8;
 	public float nrOfRows = 8;
+	public boolean selectLetterToPlace = true;
+	public String valueTile = "";
 	
 	private final BananaGame game;
 	
@@ -160,14 +162,24 @@ public class BananaPuzzleView extends View{
 
 	      select((int) (event.getX() / width),
 	            (int) (event.getY() / height));
-	      game.showKeypad();
+	      //game.showKeypad();
+	      if (selectLetterToPlace) {
+	    	  selectLetterToPlace = false;
+	    	  valueTile = game.getTile(selX, selY);	  
+	      } else {
+	    	  selectLetterToPlace = true;
+	    	  setSelectedTile(valueTile);
+	      }
 	      Log.d(TAG, "onTouchEvent: x " + selX + ", y " + selY);
+	      
+	      
 	      return true;
 	   }
 	   
 	   public void setSelectedTile(String tile) {
 		   Log.d(TAG, "setSelectedTile x: " + selX + ", y " + selY);
 		   Log.d(TAG, "selected rec: " + selRect);
+		   getRect(selX, selY, selRect);
 		   if(game.setTileIfValid(selX, selY, tile)) {
 			   invalidate();   
 		   }

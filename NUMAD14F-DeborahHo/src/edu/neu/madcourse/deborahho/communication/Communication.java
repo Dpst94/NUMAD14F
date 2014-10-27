@@ -165,6 +165,7 @@ public class Communication extends Activity implements OnClickListener {
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}
+				Log.d(TAG, "regid: " + regid);
 				return msg;
 			}
 
@@ -291,7 +292,7 @@ public class Communication extends Activity implements OnClickListener {
 							"Unregister");
 					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText",
 							"Unregistering Successful!");
-					//KeyValueAPI.clear(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD);
+					KeyValueAPI.clear(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD);
 					int cnt = 0;
 					if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt").contains(
 							"Error")){
@@ -351,20 +352,24 @@ public class Communication extends Activity implements OnClickListener {
 		if (regid == null || regid.equals("")) {
 			Toast.makeText(this, "You must register first", Toast.LENGTH_LONG)
 					.show();
+			Log.d(TAG, "Not registered");
 			return;
 		}
 		if (message.isEmpty()) {
 			Toast.makeText(this, "Empty Message", Toast.LENGTH_LONG).show();
+			Log.d(TAG, "Empty message");
 			return;
 		}
 		contact = mContact.getText().toString();
 		if (contact.isEmpty()) {
 			Toast.makeText(this, "Input Contact User", Toast.LENGTH_LONG).show();
+			Log.d(TAG, "No contact selected");
 			return;
 		}
 		if (!isOnline()) {
 			Toast.makeText(this, "Failed to connect to the Internet",
 					Toast.LENGTH_LONG).show();
+			Log.d(TAG, "No internet");
 			return;
 		}
 
@@ -374,11 +379,14 @@ public class Communication extends Activity implements OnClickListener {
 				String msg = "";
 				int cnt = 0;
 				if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt").contains(
-						"Error"))
+						"Error")) {
 					cnt = Integer.parseInt(KeyValueAPI.get(CommunicationConstants.TEAM_NAME,
 							CommunicationConstants.PASSWORD, "cnt"));
+					Log.d(TAG, "Get count: " + cnt);
+				}
 				else {
 					msg = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt");
+					Log.d(TAG, "message: " + msg);
 					return msg;
 				}
 				List<String> regIds = new ArrayList<String>();
@@ -404,7 +412,8 @@ public class Communication extends Activity implements OnClickListener {
 				GcmNotification gcmNotification = new GcmNotification();
 				
 				regIds.clear();
-				reg_device = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, contact);
+				//reg_device = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, contact);
+				Log.d(TAG, "Send to regid: " + reg_device);
 				regIds.add(reg_device);
 				
 				gcmNotification

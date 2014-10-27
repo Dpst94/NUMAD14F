@@ -21,10 +21,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <permission
-        android:name="edu.neu.madcourse.gcmdemo.permission.C2D_MESSAGE"
+        android:name="edu.neu.madcourse.deborahho.communication.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="edu.neu.madcourse.gcmdemo.permission.C2D_MESSAGE" />
+    <uses-permission android:name="edu.neu.madcourse.deborahho.communication.permission.C2D_MESSAGE" />
     
     <application
         android:icon="@drawable/bunny_toothbrush"
@@ -90,8 +90,10 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
+                <category android:name="edu.neu.madcourse.deborahho.communication" />
+                </intent-filter>
+                <intent-filter>
+                    <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
                 <category android:name="edu.neu.madcourse.deborahho.communication" />
             </intent-filter>
         </receiver>
