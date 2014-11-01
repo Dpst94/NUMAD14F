@@ -46,6 +46,9 @@
 		android:text="@string/communication_label" />
         </TableRow>
         <TableRow >
+        <Button 
+	    android:id="@+id/twoplayer_button"
+	    android:text="@string/twoplayer_label"/>
         <Button
 		android:id="@+id/exit_button"
 		android:text="@string/exit_label" />    

@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 public class BananaGame extends Activity implements OnClickListener {
 	private static final String TAG = "Bananagrams" ;
-	private CountDownTimer countDownTimer;
+	private CountDownTimerPausable countDownTimer;
 	public TextView timerText; 
 	public TextView score; 
 	public int points;
@@ -39,7 +39,9 @@ public class BananaGame extends Activity implements OnClickListener {
 	private String startLetters;
 	
 	final String alphabet = "AAAAAAAAAAAAABBBCCCDDDDDDEEEEEEEEEEEEEEEEEEFFFGGGGHHHIIIIIIIIIIIIJJKKLLLLLMMMNNNNNNNNOOOOOOOOOOOPPPQQRRRRRRRRRSSSSSSTTTTTTTTTUUUUUUVVVWWWXXYYYZZ";
-
+//	InputStream in;
+//	BufferedReader reader;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +54,11 @@ public class BananaGame extends Activity implements OnClickListener {
         pauseButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.banana_quit_button);
         exitButton.setOnClickListener(this);
-        
+			
         timerText = (TextView) this.findViewById(R.id.banana_timer);
         score = (TextView) this.findViewById(R.id.banana_score);
         score.setText("Score: 0");
-        countDownTimer = new CountDownTimer(90000, 1000) {
+        countDownTimer = new CountDownTimerPausable(90000, 1000) {
 
 			@Override
 			public void onFinish() {
@@ -147,18 +149,17 @@ public class BananaGame extends Activity implements OnClickListener {
 		Log.d(TAG, "show puzzle: " + puzzle);
 	}
 	
-	protected boolean setTileIfValid(int x, int y, String value) {
+	protected boolean setTileIfValid(int x, int y, int prevX, int prevY, String value) {
 		setTile(x, y, value);
-		Music.playOnce(this, R.raw.beep);
+		points = 0;
 		findWordsOnBoard();
+		Music.playOnce(this, R.raw.beep);
 		
-		// Erase used letter and get a new letter	
-		for(int i=lettersToUse.length-nrOfColumns*2; i < lettersToUse.length; i++) {
-			if (lettersToUse[i].equals(value)) {
-				lettersToUse[i] = Character.toString(getNewLetter());
-				break;
-			}
-			
+		// Erase used letter and get a new letter		
+		if(prevY*nrOfColumns+prevX> nrOfColumns*(nrOfColumns-2)-1) {
+			setTile(prevX, prevY, Character.toString(getNewLetter()));
+		} else {
+			setTile(prevX, prevY, "");
 		}
 		
 		score.setText("Score: " + points); 
@@ -176,7 +177,7 @@ public class BananaGame extends Activity implements OnClickListener {
 		int verticalWordLength = 0;
 		String horizontalWord = "";
 		String verticalWord = "";
-		points = 0;
+		
 		
 		for (int row=0; row<nrOfColumns-2; row++) {
 			for (int column=0; column<nrOfColumns; column++) {
@@ -191,7 +192,7 @@ public class BananaGame extends Activity implements OnClickListener {
 						points += horizontalWordLength;
 						horizontalWordLength = 0;
 						horizontalWord = "";
-						
+												
 						Log.d(TAG, "word is approved");
 					}
 	
@@ -225,34 +226,52 @@ public class BananaGame extends Activity implements OnClickListener {
 	}
 	
 	public boolean lookUpWord(String word) {
-		BloomFilter<String> bloomFilter;
-	    double falsePositiveProb = 0.01;
-	    int expectedNrOfElements = 17000;
-	    
+//		BloomFilter<String> bloomFilter;
+//	    double falsePositiveProb = 0.01;
+//	    int expectedNrOfElements = 17000;
+//	    
+//	    word = word.toLowerCase();
+//	    char firstLetter = word.charAt(0);
+//	    
+//	    int resourceFile = GetResourceFile(firstLetter);
+//			
+//		bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
+//		InputStream in = getResources().openRawResource(resourceFile);
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//			
+//		try {
+//			String line;
+//			while ((line = reader.readLine()) != null) {
+//				bloomFilter.add(line);
+//		}
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+		//if (bloomFilter.contains(word)) {
+		
 	    word = word.toLowerCase();
 	    char firstLetter = word.charAt(0);
 	    
 	    int resourceFile = GetResourceFile(firstLetter);
-			
-		bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
 		InputStream in = getResources().openRawResource(resourceFile);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			
+		String line;
+		
 		try {
-			String line;
 			while ((line = reader.readLine()) != null) {
-				bloomFilter.add(line);
-		}
+				if(line.equals(word)) {
+					Log.d(TAG, "Found word: " + word);
+					
+					return true;
+				}
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if (bloomFilter.contains(word)) {
-			Log.d(TAG, "Found word: " + word);
-			
-			return true;
-		}
+
 		
 		return false;
 		
@@ -347,6 +366,7 @@ public class BananaGame extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 		Music.play(this, R.raw.banana);
+		countDownTimer.start();
 	}
 	
 	@Override
@@ -354,6 +374,7 @@ public class BananaGame extends Activity implements OnClickListener {
 		super.onPause();
 		Log.d(TAG, "onPause" );
 		Music.stop(this);
+		countDownTimer.pause();
 		
 		// Save the current puzzle
 		getPreferences(MODE_PRIVATE).edit().commit();

@@ -132,4 +132,6 @@
 		\n
 	    \nFinally, the icon for my app can be found here:
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
+	    
+	<string name="twoplayer_label">Two Player Word Game</string>
 </resources>

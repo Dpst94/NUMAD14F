@@ -27,6 +27,8 @@ public class BananaPuzzleView extends View{
 	private float height;   // height of one tile
 	private static int selX;       // X index of selection
 	private static int selY;       // Y index of selection
+	private static int prevX;
+	private static int prevY;
 	private final Rect selRect = new Rect();	
 	public float width_field;
 	public float height_field;
@@ -165,7 +167,9 @@ public class BananaPuzzleView extends View{
 	      //game.showKeypad();
 	      if (selectLetterToPlace) {
 	    	  selectLetterToPlace = false;
-	    	  valueTile = game.getTile(selX, selY);	  
+	    	  valueTile = game.getTile(selX, selY);	
+	    	  prevX = selX;
+	    	  prevY = selY;
 	      } else {
 	    	  selectLetterToPlace = true;
 	    	  setSelectedTile(valueTile);
@@ -180,7 +184,7 @@ public class BananaPuzzleView extends View{
 		   Log.d(TAG, "setSelectedTile x: " + selX + ", y " + selY);
 		   Log.d(TAG, "selected rec: " + selRect);
 		   getRect(selX, selY, selRect);
-		   if(game.setTileIfValid(selX, selY, tile)) {
+		   if(game.setTileIfValid(selX, selY, prevX, prevY, tile)) {
 			   invalidate();   
 		   }
 		   invalidate();
