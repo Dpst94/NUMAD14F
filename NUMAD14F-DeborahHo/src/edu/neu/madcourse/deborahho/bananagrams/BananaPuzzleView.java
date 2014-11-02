@@ -165,14 +165,18 @@ public class BananaPuzzleView extends View{
 	      select((int) (event.getX() / width),
 	            (int) (event.getY() / height));
 	      //game.showKeypad();
+	      
 	      if (selectLetterToPlace) {
-	    	  selectLetterToPlace = false;
-	    	  valueTile = game.getTile(selX, selY);	
-	    	  prevX = selX;
-	    	  prevY = selY;
+	    	  if(game.getTile(selX, selY) != " ") {
+	    		  selectLetterToPlace = false;
+		    	  valueTile = game.getTile(selX, selY);	
+		    	  prevX = selX;
+		    	  prevY = selY;  
+	    	  }    	  
 	      } else {
 	    	  selectLetterToPlace = true;
-	    	  setSelectedTile(valueTile);
+	    	  setSelectedTile(valueTile);  		  
+	    	  
 	      }
 	      Log.d(TAG, "onTouchEvent: x " + selX + ", y " + selY);
 	      
@@ -186,9 +190,7 @@ public class BananaPuzzleView extends View{
 		   getRect(selX, selY, selRect);
 		   if(game.setTileIfValid(selX, selY, prevX, prevY, tile)) {
 			   invalidate();   
-		   }
-		   invalidate();
- 
+		   } 
 	   }	   
 	   
 	   private void select(int x, int y) {

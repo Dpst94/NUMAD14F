@@ -9,14 +9,12 @@ import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.bananagrams.BananaKeypad;
-import edu.neu.madcourse.deborahho.dictionary.BloomFilter;
 import edu.neu.madcourse.deborahho.bananagrams.Music;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BananaGame extends Activity implements OnClickListener {
 	private static final String TAG = "Bananagrams" ;
@@ -39,6 +38,7 @@ public class BananaGame extends Activity implements OnClickListener {
 	private String startLetters;
 	
 	final String alphabet = "AAAAAAAAAAAAABBBCCCDDDDDDEEEEEEEEEEEEEEEEEEFFFGGGGHHHIIIIIIIIIIIIJJKKLLLLLMMMNNNNNNNNOOOOOOOOOOOPPPQQRRRRRRRRRSSSSSSTTTTTTTTTUUUUUUVVVWWWXXYYYZZ";
+	Context context;
 //	InputStream in;
 //	BufferedReader reader;
 	
@@ -54,7 +54,8 @@ public class BananaGame extends Activity implements OnClickListener {
         pauseButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.banana_quit_button);
         exitButton.setOnClickListener(this);
-			
+		
+        context = getApplicationContext();
         timerText = (TextView) this.findViewById(R.id.banana_timer);
         score = (TextView) this.findViewById(R.id.banana_score);
         score.setText("Score: 0");
@@ -62,7 +63,9 @@ public class BananaGame extends Activity implements OnClickListener {
 
 			@Override
 			public void onFinish() {
-				timerText.setText("Finished!");
+				//timerText.setText("Finished!");
+				Intent i = new Intent(BananaGame.this, BananaFinish.class);
+	    		startActivity(i);
 				
 			}
 
@@ -150,21 +153,30 @@ public class BananaGame extends Activity implements OnClickListener {
 	}
 	
 	protected boolean setTileIfValid(int x, int y, int prevX, int prevY, String value) {
-		setTile(x, y, value);
-		points = 0;
-		findWordsOnBoard();
-		Music.playOnce(this, R.raw.beep);
-		
-		// Erase used letter and get a new letter		
-		if(prevY*nrOfColumns+prevX> nrOfColumns*(nrOfColumns-2)-1) {
-			setTile(prevX, prevY, Character.toString(getNewLetter()));
+		if((x != prevX && y!= prevY) && y*nrOfColumns+x<nrOfColumns*(nrOfColumns-2)) {
+			setTile(x, y, value);
+			points = 0;
+			findWordsOnBoard();
+			Music.playOnce(this, R.raw.beep);
+			
+			// Erase used letter and get a new letter		
+			if(prevY*nrOfColumns+prevX> nrOfColumns*(nrOfColumns-2)-1) {
+				setTile(prevX, prevY, Character.toString(getNewLetter()));
+			} else {
+				setTile(prevX, prevY, " ");
+			}
+			
+			score.setText("Score: " + points); 
+			return true;
+	
 		} else {
-			setTile(prevX, prevY, "");
+			Toast.makeText(context, "Invalid move!", Toast.LENGTH_LONG).show();
+			return false;
+			
 		}
 		
-		score.setText("Score: " + points); 
 		
-		return true;
+		
 	}	
 	
 	protected void showKeypad() {

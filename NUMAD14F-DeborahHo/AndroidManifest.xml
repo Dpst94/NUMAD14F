@@ -76,6 +76,8 @@
             android:theme="@android:style/Theme.Dialog" />
  		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananaPause"
  		    android:label="@string/pause_label" />
+ 		<activity android:name="edu.neu.madcourse.deborahho.bananagrams.BananaFinish"
+ 		    android:label="@string/finish_label" />
  		
  		<activity android:name="edu.neu.madcourse.deborahho.communication.Communication"
  		    android:label="@string/communication_label" 
