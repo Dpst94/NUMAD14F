@@ -107,11 +107,12 @@ public class BananaGame extends Activity implements OnClickListener {
 	public void onClick(View v) {
     	switch (v.getId()) {
     	case R.id.banana_quit_button:
-    		finish();
+    		Intent i = new Intent(BananaGame.this, BananaFinish.class);
+    		startActivity(i);
     		break;
     	case R.id.banana_pause_button:
-    		Intent i = new Intent(this, BananaPause.class);
-    		startActivity(i);
+    		Intent j = new Intent(this, BananaPause.class);
+    		startActivity(j);
     		break;
     	}
 		
@@ -153,7 +154,11 @@ public class BananaGame extends Activity implements OnClickListener {
 	}
 	
 	protected boolean setTileIfValid(int x, int y, int prevX, int prevY, String value) {
-		if((x != prevX && y!= prevY) && y*nrOfColumns+x<nrOfColumns*(nrOfColumns-2)) {
+		if( (x == prevX && y ==prevY) ||y*nrOfColumns+x>nrOfColumns*(nrOfColumns-2)-1 ) {
+			Toast.makeText(context, "Invalid move!", Toast.LENGTH_LONG).show();
+			return false;
+			
+		} else {
 			setTile(x, y, value);
 			points = 0;
 			findWordsOnBoard();
@@ -168,15 +173,9 @@ public class BananaGame extends Activity implements OnClickListener {
 			
 			score.setText("Score: " + points); 
 			return true;
-	
-		} else {
-			Toast.makeText(context, "Invalid move!", Toast.LENGTH_LONG).show();
-			return false;
 			
 		}
-		
-		
-		
+	
 	}	
 	
 	protected void showKeypad() {
@@ -238,30 +237,6 @@ public class BananaGame extends Activity implements OnClickListener {
 	}
 	
 	public boolean lookUpWord(String word) {
-//		BloomFilter<String> bloomFilter;
-//	    double falsePositiveProb = 0.01;
-//	    int expectedNrOfElements = 17000;
-//	    
-//	    word = word.toLowerCase();
-//	    char firstLetter = word.charAt(0);
-//	    
-//	    int resourceFile = GetResourceFile(firstLetter);
-//			
-//		bloomFilter = new BloomFilter<String>(falsePositiveProb, expectedNrOfElements);
-//		InputStream in = getResources().openRawResource(resourceFile);
-//		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-//			
-//		try {
-//			String line;
-//			while ((line = reader.readLine()) != null) {
-//				bloomFilter.add(line);
-//		}
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-		//if (bloomFilter.contains(word)) {
 		
 	    word = word.toLowerCase();
 	    char firstLetter = word.charAt(0);

@@ -13,17 +13,14 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/banana_finish_text" />	
-	    <EditText 
-	        android:id="@+id/display_score" />
 	<Button
 	    android:id="@+id/banana_play_again_button"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/play_again_label" />
-	
 	<Button
         android:id="@+id/banana_quit_button"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 		android:text="@string/exit_label" />
 
