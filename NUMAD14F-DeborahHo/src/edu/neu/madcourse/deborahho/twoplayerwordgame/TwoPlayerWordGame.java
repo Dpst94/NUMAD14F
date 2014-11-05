@@ -2,10 +2,13 @@ package edu.neu.madcourse.deborahho.twoplayerwordgame;
 
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.bananagrams.BananaAcknowledgements;
+import edu.neu.madcourse.deborahho.bananagrams.BananaGame;
 import edu.neu.madcourse.deborahho.bananagrams.BananaInstructions;
+import edu.neu.madcourse.deborahho.bananagrams.Bananagrams;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -19,6 +22,8 @@ public class TwoPlayerWordGame extends Activity implements OnClickListener {
        // Set up click listeners for all the buttons
         View newButton = findViewById(R.id.twoplayer_new_button);
         newButton.setOnClickListener(this);
+        View highScoresButton = findViewById(R.id.highscores_button);
+        highScoresButton.setOnClickListener(this);
         //View aboutButton = findViewById(R.id.banana_about_button);
         //aboutButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.exit_button);
@@ -34,9 +39,14 @@ public class TwoPlayerWordGame extends Activity implements OnClickListener {
 //    		Intent i = new Intent(this, BananaInstructions.class);
 //    		startActivity(i);
 //    		break;
-    	case R.id.banana_new_button:
+    	case R.id.twoplayer_new_button:
+    		Intent l = new Intent(this, TwoPlayerRegister.class);
+    		startActivity(l);
     		//startNewGame();
-    		//openNewGameDialog();
+    		break;
+    	case R.id.highscores_button:
+    		//Intent k = new Intent(this, TwoPlayerHighScores.class);
+    		//startActivity(k);
     		break;
     	case R.id.exit_button:
     		finish();
@@ -48,5 +58,13 @@ public class TwoPlayerWordGame extends Activity implements OnClickListener {
     	}
 		
 	}
+	
+	private static final String TAG = "Two Player Word Game";
+	
+	private void startNewGame() {
+	    	Log.d(TAG, "Start Game");
+	    	Intent intent = new Intent(TwoPlayerWordGame.this, BananaGame.class);
+	    	startActivity(intent);	
+	    }
 
 }

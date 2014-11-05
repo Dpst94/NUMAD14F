@@ -108,6 +108,10 @@
         
         <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerWordGame"
             android:label="@string/twoplayer_label" />
+        <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerRegister"
+            android:label="@string/register_label" />
+        <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerUnregister"
+            android:label="@string/unregister_label" />
  		
     </application>
 

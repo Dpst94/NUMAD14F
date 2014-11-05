@@ -239,15 +239,6 @@ public class Communication extends Activity implements OnClickListener {
 				Toast.makeText(context, "Input username!", Toast.LENGTH_LONG).show();
 			}
 		}
-//		} else if (view == findViewById(R.id.com_acknowledgements_button)) {
-//			Intent i = new Intent(this, ComAcknowledgements.class);
-//			startActivity(i);
-//		} else if (view == findViewById(R.id.find_contacts)) {
-//			Intent j = new Intent(this, ComFindContacts.class);
-//			startActivity(j);
-//		} else if (view == findViewById (R.id.exit_button)) {
-//			finish();
-//		}
 		
 		switch (view.getId()) {
     	case R.id.exit_button:
