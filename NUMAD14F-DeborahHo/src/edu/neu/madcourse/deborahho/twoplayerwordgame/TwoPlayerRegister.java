@@ -16,6 +16,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,6 +25,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TwoPlayerRegister extends Activity implements OnClickListener{
@@ -38,6 +41,7 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	static final String TAG = "TwoPlayerWordGame";
 
+	TextView mDisplay;
 	EditText mUsername;
 	GoogleCloudMessaging gcm;
 	SharedPreferences prefs;
@@ -52,6 +56,7 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.twoplayer_register);
 		mUsername = (EditText) findViewById(R.id.twoplayer_username);
+		mDisplay = (TextView) findViewById(R.id.twoplayer_display);
 		gcm = GoogleCloudMessaging.getInstance(this);
 		context = getApplicationContext();
 		
@@ -81,6 +86,8 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 				Toast.makeText(context, "Input username!", Toast.LENGTH_LONG).show();
 			}
 
+		}else if (v == findViewById(R.id.twoplayer_unregister_button)) {
+				unregister();
 		}
 		
 		switch (v.getId()) {
@@ -88,8 +95,13 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
     		finish();
     		break;
     	case R.id.next_button:
-    		Intent l = new Intent(this, TwoPlayerUnregister.class);
-    		startActivity(l);    
+    		regid = getRegistrationId(context);
+    		if (!TextUtils.isEmpty(regid)) {
+    			Intent l = new Intent(this, TwoPlayerChallengeUser.class);
+        		startActivity(l); 
+    		} else {
+    			Toast.makeText(context, "Please register!", Toast.LENGTH_LONG).show();	
+    		}  
     		break;
 		}
 		
@@ -119,7 +131,7 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 				Context.MODE_PRIVATE);
 	}
 
-	private static int getAppVersion(Context context) {
+	static int getAppVersion(Context context) {
 		try {
 			PackageInfo packageInfo = context.getPackageManager()
 					.getPackageInfo(context.getPackageName(), 0);
@@ -130,66 +142,81 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 		}
 	}
 
-	private void registerInBackground() {
+	public void registerInBackground() {
+		if (!isOnline()) {
+			Toast.makeText(this, "Failed to connect to the Internet",
+					Toast.LENGTH_LONG).show();
+			return;
+		}
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
-				try {
-					if (gcm == null) {
-						gcm = GoogleCloudMessaging.getInstance(context);
+				if (KeyValueAPI.isServerAvailable()) {
+					try {
+						if (gcm == null) {
+							gcm = GoogleCloudMessaging.getInstance(context);
+						}
+						KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "alertText",
+								"Register Notification");
+						KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "titleText",
+								"Register");
+						KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD",
+								"contentText", "Registering Successful!");
+						regid = gcm
+								.register(CommunicationConstants.GCM_SENDER_ID);
+						int cnt = 0;
+						if (KeyValueAPI.isServerAvailable()) {
+							if (!KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD",
+									"cnt").contains("Error")) {
+								Log.d("????", KeyValueAPI.get("CommunicationConstants.TEAM_NAME",
+										"CommunicationConstants.PASSWORD", "cnt"));
+								cnt = Integer.parseInt(KeyValueAPI.get(
+										"CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "cnt"));
+							}
+							String getString;
+							boolean flag = false;
+							for (int i = 1; i <= cnt; i++) {
+								getString = KeyValueAPI.get("CommunicationConstants.TEAM_NAME",
+										"CommunicationConstants.PASSWORD",
+										"regid" + String.valueOf(i));
+								Log.d(String.valueOf(i), getString);
+								if (getString.equals(regid))
+									flag = true;
+							}
+							if (!flag) {
+								KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD",
+										"cnt", String.valueOf(cnt + 1));
+								KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD",
+										"regid" + String.valueOf(cnt + 1),
+										regid);
+							}
+							KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", username,
+									regid);
+							KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "user"
+									+ String.valueOf(cnt + 1), username);
+
+							msg = "Registered with the username "
+									+ KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD",
+											"user" + String.valueOf(cnt + 1));
+						} else {
+							msg = "Error :" + "Backup Server is not available";
+							return msg;
+						}
+						sendRegistrationIdToBackend();
+						storeRegistrationId(context, regid);
+					} catch (IOException ex) {
+						msg = "Error :" + ex.getMessage();
 					}
-					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "alertText",
-							"Register Notification");
-					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "titleText",
-							"Register");
-					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText",
-							"Registering Successful!");
-					regid = gcm.register(CommunicationConstants.GCM_SENDER_ID);
-					int cnt = 0;
-					if (KeyValueAPI.isServerAvailable()) {
-						if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt")
-								.contains("Error")) {
-							Log.d("????", KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD,
-									"cnt"));
-							cnt = Integer.parseInt(KeyValueAPI.get(CommunicationConstants.TEAM_NAME,
-									CommunicationConstants.PASSWORD, "cnt"));
-						}
-						String getString;
-						boolean flag = false;
-						for (int i = 1; i <= cnt; i++) {
-							getString = KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD,
-									"regid" + String.valueOf(i));
-							Log.d(String.valueOf(i), getString);
-							if (getString.equals(regid))
-								flag = true;
-						}
-						if (!flag) {
-							KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt",
-									String.valueOf(cnt + 1));
-							KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "regid"
-									+ String.valueOf(cnt + 1), regid);
-						}
-						KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "user" + String.valueOf(cnt+1), username);
-						KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, username, regid);
-						
-						msg = "Device registered, username = " + username;
-					} else {
-						msg = "Error :" + "Backup Server is not available";
-						return msg;
-					}
-					sendRegistrationIdToBackend();
-					storeRegistrationId(context, regid);
-				} catch (IOException ex) {
-					msg = "Error :" + ex.getMessage();
+				} else {
+					msg = "Error :" + "Backup Server is not available";
+					return msg;
 				}
-				Log.d(TAG, "regid: " + regid);
 				return msg;
 			}
 
 			@Override
 			protected void onPostExecute(String msg) {
-				//mDisplay.append(msg + "\n");
 			}
 		}.execute(null, null, null);
 	}
@@ -222,6 +249,81 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 			return false;
 		}
 		return true;
+	}
+	
+	private void unregister() {
+		Log.d(CommunicationConstants.TAG, "UNREGISTER USERID: " + regid);
+		if (!isOnline()) {
+			Toast.makeText(this, "Phone is not connected to the Internet",
+					Toast.LENGTH_LONG).show();
+			return;
+		}
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+				String msg = "";
+				try {
+					msg = "Sent unregistration";
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "alertText",
+							"Notification");
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "titleText",
+							"Unregister");
+					KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "contentText",
+							"Unregistering Successful!");
+					KeyValueAPI.clear(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD);
+					int cnt = 0;
+					if (!KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "cnt").contains(
+							"Error")){
+						cnt = Integer.parseInt(KeyValueAPI.get(CommunicationConstants.TEAM_NAME,
+								CommunicationConstants.PASSWORD, "cnt"));
+						for (int i = 1; i <= cnt; i++) {
+							if(username.equals(KeyValueAPI.get(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "user"+ String.valueOf(i)))){
+								KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "user"+ String.valueOf(i));
+								KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "regid"+ String.valueOf(i));
+								KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, username);
+								KeyValueAPI.put(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD,"cnt", String.valueOf(cnt-1));
+							}
+						}
+					}
+					
+					gcm.unregister();
+					//KeyValueAPI.clearKey(CommunicationConstants.TEAM_NAME, CommunicationConstants.PASSWORD, "username");
+				} catch (IOException ex) {
+					//msg = "Error :" + ex.getMessage();
+					msg = "Failed to unregister";
+				}
+				return msg;
+			}
+
+			@Override
+			protected void onPostExecute(String msg) {
+				removeRegistrationId(getApplicationContext());
+				Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+				((TextView) findViewById(R.id.twoplayer_display))
+						.setText(regid);
+			}
+		}.execute();
+	}
+
+	private void removeRegistrationId(Context context) {
+		final SharedPreferences prefs = getGCMPreferences(context);
+		int appVersion = getAppVersion(context);
+		Log.i(CommunicationConstants.TAG, "Removig regId on app version "
+				+ appVersion);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.remove(PROPERTY_REG_ID);
+		editor.commit();
+		regid = null;
+	}
+	
+	public boolean isOnline() {
+	    ConnectivityManager cm =
+	        (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	    if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+	        return true;
+	    }
+	    return false;
 	}
 
 

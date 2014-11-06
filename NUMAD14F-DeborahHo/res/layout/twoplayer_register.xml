@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <TextView
+        android:id="@+id/twoplayer_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
     <EditText
         android:id="@+id/twoplayer_username"
         android:layout_width="fill_parent"
@@ -20,6 +25,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
         android:text="@string/register_label" />
+    <Button
+        android:id="@+id/twoplayer_unregister_button"
+        android:onClick="onClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/unregister_label" />
     
     <Button
         android:id="@+id/next_button"

@@ -140,4 +140,18 @@
 	<string name="highscores_label">High Scores</string>
 	<string name="next_label">Next</string>
 	<string name="challenge_user_label">Challenge User</string>
+	<string name="twoplayer_acknowledgements">
+	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
+	    \n
+	    \nThe majority of my code is based on the GCMDemo described on the Android Developer website:
+	    \n<url>http://developer.android.com/google/gcm/client.html</url> 
+	    \n
+	    \nTo store data, I have used the following server:
+	    \n<url>https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit</url>
+	    \n
+	    \nTo check if the phone is connected to the Internet, I have used the following code from StackOverflow:
+	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url>
+		\n
+		\nTo implement the listview in Android, I have used the following tutorial:
+		\n<url>http://www.vogella.com/tutorials/AndroidListView/article.html</url> </string>
 </resources>
