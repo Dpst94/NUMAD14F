@@ -96,22 +96,22 @@ public class TwoPlayerChallengeUser extends Activity {
 				String msg = "";
 				Log.d("User list", "Inside getUserList");
 				int cnt = 0;
-				if (!KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "cnt").contains(
+				if (!KeyValueAPI.get("DeborahHo", "patricia", "cnt").contains(
 						"Error")) {
-					cnt = Integer.parseInt(KeyValueAPI.get("CommunicationConstants.TEAM_NAME",
-							"CommunicationConstants.PASSWORD", "cnt"));
+					cnt = Integer.parseInt(KeyValueAPI.get("DeborahHo",
+							"patricia", "cnt"));
 					Log.d("User list", "first if");
 					
 				}	
 				else {
-					msg = KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "cnt");
+					msg = KeyValueAPI.get("DeborahHo", "patricia", "cnt");
 					Log.d("User list", msg);
 					return msg;
 				}
 				userList = new String [cnt];
 				Log.d("User List", "testing " + cnt);
 				for (int i = 1; i <= cnt; i++) {
-					userList[i-1] = KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "user"
+					userList[i-1] = KeyValueAPI.get("DeborahHo", "patricia", "user"
 									+ String.valueOf(i));
 					Log.d("User List",userList[i-1]);
 				}				
@@ -223,9 +223,9 @@ public class TwoPlayerChallengeUser extends Activity {
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
-				if (KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "cnt").contains(
+				if (KeyValueAPI.get("DeborahHo", "patricia", "cnt").contains(
 						"Error")){
-					msg = KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "cnt");
+					msg = KeyValueAPI.get("DeborahHo", "patricia", "cnt");
 					return msg;
 				}
 				List<String> regIds = new ArrayList<String>();
@@ -239,19 +239,19 @@ public class TwoPlayerChallengeUser extends Activity {
 				msgParams.put("data.contentText", message);
 				msgParams.put("data.nIcon", String.valueOf(nIcon));
 				msgParams.put("data.nType", String.valueOf(nType));
-				KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "alertText",
+				KeyValueAPI.put("DeborahHo", "patricia", "alertText",
 						"Message Notification");
-				KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "titleText",
+				KeyValueAPI.put("DeborahHo", "patricia", "titleText",
 						"Sending Message");
-				KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "contentText",
+				KeyValueAPI.put("DeborahHo", "patricia", "contentText",
 						message);
-				KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "nIcon",
+				KeyValueAPI.put("DeborahHo", "patricia", "nIcon",
 						String.valueOf(nIcon));
-				KeyValueAPI.put("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", "nType",
+				KeyValueAPI.put("DeborahHo", "patricia", "nType",
 						String.valueOf(nType));
 				GcmNotification gcmNotification = new GcmNotification();
 				regIds.clear();
-				reg_device = KeyValueAPI.get("CommunicationConstants.TEAM_NAME", "CommunicationConstants.PASSWORD", receiver);
+				reg_device = KeyValueAPI.get("DeborahHo", "patricia", receiver);
 				regIds.add(reg_device);
 				gcmNotification
 						.sendNotification(
