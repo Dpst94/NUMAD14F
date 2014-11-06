@@ -95,13 +95,15 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
     		finish();
     		break;
     	case R.id.next_button:
-    		regid = getRegistrationId(context);
-    		if (!TextUtils.isEmpty(regid)) {
-    			Intent l = new Intent(this, TwoPlayerChallengeUser.class);
-        		startActivity(l); 
-    		} else {
-    			Toast.makeText(context, "Please register!", Toast.LENGTH_LONG).show();	
-    		}  
+//    		regid = getRegistrationId(context);
+//    		if (!TextUtils.isEmpty(regid)) {
+//    			Intent l = new Intent(this, TwoPlayerChallengeUser.class);
+//        		startActivity(l); 
+//    		} else {
+//    			Toast.makeText(context, "Please register!", Toast.LENGTH_LONG).show();	
+//    		}  
+    		Intent l = new Intent(this, TwoPlayerChallengeUser.class);
+    		startActivity(l); 
     		break;
 		}
 		

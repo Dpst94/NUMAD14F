@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<ScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:background="@color/background"
 	android:layout_height="fill_parent"
 	android:layout_width="fill_parent"
-	android:padding="30dip"
+	android:padding="10dip"
 	android:orientation="horizontal" >
 	<LinearLayout
 		android:orientation="vertical"
@@ -53,4 +53,4 @@
 		android:layout_height="wrap_content"
 		android:text="@string/exit_label" />
 	</LinearLayout>
-</LinearLayout>
+</ScrollView>

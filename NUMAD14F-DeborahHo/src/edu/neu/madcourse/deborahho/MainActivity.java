@@ -80,9 +80,11 @@ public class MainActivity extends Activity implements OnClickListener {
     	case R.id.communication_button:
     		Intent m = new Intent(this, Communication.class);
     		startActivity(m);
+    		break;
     	case R.id.twoplayer_button:
     		Intent n = new Intent(this, TwoPlayerWordGame.class);
     		startActivity(n);
+    		break;
     	}
     }
     

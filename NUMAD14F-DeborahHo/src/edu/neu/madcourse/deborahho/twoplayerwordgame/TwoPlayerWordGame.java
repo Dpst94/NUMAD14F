@@ -4,12 +4,9 @@ import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import edu.neu.madcourse.deborahho.twoplayerwordgame.*;
 
 public class TwoPlayerWordGame extends Activity implements OnClickListener {
 	
@@ -31,27 +28,12 @@ public class TwoPlayerWordGame extends Activity implements OnClickListener {
         acknowledgements_button.setOnClickListener(this);
 
 	}
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-    	case R.id.twoplayer_new_button:
-//    		final SharedPreferences prefs = getSharedPreferences(TwoPlayerRegister.class.getSimpleName(),
-//					Context.MODE_PRIVATE);;
-//			String registrationId = prefs.getString("registration_id", "");
-//			if (registrationId.isEmpty()) {
-//				Intent l = new Intent(this, TwoPlayerRegister.class);
-//	    		startActivity(l);
-//	    		break;
-//			}
-//			int registeredVersion = prefs.getInt("appVersion",
-//					Integer.MIN_VALUE);
-//			int currentVersion = edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerRegister.getAppVersion(context);
-//			if (registeredVersion != currentVersion) {
-//				Intent l = new Intent(this, TwoPlayerRegister.class);
-//	    		startActivity(l);
-//	    		break;
-//			}			
-    		Intent l = new Intent(this, TwoPlayerRegister.class);
+    	case R.id.twoplayer_new_button:			
+    		Intent l = new Intent(this, TwoPlayerSelectGame.class);
     		startActivity(l);
 			break;	
     	case R.id.highscores_button:

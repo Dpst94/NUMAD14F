@@ -137,6 +137,9 @@
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
 	    
 	<string name="twoplayer_label">Two Player Word Game</string>
+	<string name="single_player_label">Single Player</string>
+	<string name="two_player_label">Two Player</string>
+	<string name="select_game_label">Select Number Of Players</string>
 	<string name="highscores_label">High Scores</string>
 	<string name="next_label">Next</string>
 	<string name="challenge_user_label">Challenge User</string>

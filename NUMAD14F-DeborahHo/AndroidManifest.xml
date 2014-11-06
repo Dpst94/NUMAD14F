@@ -114,6 +114,10 @@
             android:label="@string/unregister_label" />
         <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerChallengeUser"
             android:label="@string/challenge_user_label" />
+        <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerAcknowledgements"
+            android:label="@string/acknowledgements_label" />
+        <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerSelectGame"
+            android:label="@string/select_game_label" />
  		
     </application>
 
