@@ -11,6 +11,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.bananagrams.BananaGame;
 import edu.neu.madcourse.deborahho.communication.CommunicationConstants;
 import edu.neu.madcourse.deborahho.communication.GcmNotification;
 import edu.neu.madcourse.deborahho.communication.Communication;
@@ -78,7 +79,7 @@ public class TwoPlayerChallengeUser extends Activity {
 					int position, long id) {
 				receiver = (String) parent.getItemAtPosition(position);	
 				sendMessage("test");
-				//startActivity(new Intent(context, edu.neu.madcourse.deborahho.twoPlayer.Game.class));
+				startActivity(new Intent(context, BananaGame.class));
 			}
 		});
 	}
@@ -163,7 +164,7 @@ public class TwoPlayerChallengeUser extends Activity {
 	}
 
 	private  SharedPreferences getGCMPreferences(Context context) {
-		return getSharedPreferences(Communication.class.getSimpleName(),
+		return getSharedPreferences(TwoPlayerWordGame.class.getSimpleName(),
 				Context.MODE_PRIVATE);
 	}
 
