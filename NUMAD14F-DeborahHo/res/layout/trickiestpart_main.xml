@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:background="@color/background"
 	android:layout_height="fill_parent"
 	android:layout_width="fill_parent"
-	android:padding="10dip"
+	android:padding="30dip"
 	android:orientation="horizontal" >
-	
-	<LinearLayout
+<LinearLayout
 		android:orientation="vertical"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent" >
-	<TextView 
-	    android:layout_height="wrap_content" 
-	    android:layout_width="wrap_content" 
-	    android:text="@string/trickiestpart_textview"/>
-
-	<TextView 
-	    android:id="@+id/textView1" 
-	    android:layout_height="wrap_content" 
-	    android:layout_width="wrap_content"/>
+		android:layout_width="fill_parent"
+		android:layout_gravity="center" >
+		<Button
+			android:id="@+id/trickiestpart_detect_crunches"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/detect_crunches_label" />
+		<Button
+		    android:id="@+id/trickiestpart_record_audio"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/record_audio_label"/>
+		<Button
+			android:id="@+id/exit_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/exit_label" />
+		<Button
+		    android:id="@+id/trickiestpart_acknowledgements_button"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/acknowledgements_label"/>
 	</LinearLayout>
-
-	
-</ScrollView>
+</LinearLayout>

@@ -121,6 +121,8 @@
         
         <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPart"
             android:label="@string/trickiestpart_label" />
+        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartDetectCrunches"
+            android:label="@string/detect_crunches_label" />
  		
     </application>
 

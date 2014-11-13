@@ -1,85 +1,55 @@
-// Source: http://android-apps-blog.blogspot.com/2011/05/how-to-use-light-sensor-on-android.html
-
 package edu.neu.madcourse.deborahho.trickiestpart;
 
-import java.util.Date;
-
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.bananagrams.Music;
-
+import edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerAcknowledgements;
+import edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerSelectGame;
 import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
  
-public class TrickiestPart extends Activity implements SensorEventListener {
-	private  SensorManager sensorManager = null;
-	private  Sensor currentSensor = null; 
-	float currentLux = 0;
-	boolean crunchDown = false;
-	int nrOfCrunches = -1;
-  
+public class TrickiestPart extends Activity implements OnClickListener {
+	
 	@Override
-	public void onResume(){
-		super.onResume();
-		if(currentSensor != null)sensorManager.registerListener(this, currentSensor, SensorManager.SENSOR_DELAY_FASTEST);
-	}
-  
-	@Override
-	public void onPause(){
-		super.onPause();
-		sensorManager.unregisterListener(this);
-	} 
-  
-    /** Called when the activity is first created. */
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trickiestpart_main);
-        sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-        currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT );
-        if(currentSensor != null){
-        	sensorManager.registerListener(this, currentSensor, SensorManager.SENSOR_DELAY_FASTEST);
-        }else{
-        	((TextView) findViewById(R.id.textView1)).setText("Can't initialize the LIGHT sensor.");   
-        } 
-    }
- 
- 	@Override
- 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
- 		// TODO Auto-generated method stub
- 	}
- 
- 	@Override
- 	public void onSensorChanged(SensorEvent event) {
- 	 // TODO Auto-generated method stub
-   
- 		if (event.sensor.getType() == Sensor.TYPE_LIGHT){  
- 			
- 			if(event.values[0] < 5) {
- 				if (!crunchDown) {
- 					crunchDown = true;
- 	 				nrOfCrunches++;
- 	 				TextView tv = (TextView) findViewById(R.id.textView1);
- 	 				tv.setText("\nNumber of crunches " + nrOfCrunches);
- 	 				Music.playOnce(this, R.raw.beep);
- 					
- 				} 	
- 			} else {
- 				if (crunchDown) {
- 					crunchDown = false;
- 				}
- 			}
- 			
-// 			if (event.values[0] != currentLux) {
-// 				currentLux = event.values[0];
-// 				TextView tv = (TextView) findViewById(R.id.textView1);
-// 				//tv.setText( tv.getText()+ "value: " +event.values[0] + " lux , time: " + new Date() + "\n");   
-// 				tv.setText( tv.getText()+ "value: " + currentLux + " lux , time: " + new Date() + "\n");
-// 			}
- 		}
- 	}
+        
+       // Set up click listeners for all the buttons
+        View detectCrunchesButton = findViewById(R.id.trickiestpart_detect_crunches);
+        detectCrunchesButton.setOnClickListener(this);
+        View recordAudioButton = findViewById(R.id.trickiestpart_record_audio);
+        recordAudioButton.setOnClickListener(this);
+        View exitButton = findViewById(R.id.exit_button);
+        exitButton.setOnClickListener(this);
+        View acknowledgements_button = findViewById(R.id.trickiestpart_acknowledgements_button);
+        acknowledgements_button.setOnClickListener(this);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+		switch (v.getId()) {
+    	case R.id.trickiestpart_detect_crunches:			
+    		Intent l = new Intent(this, TrickiestPartDetectCrunches.class);
+    		startActivity(l);
+			break;	
+    	case R.id.trickiestpart_record_audio:
+    		//Intent k = new Intent(this, TwoPlayerHighScores.class);
+    		//startActivity(k);
+    		break;
+    	case R.id.exit_button:
+    		finish();
+    		break;
+    	case R.id.trickiestpart_acknowledgements_button:
+    		Intent j = new Intent(this, TwoPlayerAcknowledgements.class);
+    		startActivity(j);
+    		break;
+    	}
+		
+	}
+
 }

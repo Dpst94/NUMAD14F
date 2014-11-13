@@ -160,4 +160,7 @@
 		
 	<string name="trickiestpart_label">Trickiest Part</string>
 	<string name="trickiestpart_textview">Testing the Sensor</string>
+	<string name="detect_crunches_label">Detect Crunches</string>
+	<string name="record_audio_label">Record Audio</string>
+	
 </resources>
