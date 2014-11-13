@@ -5,6 +5,7 @@ package edu.neu.madcourse.deborahho.trickiestpart;
 import java.util.Date;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.bananagrams.Music;
 
 import android.app.Activity;
 import android.hardware.Sensor;
@@ -19,6 +20,7 @@ public class TrickiestPart extends Activity implements SensorEventListener {
 	private  Sensor currentSensor = null; 
 	float currentLux = 0;
 	boolean crunchDown = false;
+	int nrOfCrunches = -1;
   
 	@Override
 	public void onResume(){
@@ -56,12 +58,28 @@ public class TrickiestPart extends Activity implements SensorEventListener {
  	 // TODO Auto-generated method stub
    
  		if (event.sensor.getType() == Sensor.TYPE_LIGHT){  
- 			if (event.values[0] != currentLux) {
- 				currentLux = event.values[0];
- 				TextView tv = (TextView) findViewById(R.id.textView1);
- 				//tv.setText( tv.getText()+ "value: " +event.values[0] + " lux , time: " + new Date() + "\n");   
- 				tv.setText( tv.getText()+ "value: " + currentLux + " lux , time: " + new Date() + "\n");
+ 			
+ 			if(event.values[0] < 5) {
+ 				if (!crunchDown) {
+ 					crunchDown = true;
+ 	 				nrOfCrunches++;
+ 	 				TextView tv = (TextView) findViewById(R.id.textView1);
+ 	 				tv.setText("\nNumber of crunches " + nrOfCrunches);
+ 	 				Music.playOnce(this, R.raw.beep);
+ 					
+ 				} 	
+ 			} else {
+ 				if (crunchDown) {
+ 					crunchDown = false;
+ 				}
  			}
+ 			
+// 			if (event.values[0] != currentLux) {
+// 				currentLux = event.values[0];
+// 				TextView tv = (TextView) findViewById(R.id.textView1);
+// 				//tv.setText( tv.getText()+ "value: " +event.values[0] + " lux , time: " + new Date() + "\n");   
+// 				tv.setText( tv.getText()+ "value: " + currentLux + " lux , time: " + new Date() + "\n");
+// 			}
  		}
  	}
 }
