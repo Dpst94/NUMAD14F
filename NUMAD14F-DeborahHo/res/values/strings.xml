@@ -157,4 +157,7 @@
 		\n
 		\nTo implement the listview in Android, I have used the following tutorial:
 		\n<url>http://www.vogella.com/tutorials/AndroidListView/article.html</url> </string>
+		
+	<string name="trickiestpart_label">Trickiest Part</string>
+	<string name="trickiestpart_textview">Testing the Sensor</string>
 </resources>

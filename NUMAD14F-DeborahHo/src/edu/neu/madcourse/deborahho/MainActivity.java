@@ -2,6 +2,7 @@ package edu.neu.madcourse.deborahho;
 
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.sudoku.Sudoku;
+import edu.neu.madcourse.deborahho.trickiestpart.TrickiestPart;
 import edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerWordGame;
 import edu.neu.madcourse.deborahho.bananagrams.Bananagrams;
 import edu.neu.madcourse.deborahho.communication.Communication;
@@ -41,6 +42,8 @@ public class MainActivity extends Activity implements OnClickListener {
         communicationButton.setOnClickListener(this);
         View twoplayerButton = findViewById(R.id.twoplayer_button);
         twoplayerButton.setOnClickListener(this);
+        View trickiestpartButton = findViewById(R.id.trickiestpart_button);
+        trickiestpartButton.setOnClickListener(this);
      
     }
 
@@ -84,6 +87,10 @@ public class MainActivity extends Activity implements OnClickListener {
     	case R.id.twoplayer_button:
     		Intent n = new Intent(this, TwoPlayerWordGame.class);
     		startActivity(n);
+    		break;
+    	case R.id.trickiestpart_button:
+    		Intent o = new Intent(this, TrickiestPart.class);
+    		startActivity(o);
     		break;
     	}
     }

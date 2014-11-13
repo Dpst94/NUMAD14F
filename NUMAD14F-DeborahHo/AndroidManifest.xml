@@ -118,6 +118,9 @@
             android:label="@string/acknowledgements_label" />
         <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerSelectGame"
             android:label="@string/select_game_label" />
+        
+        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPart"
+            android:label="@string/trickiestpart_label" />
  		
     </application>
 
