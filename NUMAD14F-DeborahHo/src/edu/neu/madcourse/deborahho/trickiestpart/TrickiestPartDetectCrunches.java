@@ -2,10 +2,7 @@
 
 package edu.neu.madcourse.deborahho.trickiestpart;
 
-import java.util.Date;
-
 import edu.neu.madcourse.deborahho.R;
-import edu.neu.madcourse.deborahho.bananagrams.Music;
 
 import android.app.Activity;
 import android.hardware.Sensor;

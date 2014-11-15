@@ -26,6 +26,11 @@
 
     <uses-permission android:name="edu.neu.madcourse.deborahho.communication.permission.C2D_MESSAGE" />
     
+    <!-- Trickiest Part Permissions -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> 
+    <uses-permission android:name="android.permission.CAMERA"/> 
+    <!-- END Trickiest Part Permissions -->
+    
     <application
         android:icon="@drawable/bunny_toothbrush"
         android:label="@string/app_name"
@@ -119,10 +124,23 @@
         <activity android:name="edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerSelectGame"
             android:label="@string/select_game_label" />
         
+
         <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPart"
-            android:label="@string/trickiestpart_label" />
+                  android:label="@string/trickiestpart_label" 
+                  android:screenOrientation="portrait"/>
         <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartDetectCrunches"
-            android:label="@string/detect_crunches_label" />
+         		  android:label="@string/detect_crunches_label" 
+         		  android:screenOrientation="portrait"/>
+        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartRecordAudio"
+         		  android:label="@string/detect_crunches_label" 
+         		  android:screenOrientation="portrait"/>        
+        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartTakePicture"
+         		  android:label="@string/detect_crunches_label" 
+         		  android:screenOrientation="portrait"/>        
+        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.Ack"
+         		  android:label="@string/detect_crunches_label" 
+         		  android:screenOrientation="portrait"/>
+
  		
     </application>
 

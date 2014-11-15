@@ -162,5 +162,19 @@
 	<string name="trickiestpart_textview">Testing the Sensor</string>
 	<string name="detect_crunches_label">Detect Crunches</string>
 	<string name="record_audio_label">Record Audio</string>
+	<string name="take_picture_label">Take Picture</string>
+	<!-- Camera -->
+   <string name="Capture">Capture</string>
+	<string name="trickiestpart_ack_text">\
+ <b>Hi!</b>\n\n
+ 		First of all, I would like to thank Pr. S. Intille and TAs J. Paralkar and D. Chandramohan for their help.\n\n
+ 		Camera: http://www.tutorialspoint.com/android/android_camera.htm
+ 		I used this tutorial to setup the ListView of users : http://www.vogella.com/tutorials/AndroidListView/article.html \n\n 		
+ 		I read this code to understand how to use a service to update the scores : http://stackoverflow.com/questions/4300291/example-communication-between-activity-and-service-using-messaging \n\n
+ 		I read this documentation to understand the implementation of the GCM : https://developer.android.com/google/gcm/client.html \n\n
+ 		I then used the sample code posted on Piazza to setup the GCM : https://drive.google.com/file/d/0B7ifkXkoeSgzSEIxMVBZUHJSVjg/view \n\n
+ 		I used this link to use the key/value storage : https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit \n\n		
+ 		I found help from this link to test the internet connectivity :  http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts \n\n 
+</string>
 	
 </resources>
