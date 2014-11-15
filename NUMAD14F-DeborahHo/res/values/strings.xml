@@ -164,17 +164,19 @@
 	<string name="record_audio_label">Record Audio</string>
 	<string name="take_picture_label">Take Picture</string>
 	<!-- Camera -->
-   <string name="Capture">Capture</string>
-	<string name="trickiestpart_ack_text">\
- <b>Hi!</b>\n\n
- 		First of all, I would like to thank Pr. S. Intille and TAs J. Paralkar and D. Chandramohan for their help.\n\n
- 		Camera: http://www.tutorialspoint.com/android/android_camera.htm
- 		I used this tutorial to setup the ListView of users : http://www.vogella.com/tutorials/AndroidListView/article.html \n\n 		
- 		I read this code to understand how to use a service to update the scores : http://stackoverflow.com/questions/4300291/example-communication-between-activity-and-service-using-messaging \n\n
- 		I read this documentation to understand the implementation of the GCM : https://developer.android.com/google/gcm/client.html \n\n
- 		I then used the sample code posted on Piazza to setup the GCM : https://drive.google.com/file/d/0B7ifkXkoeSgzSEIxMVBZUHJSVjg/view \n\n
- 		I used this link to use the key/value storage : https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit \n\n		
- 		I found help from this link to test the internet connectivity :  http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts \n\n 
-</string>
+    <string name="Capture">Capture</string>
+	<string name="trickiestpart_ack_text"> 
+	    \<b>First of all, we would like to thank Professor S. Intille and TAs J. Paralkar and D. Chandramohan for their help. 
+	        This assignment would not be completed if it were not for the following sources: </b> 
+	    \n
+	    \nTo implement the camera we have used the following tutorial:
+	    \n<url>http://www.tutorialspoint.com/android/android_camera.htm</url> 
+	    \n
+	    \nTo implement the light sensor to detect crunches, we have used the following code:
+	    \n<url>http://android-apps-blog.blogspot.com/2011/05/how-to-use-light-sensor-on-android.html</url>
+	    \n
+	    \nTo record audio we used the following example:
+	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url></string>
+
 	
 </resources>
