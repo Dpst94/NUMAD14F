@@ -144,8 +144,22 @@
         <activity android:name="edu.neu.madcourse.deborahho.finalproject.FinalProjectDescription"
             android:label="@string/finalproject_label"
             android:screenOrientation="portrait"/>
+        
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.Main"
+			android:icon="@drawable/crunchy_transparent"
+   	   		android:label="@string/crunchy_label"
+    	    android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
  		
     </application>
+    
+    
+
 
 </manifest>
