@@ -178,5 +178,10 @@
 	    \nTo record audio we used the following example:
 	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url></string>
 
-	
+	<string name="finalproject_label">Final Project</string>
+	<string name="crunchy_label">Crunchy</string>
+	<string name="finalproject_description_text">\<b>App Description:</b>\nAre you tired of working out alone, but you can’t go to the gym with your friends? 
+	    With Crunchy you can work out with your friends from anywhere. Using Crunchy, you can invite your friends to compete with you every day. 
+	    You can also team up and compete against other teams together. After a nice workout you can share your performance on Facebook to help your friends get motivated. 
+	    All you have to do is run the app, put it on the floor behind your head and start doing crunches.</string>
 </resources>

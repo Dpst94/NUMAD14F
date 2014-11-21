@@ -140,6 +140,10 @@
         <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.Ack"
          		  android:label="@string/detect_crunches_label" 
          		  android:screenOrientation="portrait"/>
+        
+        <activity android:name="edu.neu.madcourse.deborahho.finalproject.FinalProjectDescription"
+            android:label="@string/finalproject_label"
+            android:screenOrientation="portrait"/>
 
  		
     </application>

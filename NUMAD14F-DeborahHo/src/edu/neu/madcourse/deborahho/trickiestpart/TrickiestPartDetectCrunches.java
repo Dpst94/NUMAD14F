@@ -2,6 +2,8 @@
 
 package edu.neu.madcourse.deborahho.trickiestpart;
 
+import java.util.Calendar;
+
 import edu.neu.madcourse.deborahho.R;
 
 import android.app.Activity;
@@ -18,7 +20,13 @@ public class TrickiestPartDetectCrunches extends Activity implements SensorEvent
 	float currentLux = 0;
 	boolean crunchDown = false;
 	int nrOfCrunches = -1;
+	long oldSeconds = 0;
+	long currentSeconds;
+	long differenceInSeconds;
+	Calendar c;
+	TextView tv;
 	static final int limitLux = 10;
+	static final int limitMilliSecBetweenCrunches = 1500;
   
 	@Override
 	public void onResume(){
@@ -37,6 +45,10 @@ public class TrickiestPartDetectCrunches extends Activity implements SensorEvent
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trickiestpart_detect_crunches);
+        
+        c = Calendar.getInstance();
+        oldSeconds = c.getTimeInMillis();
+        
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT );
         if(currentSensor != null){
@@ -58,12 +70,28 @@ public class TrickiestPartDetectCrunches extends Activity implements SensorEvent
  		if (event.sensor.getType() == Sensor.TYPE_LIGHT){  
  			
  			if(event.values[0] < limitLux) {
+ 				
+ 				
  				if (!crunchDown) {
- 					crunchDown = true;
- 	 				nrOfCrunches++;
- 	 				TextView tv = (TextView) findViewById(R.id.textView1);
- 	 				tv.setText("\nNumber of crunches " + nrOfCrunches);
- 	 				Music.playOnce(this, R.raw.beep);
+ 					
+ 					c = Calendar.getInstance(); 
+ 	 				currentSeconds = c.getTimeInMillis();//c.get(Calendar.SECOND);
+ 	 				
+ 	 				differenceInSeconds = currentSeconds - oldSeconds;
+ 	 				if(differenceInSeconds > limitMilliSecBetweenCrunches) {
+ 	 					crunchDown = true;
+ 	 	 				nrOfCrunches++;
+ 	 	 				tv = (TextView) findViewById(R.id.textView1);
+ 	 	 				
+ 	 	 				Music.playOnce(this, R.raw.beep);
+ 	 	 				
+ 	 	 				
+ 	 	 				tv.setText("\nNumber of crunches " + nrOfCrunches +
+ 	 	 						   "\n Current time: " + currentSeconds +
+ 	 	 						   "\n Previous Time: " + oldSeconds +
+ 	 	 						   "\n Difference: " + differenceInSeconds);
+ 	 					oldSeconds = currentSeconds;
+ 	 				}
  					
  				} 	
  			} else {
