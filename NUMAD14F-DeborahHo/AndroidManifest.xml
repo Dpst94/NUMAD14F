@@ -142,7 +142,6 @@
         <activity
             android:name=".twoplayerwordgame.TwoPlayerSelectGame"
             android:label="@string/select_game_label" />
-<<<<<<< HEAD
         <activity
             android:name=".trickiestpart.TrickiestPart"
             android:label="@string/trickiestpart_label"
@@ -167,24 +166,6 @@
             android:name="edu.neu.madcourse.deborahho.trickiestpart.Upload"
             android:label="@string/title_activity_upload" >
         </activity>
-=======
-        
-
-        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPart"
-                  android:label="@string/trickiestpart_label" 
-                  android:screenOrientation="portrait"/>
-        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartDetectCrunches"
-         		  android:label="@string/detect_crunches_label" 
-         		  android:screenOrientation="portrait"/>
-        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartRecordAudio"
-         		  android:label="@string/detect_crunches_label" 
-         		  android:screenOrientation="portrait"/>        
-        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.TrickiestPartTakePicture"
-         		  android:label="@string/detect_crunches_label" 
-         		  android:screenOrientation="portrait"/>        
-        <activity android:name="edu.neu.madcourse.deborahho.trickiestpart.Ack"
-         		  android:label="@string/detect_crunches_label" 
-         		  android:screenOrientation="portrait"/>
         
         <activity android:name="edu.neu.madcourse.deborahho.finalproject.FinalProjectDescription"
             android:label="@string/finalproject_label"
@@ -213,13 +194,5 @@
             android:name="edu.neu.madcourse.deborahho.finalproject.Game"
             android:label="@string/crunchy_label"
             android:screenOrientation="portrait"/>
-            
-
- 		
->>>>>>> 3c05b6671b33e4e903ca07571036854f2a30bbd9
     </application>
-    
-    
-
-
 </manifest>
