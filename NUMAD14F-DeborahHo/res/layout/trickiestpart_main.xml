@@ -32,6 +32,11 @@
 		    android:layout_height="wrap_content"
 		    android:text="@string/acknowledgements_label"/>
 		<Button
+		    android:id="@+id/trickiestpart_upload"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:text="UPLOAD"/>
+		<Button
 			android:id="@+id/exit_button"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"

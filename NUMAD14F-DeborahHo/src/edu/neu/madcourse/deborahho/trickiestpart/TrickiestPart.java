@@ -1,5 +1,11 @@
 package edu.neu.madcourse.deborahho.trickiestpart;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,9 +28,10 @@ public class TrickiestPart extends Activity implements OnClickListener {
         takePictureButton.setOnClickListener(this);
         View acknowledgements_button = findViewById(R.id.trickiestpart_ack);
         acknowledgements_button.setOnClickListener(this);
+        View upload_button = findViewById(R.id.trickiestpart_upload);
+        upload_button.setOnClickListener(this);
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
-
 	}
 
 	@Override
@@ -41,6 +48,9 @@ public class TrickiestPart extends Activity implements OnClickListener {
     		break;
     	case R.id.trickiestpart_ack:
     		startActivity(new Intent(this, Ack.class));
+    		break;
+    	case R.id.trickiestpart_upload:
+    		startActivity(new Intent(this, Upload.class));
     		break;
     	case R.id.exit_button:
     		finish();

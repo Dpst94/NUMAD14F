@@ -12,14 +12,7 @@
     <string name="about_title">About Me</string>
     <string name="sudoku_label">Sudoku</string>
     <string name="error_label">Generate Error</string>
-    <string name="about_text"> \
-        <b>Name: </b>Deborah Ho  \n
-        <b>Email: </b>ho.de@husky.neu.edu \n
-        <i>Exchange student at NEU </i> \n
-        <b>School: </b>Vrije Universiteit Amsterdam \n
-        <b>Year: </b> Senior \n
-        <b>Major: </b>Econometrics \n </string> 
-    
+    <string name="about_text"> \ <b>Name: </b>Deborah Ho  \n <b>Email: </b>ho.de@husky.neu.edu \n <i>Exchange student at NEU </i> \n <b>School: </b>Vrije Universiteit Amsterdam \n <b>Year: </b> Senior \n <b>Major: </b>Econometrics \n </string>
     <string name="sudoku_about_text"> \
         Sudoku is a logic-based number placement puzzle.
 		Starting with a partially completed 9x9 grid, the
@@ -27,156 +20,121 @@
 		row, each column, and each of the 3x3 boxes
 		(also called <i>blocks</i>) contains the digits
 		1 to 9 exactly once. </string>
-	<string name="sudoku_about_title">About Sudoku</string>	
-    
-	<string name="instructions_label">Instructions</string>
+    <string name="sudoku_about_title">About Sudoku</string>
+    <string name="instructions_label">Instructions</string>
     <string name="settings_label">Settings</string>
-	<string name="sudoku_settings_title">Sudoku settings</string>
-	<string name="sudoku_settings_shortcut">s</string>
-	<string name="sudoku_music_title">Music</string>
-	<string name="sudoku_music_summary">Play background music</string>
-	<string name="sudoku_hints_title">Hints</string>
-	<string name="sudoku_hints_summary">Show hints during play</string>
-
-	<string name="new_game_title">Difficulty</string>
-	<string name="easy_label">Easy</string>
-	<string name="medium_label">Medium</string>
-	<string name="hard_label">Hard</string>
-	
-	<string name="game_title">Game</string>
-	<string name="no_moves_label">No moves</string>
-	<string name="keypad_title">Keypad</string>
-	
-	<string name="dictionary_label">Dictionary</string>
-	<string name="test_dictionary_label">Test Dictionary</string>
-	<string name="enter_text">Enter Text</string>
-	
-	<string name="dict_acknowledgements">
-	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
-	    \n
+    <string name="sudoku_settings_title">Sudoku settings</string>
+    <string name="sudoku_settings_shortcut">s</string>
+    <string name="sudoku_music_title">Music</string>
+    <string name="sudoku_music_summary">Play background music</string>
+    <string name="sudoku_hints_title">Hints</string>
+    <string name="sudoku_hints_summary">Show hints during play</string>
+    <string name="new_game_title">Difficulty</string>
+    <string name="easy_label">Easy</string>
+    <string name="medium_label">Medium</string>
+    <string name="hard_label">Hard</string>
+    <string name="game_title">Game</string>
+    <string name="no_moves_label">No moves</string>
+    <string name="keypad_title">Keypad</string>
+    <string name="dictionary_label">Dictionary</string>
+    <string name="test_dictionary_label">Test Dictionary</string>
+    <string name="enter_text">Enter Text</string>
+    <string name="dict_acknowledgements">	    \<b>This assignment would not be completed if it were not for the following sources: </b> 	    \n
 	    \nI have used the following code to implement the textbox on my app: 
-	    \n<url>http://www.simplecodestuffs.com/all-tutorials-2/create-and-edit-text-box/ </url> 
-	    \n
+	    \n<url>http://www.simplecodestuffs.com/all-tutorials-2/create-and-edit-text-box/ </url> 	    \n
 	    \nThe code for the bloom filter can be found here and all credits go to the authors of this code: 
-	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 
-		\n
+	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 		\n
 		\nI would also like to acknowledge Dinesh Chandramohan and Juhi Paralkar for giving me ideas of how to implement the dictionary. The suggested ideas were to split the files and to implement a bloom filter. 
 		\n
 		\nThe mp3 of the beep can be downloaded from the following website, called Beep 7:
-		\n<url>http://www.soundjay.com/beep-sounds-1.html</url>
-		\n
+		\n<url>http://www.soundjay.com/beep-sounds-1.html</url> 		\n
 	    \nFinally, the icon for my app can be found here:
-	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
-	<string name="dict_clear_label">Clear</string>
-	<string name="return_label">Return to menu</string>
-	<string name="resume_label">Resume</string>
-	<string name="acknowledgements_label">Acknowledgements</string>
-	<string name="dict_found_words_text">\n Words Found In Dictionary</string>
-	
-	<string name="bananagrams_label">Word Game</string>
-	<string name="pause_label">Pause</string>
-	<string name="banana_settings_title">Word Game settings</string>
-	<string name="banana_settings_shortcut">s</string>
-	<string name="banana_acknowledgements">
-	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
-	    \n
+	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
+    <string name="dict_clear_label">Clear</string>
+    <string name="return_label">Return to menu</string>
+    <string name="resume_label">Resume</string>
+    <string name="acknowledgements_label">Acknowledgements</string>
+    <string name="dict_found_words_text">\n Words Found In Dictionary</string>
+    <string name="bananagrams_label">Word Game</string>
+    <string name="pause_label">Pause</string>
+    <string name="banana_settings_title">Word Game settings</string>
+    <string name="banana_settings_shortcut">s</string>
+    <string name="banana_acknowledgements">	    \<b>This assignment would not be completed if it were not for the following sources: </b> 	    \n
 	    \nThe majority of my code is based on the Sudoku app described in the book \'Hello, Android\' by Ed Burnette (3rd Edition).  
 	    \n
 	    \nThe code for the bloom filter that is also used in the dictionary, can be found here and all credits go to the authors of this code: 
-	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 
-		\n
+	    \n<url>https://github.com/MagnusS/Java-BloomFilter</url> 		\n
 		\nThe code for the countdown timer and vibrating at the last five seconds can be found here:
-		\n<url>http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds</url>
-		\n
+		\n<url>http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds</url> 		\n
 		\nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the idea I had for the main screen of the word game. 
 		\n
 		\nFurthermore I would like to thank the students in the Mobile App Development course for their help on Piazza. 
 		\n
 		\nThe mp3 of the beep can be downloaded from the following website, called Beep 7:
-		\n<url>http://www.soundjay.com/beep-sounds-1.html</url>
-		\n
+		\n<url>http://www.soundjay.com/beep-sounds-1.html</url> 		\n
 		\nThe background music on the main screen is by Josh Gray called Classical, which can be downloaded here:
-		\n<url>http://www.last.fm/music/+free-music-downloads/instrumental+guitar</url>
-		\n
+		\n<url>http://www.last.fm/music/+free-music-downloads/instrumental+guitar</url> 		\n
 		\nThe background music during the game is by Yiruma called Lord... Hold My Hand, and can be downloaded here:
-		\n<url>http://mp3skull.com/mp3/yiruma.html</url>
-		\n
+		\n<url>http://mp3skull.com/mp3/yiruma.html</url> 		\n
 	    \nFinally, the icon for my app can be found here:
-	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url> </string>
-	<string name="banana_instructions_text">This word game is based on the game Bananagrams. Make words that are connected with eachother and score as many points as you can in 90 seconds. The words should be horizontally or vertically lined. </string>
-	<string name="banana_pause_text">This game has been paused.</string>
-	<string name="banana_finish_text">GAME OVER!</string>
-	<string name="play_again_label">Play again</string>
-	<string name="finish_label">Game Over</string>
-	
-	<string name="communication_label">Communication</string>
-	<string name="register_label">Register</string>
-	<string name="unregister_label">Unregister</string>
-	<string name="clear_label">Clear</string>
-	<string name="hint_username">Enter username</string>
-	<string name="hint_message">Enter message</string>
-	<string name="hint_message_user">Input username receiver</string>
-	<string name="send_label">Send</string>
-	<string name="find_contacts_label">Find contacts</string>
-	<string name="userList_label">List of users</string>
-	<string name="com_acknowledgements">
-	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
-	    \n
+	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
+    <string name="banana_instructions_text">This word game is based on the game Bananagrams. Make words that are connected with eachother and score as many points as you can in 90 seconds. The words should be horizontally or vertically lined. </string>
+    <string name="banana_pause_text">This game has been paused.</string>
+    <string name="banana_finish_text">GAME OVER!</string>
+    <string name="play_again_label">Play again</string>
+    <string name="finish_label">Game Over</string>
+    <string name="communication_label">Communication</string>
+    <string name="register_label">Register</string>
+    <string name="unregister_label">Unregister</string>
+    <string name="clear_label">Clear</string>
+    <string name="hint_username">Enter username</string>
+    <string name="hint_message">Enter message</string>
+    <string name="hint_message_user">Input username receiver</string>
+    <string name="send_label">Send</string>
+    <string name="find_contacts_label">Find contacts</string>
+    <string name="userList_label">List of users</string>
+    <string name="com_acknowledgements">	    \<b>This assignment would not be completed if it were not for the following sources: </b> 	    \n
 	    \nThe majority of my code is based on the GCMDemo described on the Android Developer website:
-	    \n<url>http://developer.android.com/google/gcm/client.html</url> 
-	    \n
+	    \n<url>http://developer.android.com/google/gcm/client.html</url> 	    \n
 	    \nTo store data, I have used the following server:
-	    \n<url>https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit</url>
-	    \n
+	    \n<url>https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit</url> 	    \n
 	    \nTo check if the phone is connected to the Internet, I have used the following code from StackOverflow:
-	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url>
-		\n
+	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url> 		\n
 	    \nI would also like to acknowledge Dinesh Chandramohan for giving me tips on how to implement the server and how to send messages between users. 
 		\n
 	    \nFinally, the icon for my app can be found here:
 	    \n<url>http://www.stickersemoticon.com/fat-rabbit-farm-facebook-stickers/</url></string>
-	    
-	<string name="twoplayer_label">Two Player Word Game</string>
-	<string name="single_player_label">Single Player</string>
-	<string name="two_player_label">Two Player</string>
-	<string name="select_game_label">Select Number Of Players</string>
-	<string name="highscores_label">High Scores</string>
-	<string name="next_label">Next</string>
-	<string name="challenge_user_label">Challenge User</string>
-	<string name="twoplayer_acknowledgements">
-	    \<b>This assignment would not be completed if it were not for the following sources: </b> 
-	    \n
+    <string name="twoplayer_label">Two Player Word Game</string>
+    <string name="single_player_label">Single Player</string>
+    <string name="two_player_label">Two Player</string>
+    <string name="select_game_label">Select Number Of Players</string>
+    <string name="highscores_label">High Scores</string>
+    <string name="next_label">Next</string>
+    <string name="challenge_user_label">Challenge User</string>
+    <string name="twoplayer_acknowledgements">	    \<b>This assignment would not be completed if it were not for the following sources: </b> 	    \n
 	    \nThe majority of my code is based on the GCMDemo described on the Android Developer website:
-	    \n<url>http://developer.android.com/google/gcm/client.html</url> 
-	    \n
+	    \n<url>http://developer.android.com/google/gcm/client.html</url> 	    \n
 	    \nTo store data, I have used the following server:
-	    \n<url>https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit</url>
-	    \n
+	    \n<url>https://docs.google.com/document/d/166xN2mr8C1bXLPhgq3hLYN1hCWP28o5zhmKvvZvwUZA/edit</url> 	    \n
 	    \nTo check if the phone is connected to the Internet, I have used the following code from StackOverflow:
-	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url>
-		\n
+	    \n<url>http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts</url> 		\n
 		\nTo implement the listview in Android, I have used the following tutorial:
-		\n<url>http://www.vogella.com/tutorials/AndroidListView/article.html</url> </string>
-		
-	<string name="trickiestpart_label">Trickiest Part</string>
-	<string name="trickiestpart_textview">Testing the Sensor</string>
-	<string name="detect_crunches_label">Detect Crunches</string>
-	<string name="record_audio_label">Record Audio</string>
-	<string name="take_picture_label">Take Picture</string>
-	<!-- Camera -->
+		\n<url>http://www.vogella.com/tutorials/AndroidListView/article.html</url></string>
+    <string name="trickiestpart_label">Trickiest Part</string>
+    <string name="trickiestpart_textview">Testing the Sensor</string>
+    <string name="detect_crunches_label">Detect Crunches</string>
+    <string name="record_audio_label">Record Audio</string>
+    <string name="take_picture_label">Take Picture</string>
+    <!-- Camera -->
     <string name="Capture">Capture</string>
-	<string name="trickiestpart_ack_text"> 
-	    \<b>First of all, we would like to thank Professor S. Intille and TAs J. Paralkar and D. Chandramohan for their help. 
-	        This assignment would not be completed if it were not for the following sources: </b> 
-	    \n
+    <string name="trickiestpart_ack_text">	    \<b>First of all, we would like to thank Professor S. Intille and TAs J. Paralkar and D. Chandramohan for their help. 
+	        This assignment would not be completed if it were not for the following sources: </b> 	    \n
 	    \nTo implement the camera we have used the following tutorial:
-	    \n<url>http://www.tutorialspoint.com/android/android_camera.htm</url> 
-	    \n
+	    \n<url>http://www.tutorialspoint.com/android/android_camera.htm</url> 	    \n
 	    \nTo implement the light sensor to detect crunches, we have used the following code:
-	    \n<url>http://android-apps-blog.blogspot.com/2011/05/how-to-use-light-sensor-on-android.html</url>
-	    \n
+	    \n<url>http://android-apps-blog.blogspot.com/2011/05/how-to-use-light-sensor-on-android.html</url> 	    \n
 	    \nTo record audio we used the following example:
 	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url></string>
+    <string name="title_activity_upload">TrickiestPartUpload</string>
 
-	
 </resources>
