@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/crunchy_current_day"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Day 01"
+        android:textSize="35dp" />
+    
+    <TextView 
+        android:id="@+id/crunchy_completed_workout_text" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="You have completed your work-out for today!" />"
+    
+    <Button 
+        android:id="@+id/share_facebook_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/share_facebook_label"/>
+    
+    <Button 
+        android:id="@+id/challenge_friends_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/challenge_friends_label"/>
+    
+    <Button 
+        android:id="@+id/team_up_friends_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/team_up_friends_label"/>
+    
+    <Button 
+        android:id="@+id/view_scores_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_scores_label"/>
+    
+    <Button 
+        android:id="@+id/check_schedule_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/check_schedule_label"/>
+    
+
+</LinearLayout>

@@ -146,4 +146,11 @@
 	<string name="start_crunchy_label">Start Crunchy</string>
 	<string name="finalproject_main_screen_text">Start doing daily crunches!</string>
 	<string name="back_label">Go Back</string>
+	<string name="menu_label">Go To Menu</string>
+	
+	<string name="share_facebook_label">Share on Facebook</string>
+	<string name="challenge_friends_label">Challenge Friends</string>
+	<string name="team_up_friends_label"> Team up with Friends</string>
+	<string name="view_scores_label">View Scores</string>
+	<string name="check_schedule_label">Check out Schedule</string>
 </resources>

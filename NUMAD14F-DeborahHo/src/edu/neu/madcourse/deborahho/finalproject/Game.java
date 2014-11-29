@@ -2,6 +2,7 @@ package edu.neu.madcourse.deborahho.finalproject;
 
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,7 +27,7 @@ public class Game extends Activity implements OnClickListener{
 		mNrOfCrunches.append("Do 1x 10 crunches");
 		mCountdownCrunches.append("10 CRUNCHES TO GO");
 		
-		View nextButton = findViewById(R.id.finalproject_next_button);
+		View nextButton = findViewById(R.id.finalproject_menu_button);
         nextButton.setOnClickListener(this);
         View backButton = findViewById(R.id.finalproject_back_button);
         backButton.setOnClickListener(this);
@@ -35,8 +36,15 @@ public class Game extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
+		switch (v.getId()) {
+		case R.id.finalproject_back_button:
+			finish();
+			break;
+    	case R.id.finalproject_menu_button:
+    		Intent i = new Intent(this, Menu.class);//TutorialFriends.class);
+    		startActivity(i);
+    		break;
+		}
 	}
 
 }
