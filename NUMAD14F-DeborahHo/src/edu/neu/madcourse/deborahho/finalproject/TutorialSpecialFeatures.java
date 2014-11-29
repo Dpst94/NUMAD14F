@@ -1,13 +1,12 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import edu.neu.madcourse.deborahho.R;
 
-public class Main extends Activity implements OnClickListener{
+public class TutorialSpecialFeatures extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,8 +21,8 @@ public class Main extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
     	case R.id.finalproject_next_button:
-    		Intent i = new Intent(this, Game.class);//TutorialFriends.class);
-    		startActivity(i);
+//    		Intent i = new Intent(this, TutorialFriends.class);
+//    		startActivity(i);
     		break;
 		}
     		

@@ -155,6 +155,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.TutorialFriends"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.TutorialSpecialFeatures"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.Game"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+            
 
  		
     </application>
