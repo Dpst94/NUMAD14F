@@ -7,6 +7,7 @@ import edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerWordGame;
 import edu.neu.madcourse.deborahho.bananagrams.Bananagrams;
 import edu.neu.madcourse.deborahho.communication.Communication;
 import edu.neu.madcourse.deborahho.dictionary.*;
+import edu.neu.madcourse.deborahho.finalproject.FinalProjectDescription;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -44,6 +45,8 @@ public class MainActivity extends Activity implements OnClickListener {
         twoplayerButton.setOnClickListener(this);
         View trickiestpartButton = findViewById(R.id.trickiestpart_button);
         trickiestpartButton.setOnClickListener(this);
+        View finalprojectButton = findViewById(R.id.finalproject_button);
+        finalprojectButton.setOnClickListener(this);
      
     }
 
@@ -92,6 +95,9 @@ public class MainActivity extends Activity implements OnClickListener {
     		Intent o = new Intent(this, TrickiestPart.class);
     		startActivity(o);
     		break;
+    	case R.id.finalproject_button:
+    		Intent p = new Intent(this, FinalProjectDescription.class);
+    		startActivity(p);
     	}
     }
     
