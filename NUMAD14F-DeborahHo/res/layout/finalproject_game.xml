@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/crunchy_current_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  />
+    
+    <TextView 
+        android:id="@+id/crunchy_nr_of_crunches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
+
+   <ImageView
+        android:id="@+id/micImage"
+      	android:layout_width="60dp"
+      	android:layout_height="60dp"
+      	android:layout_marginTop="20dp"
+      	android:src="@android:drawable/presence_audio_online" />
+   
+   <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
+   
+   <TextView
+       android:id="@+id/crunchy_countdown_crunches"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+   
+   <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
+   
+   <LinearLayout  android:layout_width="match_parent"
+   		android:layout_height="wrap_content"
+   		android:orientation="horizontal" 
+		android:gravity="bottom">
+
+        <Button
+	      	android:id="@+id/finalproject_back_button"
+	      	android:layout_width="wrap_content"
+	      	android:layout_height="wrap_content"
+	      	android:text="@string/back_label" />
+	   
+	   <Button
+	      	android:id="@+id/finalproject_next_button"
+	      	android:layout_width="wrap_content"
+	      	android:layout_height="wrap_content"
+	      	android:layout_marginLeft="10dp"
+	      	android:text="@string/next_label" />
+	</LinearLayout> 
+       
+
+
+</LinearLayout>

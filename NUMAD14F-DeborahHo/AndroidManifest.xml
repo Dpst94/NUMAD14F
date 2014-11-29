@@ -200,6 +200,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.TutorialFriends"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.TutorialSpecialFeatures"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.Game"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+            
 
  		
 >>>>>>> 3c05b6671b33e4e903ca07571036854f2a30bbd9

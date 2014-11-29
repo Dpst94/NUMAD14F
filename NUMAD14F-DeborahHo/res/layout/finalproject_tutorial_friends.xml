@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="54dp"
-        android:text="@string/finalproject_description_text" />
+        android:text="@string/finalproject_main_screen_text" />
 
     <TextView
         android:id="@+id/textView1"
@@ -25,12 +25,12 @@
         android:textSize="32dp" />
 
     <Button
-        android:id="@+id/finalproject_start_app_button"
+        android:id="@+id/finalproject_next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="58dp" 
-        android:text="@string/start_crunchy_label"/>
+        android:text="@string/next_label"/>
 
 </RelativeLayout>

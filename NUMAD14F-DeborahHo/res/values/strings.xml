@@ -240,7 +240,7 @@
 		\nThe background music on the main screen is by Josh Gray called Classical, which can be downloaded here:
 		\n<url>http://www.last.fm/music/+free-music-downloads/instrumental+guitar</url>
 		\n
-		\nThe background music during the game is by Yiruma called Lord... Hold My Hand, and can be downloaded here:
+		\nThe background music during the game is by Yiruma called Lord.. Hold My Hand, and can be downloaded here:
 		\n<url>http://mp3skull.com/mp3/yiruma.html</url>
 		\n
 	    \nFinally, the icon for my app can be found here:
@@ -326,5 +326,9 @@
 	    With Crunchy you can work out with your friends from anywhere. Using Crunchy, you can invite your friends to compete with you every day. 
 	    You can also team up and compete against other teams together. After a nice workout you can share your performance on Facebook to help your friends get motivated. 
 	    All you have to do is run the app, put it on the floor behind your head and start doing crunches.</string>
+	    
+	<string name="start_crunchy_label">Start Crunchy</string>
+	<string name="finalproject_main_screen_text">Start doing daily crunches!</string>
+	<string name="back_label">Go Back</string>
 </resources>
 >>>>>>> 3c05b6671b33e4e903ca07571036854f2a30bbd9
