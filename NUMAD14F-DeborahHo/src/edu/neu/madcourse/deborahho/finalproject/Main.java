@@ -11,6 +11,7 @@ public class Main extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setTitle(R.string.crunchy_label);
 		setContentView(R.layout.finalproject_main);
 		
 		View nextButton = findViewById(R.id.finalproject_next_button);

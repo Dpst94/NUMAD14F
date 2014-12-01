@@ -8,7 +8,7 @@
         android:id="@+id/login_textview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/share_fb_not_logged_in_text"
+        android:text="@string/challenge_friends_not_logged_in_text"
         android:textSize="24dp" />
 
     <Button
@@ -20,5 +20,13 @@
         android:layout_marginTop="29dp"
         android:gravity="center"
         android:text="@string/login_facebook_label" />
+    
+    <Button
+        android:id="@+id/finalproject_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/back_label" />
 
 </RelativeLayout>

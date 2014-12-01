@@ -138,6 +138,7 @@
     <string name="title_activity_upload">TrickiestPartUpload</string>
     <string name="finalproject_label">Final Project</string>
 	<string name="crunchy_label">Crunchy</string>
+	<string name="crunchy_app_name">MAD14F-Crunchy</string>
 	<string name="finalproject_description_text">\<b>App Description:</b>\nAre you tired of working out alone, but you can’t go to the gym with your friends? 
 	    With Crunchy you can work out with your friends from anywhere. Using Crunchy, you can invite your friends to compete with you every day. 
 	    You can also team up and compete against other teams together. After a nice workout you can share your performance on Facebook to help your friends get motivated. 
@@ -155,6 +156,12 @@
 	<string name="check_schedule_label">Check out Schedule</string>
 	
 	<string name="share_fb_not_logged_in_text">In order to share your work-out on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
-	<string name="login_facebook_label">Log in with Facebook</string>    
-	    
+	<string name="login_facebook_label">Log in with Facebook</string>  
+	<string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>  
+	<string name="post_wall_facebook_label">Post to Wall</string> 
+	
+	<string name="send_audio_label">Send Audio Snippet</string>
+	
+	<string name="facebook_app_id">1495717887358201</string>
+
 </resources>

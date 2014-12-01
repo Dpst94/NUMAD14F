@@ -23,6 +23,9 @@ public class CrunchyMenu extends Activity implements OnClickListener{
         scoresButton.setOnClickListener(this);
         View scheduleButton = findViewById(R.id.check_schedule_button);
         scheduleButton.setOnClickListener(this);
+        
+        View backButton = findViewById(R.id.finalproject_back_button);
+        backButton.setOnClickListener(this);
 		
 	}
 
@@ -30,13 +33,13 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
     	case R.id.share_facebook_button:
-    		Intent i = new Intent(this, ShareOnFacebook.class);
+    		Intent i = new Intent(this, ShareOnFacebookLogIn.class);
     		startActivity(i);
     		break;
-//    	case R.id.challenge_friends_button:
-//    		Intent j = new Intent(this, ChallengeFriends.class);
-//    		startActivity(j);
-//    		break;
+    	case R.id.challenge_friends_button:
+    		Intent j = new Intent(this, ChallengeFriends.class);
+    		startActivity(j);
+    		break;
 //    	case R.id.team_up_friends_button:
 //    		Intent k = new Intent(this, TeamUpWithFriends.class);
 //    		startActivity(k);
@@ -49,6 +52,9 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 //    		Intent m = new Intent(this, CheckOutSchedule.class);
 //    		startActivity(m);
 //    		break;
+    	case R.id.finalproject_back_button:
+			finish();
+			break;
 		}
     		
 		

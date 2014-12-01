@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import edu.neu.madcourse.deborahho.R;
 
-public class ChallengeFriends extends Activity implements OnClickListener{
+public class ShareOnFacebookPostWall extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.finalproject_challenge_friends);
+		setContentView(R.layout.finalproject_share_fb_post_wall);
 		
-		View logInButton = findViewById(R.id.login_facebook_button);
-        logInButton.setOnClickListener(this);
+		View postWallButton = findViewById(R.id.post_wall_facebook_button);
+        postWallButton.setOnClickListener(this);
         View backButton = findViewById(R.id.finalproject_back_button);
         backButton.setOnClickListener(this);
 		
@@ -22,7 +22,8 @@ public class ChallengeFriends extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-    	case R.id.login_facebook_button:
+    	case R.id.post_wall_facebook_button:
+    		//Pop up fb post wall in screen..
 //    		Intent i = new Intent(this, Game.class);//TutorialFriends.class);
 //    		startActivity(i);
     		break;
