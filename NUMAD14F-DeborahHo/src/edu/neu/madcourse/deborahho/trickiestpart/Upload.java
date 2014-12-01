@@ -55,7 +55,7 @@ import android.widget.Toast;
          
         btnselectpic.setOnClickListener(this);
         uploadButton.setOnClickListener(this);
-        upLoadServerUri = "http://192.168.0.15/UploadToServer.php";
+        upLoadServerUri = "http://eighilaza.tk/UploadToServer.php";
     }
       
      
@@ -290,9 +290,9 @@ import android.widget.Toast;
                     
                    dos = new DataOutputStream(conn.getOutputStream());
           
-                   dos.writeBytes(twoHyphens + boundary + lineEnd); 
+                   dos.writeBytes(twoHyphens + boundary + lineEnd);
                    dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
-                                             + fileName + "\"" + lineEnd);
+                           + fileName + "\"" + lineEnd);
                     
                    dos.writeBytes(lineEnd);
           
