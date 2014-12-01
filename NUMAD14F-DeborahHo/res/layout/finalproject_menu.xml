@@ -12,12 +12,14 @@
         android:text="Day 01"
         android:textSize="35dp" />
     
-    <TextView 
-        android:id="@+id/crunchy_completed_workout_text" 
+    <TextView
+        android:id="@+id/crunchy_completed_workout_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="You have completed your work-out for today!" />"
+        android:text="You have completed your work-out for today!"
+        android:textSize="20dp" />
+"
     
     <Button 
         android:id="@+id/share_facebook_button"

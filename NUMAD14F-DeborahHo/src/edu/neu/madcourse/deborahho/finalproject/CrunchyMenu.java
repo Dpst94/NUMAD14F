@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import edu.neu.madcourse.deborahho.R;
 
-public class Menu extends Activity implements OnClickListener{
+public class CrunchyMenu extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,17 +30,25 @@ public class Menu extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
     	case R.id.share_facebook_button:
-//    		Intent i = new Intent(this, Game.class);//TutorialFriends.class);
-//    		startActivity(i);
+    		Intent i = new Intent(this, ShareOnFacebook.class);
+    		startActivity(i);
     		break;
-    	case R.id.challenge_friends_button:
-    		break;
-    	case R.id.team_up_friends_button:
-    		break;
-    	case R.id.view_scores_button:
-    		break;
-    	case R.id.check_schedule_button:
-    		break;
+//    	case R.id.challenge_friends_button:
+//    		Intent j = new Intent(this, ChallengeFriends.class);
+//    		startActivity(j);
+//    		break;
+//    	case R.id.team_up_friends_button:
+//    		Intent k = new Intent(this, TeamUpWithFriends.class);
+//    		startActivity(k);
+//    		break;
+//    	case R.id.view_scores_button:
+//    		Intent l = new Intent(this, ViewScores.class);
+//    		startActivity(l);
+//    		break;
+//    	case R.id.check_schedule_button:
+//    		Intent m = new Intent(this, CheckOutSchedule.class);
+//    		startActivity(m);
+//    		break;
 		}
     		
 		

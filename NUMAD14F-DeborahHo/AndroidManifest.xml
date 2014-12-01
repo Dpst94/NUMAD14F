@@ -184,15 +184,52 @@
         
         <activity
             android:name="edu.neu.madcourse.deborahho.finalproject.TutorialFriends"
+            android:icon="@drawable/crunchy_transparent"
             android:label="@string/crunchy_label"
             android:screenOrientation="portrait"/>
         <activity
             android:name="edu.neu.madcourse.deborahho.finalproject.TutorialSpecialFeatures"
+            android:icon="@drawable/crunchy_transparent"
             android:label="@string/crunchy_label"
             android:screenOrientation="portrait"/>
         <activity
             android:name="edu.neu.madcourse.deborahho.finalproject.Game"
+            android:icon="@drawable/crunchy_transparent"
             android:label="@string/crunchy_label"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.CrunchyMenu"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/crunchy_label"
+            android:screenOrientation="portrait"/>
+        
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.ShareOnFacebook"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/share_facebook_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.ChallengeFriends"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/challenge_friends_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.TeamUpWithFriends"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/team_up_friends_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.ViewScores"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/view_scores_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalprojectCheckOutSchedule"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/check_schedule_label"
+            android:screenOrientation="portrait"/>
+        
+            
+            
     </application>
 </manifest>
