@@ -1,0 +1,7 @@
+diff a/NUMAD14F-DeborahHo/project.properties b/NUMAD14F-DeborahHo/project.properties	(rejected hunks)
+@@ -12,5 +12,4 @@
+ 
+ # Project target.
+ target=Google Inc.:Google APIs:19
+-android.library.reference.1=../GcmDemo/google-play-services_lib
+ android.library.reference.1=../../workspace/google-play-services_lib
