@@ -1,66 +1,183 @@
 package edu.neu.madcourse.deborahho.trickiestpart;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 import edu.neu.madcourse.deborahho.R;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import android.hardware.Camera.ShutterCallback;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.Toast;
+
 public class TrickiestPartTakePicture extends Activity {
+	private static final String TAG = "CamTestActivity";
+	Preview preview;
+	Button buttonClick;
+	Camera camera;
+	Activity act;
+	Context context;
 
-   private Camera cameraObject;
-   private ShowCamera showCamera;
-   private ImageView pic;
-   public static Camera isCameraAvailiable(){
-      Camera object = null;
-      try {
-         object = Camera.open(); 
-      }
-      catch (Exception e){
-      }
-      return object; 
-   }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		context = this;
+		act = this;
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-   private PictureCallback capturedIt = new PictureCallback() {
+		setContentView(R.layout.trickiestpart_take_picture);
 
-      @Override
-      public void onPictureTaken(byte[] data, Camera camera) {
+		preview = new Preview(this, (SurfaceView)findViewById(R.id.surfaceView));
+		preview.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		((FrameLayout) findViewById(R.id.layout)).addView(preview);
+		preview.setKeepScreenOn(true);
 
-      Bitmap bitmap = BitmapFactory.decodeByteArray(data , 0, data .length);
-      if(bitmap==null){
-         Toast.makeText(getApplicationContext(), "not taken", Toast.LENGTH_SHORT).show();
-      }
-      else
-      {
-         Toast.makeText(getApplicationContext(), "taken", Toast.LENGTH_SHORT).show();    	
-      }
-      cameraObject.release();
-   }
-};
+		preview.setOnClickListener(new OnClickListener() {
 
-   @Override
-   protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      setContentView(R.layout.trickiestpart_take_picture);
-      pic = (ImageView)findViewById(R.id.imageView1);
-      cameraObject = isCameraAvailiable();
-      showCamera = new ShowCamera(this, cameraObject);
-      FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-      preview.addView(showCamera);
-   }
-   public void snapIt(View view){
-      cameraObject.takePicture(null, null, capturedIt);
-   }
+			@Override
+			public void onClick(View arg0) {
+				camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+			}
+		});
 
-   @Override
-   public boolean onCreateOptionsMenu(Menu menu) {
-      //getMenuInflater().inflate(R.menu.main, menu);
-      return true;
-   }
+		Toast.makeText(context, getString(R.string.take_photo_help), Toast.LENGTH_LONG).show();
+
+		//		buttonClick = (Button) findViewById(R.id.btnCapture);
+		//		
+		//		buttonClick.setOnClickListener(new OnClickListener() {
+		//			public void onClick(View v) {
+		////				preview.camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+		//				camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+		//			}
+		//		});
+		//		
+		//		buttonClick.setOnLongClickListener(new OnLongClickListener(){
+		//			@Override
+		//			public boolean onLongClick(View arg0) {
+		//				camera.autoFocus(new AutoFocusCallback(){
+		//					@Override
+		//					public void onAutoFocus(boolean arg0, Camera arg1) {
+		//						//camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+		//					}
+		//				});
+		//				return true;
+		//			}
+		//		});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		int numCams = Camera.getNumberOfCameras();
+		if(numCams > 0){
+			try{
+				camera = Camera.open(1);
+				camera.startPreview();
+				preview.setCamera(camera);
+			} catch (RuntimeException ex){
+				Toast.makeText(context, getString(R.string.camera_not_found), Toast.LENGTH_LONG).show();
+			}
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		if(camera != null) {
+			camera.stopPreview();
+			preview.setCamera(null);
+			camera.release();
+			camera = null;
+		}
+		super.onPause();
+	}
+
+	private void resetCam() {
+		camera.startPreview();
+		preview.setCamera(camera);
+	}
+
+	private void refreshGallery(File file) {
+		Intent mediaScanIntent = new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+		mediaScanIntent.setData(Uri.fromFile(file));
+		sendBroadcast(mediaScanIntent);
+	}
+
+	ShutterCallback shutterCallback = new ShutterCallback() {
+		public void onShutter() {
+			//			 Log.d(TAG, "onShutter'd");
+		}
+	};
+
+	PictureCallback rawCallback = new PictureCallback() {
+		public void onPictureTaken(byte[] data, Camera camera) {
+			//			 Log.d(TAG, "onPictureTaken - raw");
+		}
+	};
+
+	PictureCallback jpegCallback = new PictureCallback() {
+		public void onPictureTaken(byte[] data, Camera camera) {
+			new SaveImageTask().execute(data);
+			resetCam();
+			Log.d(TAG, "onPictureTaken - jpeg");
+		}
+	};
+
+	private class SaveImageTask extends AsyncTask<byte[], Void, Void> {
+
+		@Override
+		protected Void doInBackground(byte[]... data) {
+			FileOutputStream outStream = null;
+
+			// Write to SD Card
+			try {
+				File sdCard = Environment.getExternalStorageDirectory();
+				File dir = new File (sdCard.getAbsolutePath() + "/crunchy");
+				dir.mkdirs();				
+
+				String fileName = String.format("%d.jpg", System.currentTimeMillis());
+				File outFile = new File(dir, fileName);
+
+				outStream = new FileOutputStream(outFile);
+				outStream.write(data[0]);
+				outStream.flush();
+				outStream.close();
+
+				Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length + " to " + outFile.getAbsolutePath());
+
+				refreshGallery(outFile);
+				
+				Uri uri = Uri.fromFile(outFile);
+				String imgpath = Uploader.getPath(context, uri);
+				Log.d("IMGPATH",imgpath);
+				Uploader.uploadFile(imgpath);
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+			}
+			return null;
+		}
+
+	}
 }

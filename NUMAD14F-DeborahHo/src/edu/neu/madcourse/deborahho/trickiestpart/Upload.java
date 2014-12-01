@@ -1,8 +1,6 @@
 package edu.neu.madcourse.deborahho.trickiestpart;
 import edu.neu.madcourse.deborahho.R;
 
-
-
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;

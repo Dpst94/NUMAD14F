@@ -156,6 +156,7 @@
 	<string name="check_schedule_label">Check out Schedule</string>
 	
 	<string name="share_fb_not_logged_in_text">In order to share your work-out on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
+<<<<<<< HEAD
 	<string name="login_facebook_label">Log in with Facebook</string>  
 	<string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>  
 	<string name="post_wall_facebook_label">Post to Wall</string> 
@@ -164,4 +165,10 @@
 	
 	<string name="facebook_app_id">1495717887358201</string>
 
+=======
+	<string name="login_facebook_label">Log in with Facebook</string>    
+	    <!-- Toast Messages -->
+    <string name="camera_not_found">No camera harware found</string>
+    <string name="take_photo_help">Touch anywhere on screen to take picture</string>
+>>>>>>> 57787b34bedf88db9367886e591f6f8a84263168
 </resources>
