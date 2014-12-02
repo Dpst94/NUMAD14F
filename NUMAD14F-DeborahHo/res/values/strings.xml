@@ -137,33 +137,34 @@
 	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url></string>
     <string name="title_activity_upload">TrickiestPartUpload</string>
     <string name="finalproject_label">Final Project</string>
-	<string name="crunchy_label">Crunchy</string>
-	<string name="crunchy_app_name">MAD14F-Crunchy</string>
-	<string name="finalproject_description_text">\<b>App Description:</b>\nAre you tired of working out alone, but you can’t go to the gym with your friends? 
+    <string name="crunchy_label">Crunchy</string>
+    <string name="crunchy_app_name">MAD14F-Crunchy</string>
+    <string name="finalproject_description_text">\<b>App Description:</b>\nAre you tired of working out alone, but you can’t go to the gym with your friends? 
 	    With Crunchy you can work out with your friends from anywhere. Using Crunchy, you can invite your friends to compete with you every day. 
 	    You can also team up and compete against other teams together. After a nice workout you can share your performance on Facebook to help your friends get motivated. 
 	    All you have to do is run the app, put it on the floor behind your head and start doing crunches.</string>
-	    
-	<string name="start_crunchy_label">Start Crunchy</string>
-	<string name="finalproject_main_screen_text">Start doing daily crunches!</string>
-	<string name="back_label">Go Back</string>
-	<string name="menu_label">Go To Menu</string>
-	
-	<string name="share_facebook_label">Share on Facebook</string>
-	<string name="challenge_friends_label">Challenge Friends</string>
-	<string name="team_up_friends_label"> Team up with Friends</string>
-	<string name="view_scores_label">View Scores</string>
-	<string name="check_schedule_label">Check out Schedule</string>
-	
-	<string name="share_fb_not_logged_in_text">In order to share your work-out on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
-	<string name="login_facebook_label">Log in with Facebook</string>  
-	<string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>  
-	<string name="post_wall_facebook_label">Post to Wall</string> 
-	
-	<string name="send_audio_label">Send Audio Snippet</string>
-	
-	<string name="facebook_app_id">1495717887358201</string>  
-	    <!-- Toast Messages -->
+    <string name="start_crunchy_label">Start Crunchy</string>
+    <string name="finalproject_main_screen_text">Crunchy is a workout app. It helps you do crunches on a daily basis, easily using smart sensing!</string>
+    <string name="finalproject_tutorial_friends_text">To help you keep up your motivation, Crunchy lets you challenge your friends or invite them to team up and workout together!</string>
+    <string name="finalproject_tutorial_features_text"> While you are working out, Crunchy will play the inspirational messages that your friends left you.  </string>
+    <string name="finalproject_tutorial_pictures_text">During the workout, the app will take a couple of random pictures. You can check out your friend\'s pictures so you know they are not fooling you!</string>
+    <string name="back_label">Go Back</string>
+    <string name="menu_label">Go To Menu</string>
+    <string name="share_facebook_label">Share on Facebook</string>
+    <string name="challenge_friends_label">Challenge Friends</string>
+    <string name="team_up_friends_label"> Team up with Friends</string>
+    <string name="view_scores_label">View Scores</string>
+    <string name="check_schedule_label">Check out Schedule</string>
+    <string name="share_fb_not_logged_in_text">In order to share your work-out on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
+    <string name="login_facebook_label">Log in with Facebook</string>
+    <string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
+    <string name="post_wall_facebook_label">Post to Wall</string>
+    <string name="send_audio_label">Send Audio Snippet</string>
+    <string name="facebook_app_id">1495717887358201</string>
+    <!-- Toast Messages -->
     <string name="camera_not_found">No camera harware found</string>
     <string name="take_photo_help">Touch anywhere on screen to take picture</string>
+    <string name="title_activity_tutorial_pictures">Crunchy</string>
+
 </resources>
+

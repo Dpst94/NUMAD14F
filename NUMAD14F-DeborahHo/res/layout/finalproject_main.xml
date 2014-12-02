@@ -6,31 +6,32 @@
     android:padding="10dip" >
 
     <TextView
-        android:id="@+id/finalproject_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="54dp"
-        android:text="@string/finalproject_main_screen_text" />
-
-    <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
         android:text="@string/crunchy_label"
         android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/finalproject_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/finalproject_main_screen_text"
+        android:textSize="28dp" />
 
     <Button
         android:id="@+id/finalproject_next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="58dp" 
-        android:text="@string/next_label"/>
+        android:layout_marginBottom="25dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="@string/next_label" />
 
 </RelativeLayout>

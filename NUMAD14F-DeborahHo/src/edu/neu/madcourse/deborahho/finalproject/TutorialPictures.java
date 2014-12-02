@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import edu.neu.madcourse.deborahho.R;
 
-public class TutorialFriends extends Activity implements OnClickListener{
+public class TutorialPictures extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.finalproject_tutorial_friends);
+		setContentView(R.layout.finalproject_tutorial_pictures);
 		
 		View nextButton = findViewById(R.id.finalproject_next_button);
         nextButton.setOnClickListener(this);
@@ -22,7 +22,7 @@ public class TutorialFriends extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
     	case R.id.finalproject_next_button:
-    		Intent i = new Intent(this, TutorialSpecialFeatures.class);
+    		Intent i = new Intent(this, Game.class);
     		startActivity(i);
     		break;
 		}

@@ -23,7 +23,7 @@ public class Main extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
     	case R.id.finalproject_next_button:
-    		Intent i = new Intent(this, Game.class);//TutorialFriends.class);
+    		Intent i = new Intent(this, TutorialFriends.class);//Game.class);
     		startActivity(i);
     		break;
 		}

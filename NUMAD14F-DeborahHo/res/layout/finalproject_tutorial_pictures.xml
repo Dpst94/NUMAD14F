@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:text="@string/finalproject_tutorial_friends_text"
+        android:text="@string/finalproject_tutorial_pictures_text"
         android:textSize="28dp" />
 
     <TextView

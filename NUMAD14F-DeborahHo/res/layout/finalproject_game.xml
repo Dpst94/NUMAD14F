@@ -37,15 +37,6 @@
         android:gravity="center"
         android:textSize="24dp"/>
 
-    <ImageView
-        android:id="@+id/micImage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/view2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:src="@android:drawable/presence_audio_online" />
-
     <View
         android:id="@+id/view1"
         android:layout_width="fill_parent"
@@ -87,5 +78,14 @@
         android:layout_above="@+id/finalproject_back_button"
         android:layout_alignParentLeft="true"
         android:background="#c0c0c0" />
+
+    <ImageView
+        android:id="@+id/crunch_sketch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@+id/view1"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/view2"
+        android:src="@drawable/crunch_sketch" />
 
 </RelativeLayout>
