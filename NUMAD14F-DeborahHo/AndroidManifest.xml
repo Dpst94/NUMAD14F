@@ -235,7 +235,12 @@
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/check_schedule_label"
             android:screenOrientation="portrait" />
-        
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.Pictures"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/title_activity_pictures" 
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

@@ -149,6 +149,7 @@
     <string name="finalproject_tutorial_features_text"> While you are working out, Crunchy will play the inspirational messages that your friends left you.  </string>
     <string name="finalproject_tutorial_pictures_text">During the workout, the app will take a couple of random pictures. You can check out your friend\'s pictures so you know they are not fooling you!</string>
     <string name="back_label">Go Back</string>
+    <string name="previous_label">Previous</string>
     <string name="menu_label">Go To Menu</string>
     <string name="share_facebook_label">Share on Facebook</string>
     <string name="challenge_friends_label">Challenge Friends</string>
@@ -165,6 +166,6 @@
     <string name="camera_not_found">No camera harware found</string>
     <string name="take_photo_help">Touch anywhere on screen to take picture</string>
     <string name="title_activity_tutorial_pictures">Crunchy</string>
+    <string name="title_activity_pictures">Gallery</string>
 
 </resources>
-

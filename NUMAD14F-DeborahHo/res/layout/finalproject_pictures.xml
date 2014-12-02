@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="${relativePackage}.${activityClass}" >
+    
+    <TextView
+        android:id="@+id/finalproject_name_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/finalproject_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/back_label" />
+
+    <ImageView
+        android:id="@+id/finalproject_picture"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@+id/finalproject_previous_button"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/finalproject_name_picture" />
+
+    <Button
+        android:id="@+id/finalproject_previous_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/finalproject_back_button"
+        android:layout_alignParentLeft="true"
+        android:text="@string/previous_label" />
+
+    <Button
+        android:id="@+id/finalproject_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/finalproject_back_button"
+        android:layout_alignParentRight="true"
+        android:text="@string/next_label" />
+
+</RelativeLayout>
