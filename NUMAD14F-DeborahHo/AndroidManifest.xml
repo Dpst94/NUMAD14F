@@ -193,8 +193,7 @@
             android:name=".finalproject.TutorialPictures"
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/crunchy_label"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".finalproject.Game"
             android:icon="@drawable/crunchy_transparent"
@@ -231,16 +230,10 @@
             android:label="@string/view_scores_label"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".finalprojectCheckOutSchedule"
+            android:name=".finalproject.CheckOutSchedule"
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/check_schedule_label"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="edu.neu.madcourse.deborahho.finalproject.Pictures"
-            android:icon="@drawable/crunchy_transparent"
-            android:label="@string/title_activity_pictures" 
-            android:screenOrientation="portrait" >
-        </activity>
     </application>
 
 </manifest>

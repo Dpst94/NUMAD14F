@@ -156,7 +156,7 @@
     <string name="team_up_friends_label"> Team up with Friends</string>
     <string name="view_scores_label">View Scores</string>
     <string name="check_schedule_label">Check out Schedule</string>
-    <string name="share_fb_not_logged_in_text">In order to share your work-out on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
+    <string name="share_fb_not_logged_in_text">In order to share your workout on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
     <string name="login_facebook_label">Log in with Facebook</string>
     <string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
     <string name="post_wall_facebook_label">Post to Wall</string>

@@ -48,10 +48,10 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 //    		Intent l = new Intent(this, ViewScores.class);
 //    		startActivity(l);
 //    		break;
-//    	case R.id.check_schedule_button:
-//    		Intent m = new Intent(this, CheckOutSchedule.class);
-//    		startActivity(m);
-//    		break;
+    	case R.id.check_schedule_button:
+    		Intent m = new Intent(this, CheckOutSchedule.class);
+    		startActivity(m);
+    		break;
     	case R.id.finalproject_back_button:
 			finish();
 			break;
