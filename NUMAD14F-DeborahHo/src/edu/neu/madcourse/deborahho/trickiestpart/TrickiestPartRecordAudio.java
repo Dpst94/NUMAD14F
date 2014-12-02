@@ -1,13 +1,16 @@
 package edu.neu.madcourse.deborahho.trickiestpart;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.mhealth.api.KeyValueAPI;
 
 import java.io.IOException;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -112,6 +115,17 @@ public class TrickiestPartRecordAudio extends Activity{
 	      stopBtn.setEnabled(false);
 	      playBtn.setEnabled(true);
 	      text.setText("Recording Point: Stop recording");
+	      new AsyncTask<Void, Void, String>() {
+				@Override
+				protected String doInBackground(Void... params) {
+
+				      Uploader.uploadFile(outputFile);
+				      return "uploaded";
+				}
+				@Override
+				protected void onPostExecute(String msg) {
+				}
+			}.execute(null, null, null);
 	      
 	      Toast.makeText(getApplicationContext(), "Stop recording...",
 	    		  Toast.LENGTH_SHORT).show();
