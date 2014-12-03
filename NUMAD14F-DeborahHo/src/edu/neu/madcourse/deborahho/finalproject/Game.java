@@ -20,8 +20,6 @@ import android.hardware.SensorManager;
 public class Game extends Activity implements OnClickListener,
 		SensorEventListener {
 
-	public static final String DAY_PREFS = "DayNumber";
-
 	TextView mCurrentDay;
 	TextView mNrOfCrunches;
 	TextView mCountdownCrunches;
@@ -29,17 +27,16 @@ public class Game extends Activity implements OnClickListener,
 	private SensorManager sensorManager = null;
 	private Sensor currentSensor = null;
 	float currentLux = 0;
+	long oldSeconds = 0;
+	long currentSeconds;
+	long differenceInSeconds;	
+
 	boolean crunchDown = false;
 	int nrOfCrunches = 10;
 	int nrOfRepetitions = 1;
-	long oldSeconds = 0;
-	long currentSeconds;
-	long differenceInSeconds;
-	Calendar c;
-	static final int limitLux = 10;
-	static final int limitMilliSecBetweenCrunches = 1500;
-
+	
 	int day_nb = 1;
+	Calendar c;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,33 +46,73 @@ public class Game extends Activity implements OnClickListener,
 		mCurrentDay = (TextView) findViewById(R.id.crunchy_current_day);
 		mNrOfCrunches = (TextView) findViewById(R.id.crunchy_nr_of_crunches);
 		mCountdownCrunches = (TextView) findViewById(R.id.crunchy_countdown_crunches);
+		
+		c = Calendar.getInstance();
 
 		// Restore day number
-		SharedPreferences schedule = getSharedPreferences(DAY_PREFS, 0);
+		SharedPreferences schedule = getSharedPreferences(WorkOutConstants.DAY_PREFS, 0);
 		day_nb = schedule.getInt("day_nb", 1);
-
-		nrOfCrunches = WorkOutConstants.day[day_nb-1];
-		nrOfRepetitions = WorkOutConstants.repetition[day_nb-1];
 		
-		mCurrentDay.append("Day " + day_nb);
-		mNrOfCrunches.append("Do "+nrOfRepetitions+"x "+nrOfCrunches+" crunches");
-		mCountdownCrunches.append(nrOfCrunches+" CRUNCHES TO GO");
+		if (day_nb == 1) {
+			
+			nrOfCrunches = WorkOutConstants.DAY[0];
+			nrOfRepetitions = WorkOutConstants.REPITITIONS[0];
 
-		View nextButton = findViewById(R.id.finalproject_menu_button);
-		nextButton.setOnClickListener(this);
-		View backButton = findViewById(R.id.finalproject_back_button);
-		backButton.setOnClickListener(this);
+			mCurrentDay.append("Day " + day_nb);
+			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
+					+ " crunches");
+			mCountdownCrunches.append(nrOfCrunches + " CRUNCHES TO GO");
 
-		c = Calendar.getInstance();
-		oldSeconds = c.getTimeInMillis();
-		sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-		currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-		if (currentSensor != null) {
-			sensorManager.registerListener(this, currentSensor,
-					SensorManager.SENSOR_DELAY_FASTEST);
+			View nextButton = findViewById(R.id.finalproject_menu_button);
+			nextButton.setOnClickListener(this);
+			View backButton = findViewById(R.id.finalproject_back_button);
+			backButton.setOnClickListener(this);
+			
+			oldSeconds = c.getTimeInMillis();
+			sensorManager = (SensorManager) this
+					.getSystemService(SENSOR_SERVICE);
+			currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+			if (currentSensor != null) {
+				sensorManager.registerListener(this, currentSensor,
+						SensorManager.SENSOR_DELAY_FASTEST);
+			} else {
+				Toast.makeText(this, "Can't initialize the LIGHT sensor.",
+						Toast.LENGTH_LONG).show();
+			}
+
 		} else {
-			Toast.makeText(this, "Can't initialize the LIGHT sensor.",
-					Toast.LENGTH_LONG).show();
+			
+			day_nb = c.get(Calendar.DAY_OF_YEAR) - day_nb;
+			//In case first day was December 25th and today is January 5th for example
+			if(day_nb < 0){
+				day_nb = 365 + day_nb;
+			}
+			
+			nrOfCrunches = WorkOutConstants.DAY[day_nb];
+			nrOfRepetitions = WorkOutConstants.REPITITIONS[day_nb];
+
+			mCurrentDay.append("Day " + day_nb+1);
+			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
+					+ " crunches");
+			mCountdownCrunches.append(nrOfCrunches + " CRUNCHES TO GO");
+
+			View nextButton = findViewById(R.id.finalproject_menu_button);
+			nextButton.setOnClickListener(this);
+			View backButton = findViewById(R.id.finalproject_back_button);
+			backButton.setOnClickListener(this);
+
+			oldSeconds = c.getTimeInMillis();
+			sensorManager = (SensorManager) this
+					.getSystemService(SENSOR_SERVICE);
+			currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+			if (currentSensor != null) {
+				sensorManager.registerListener(this, currentSensor,
+						SensorManager.SENSOR_DELAY_FASTEST);
+			} else {
+				Toast.makeText(this, "Can't initialize the LIGHT sensor.",
+						Toast.LENGTH_LONG).show();
+			}
+
 		}
 
 	}
@@ -117,7 +154,7 @@ public class Game extends Activity implements OnClickListener,
 
 		if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
 
-			if (event.values[0] < limitLux) {
+			if (event.values[0] < WorkOutConstants.LIMITLUX) {
 
 				if (!crunchDown) {
 
@@ -125,7 +162,7 @@ public class Game extends Activity implements OnClickListener,
 					currentSeconds = c.getTimeInMillis();
 
 					differenceInSeconds = currentSeconds - oldSeconds;
-					if (differenceInSeconds > limitMilliSecBetweenCrunches) {
+					if (differenceInSeconds > WorkOutConstants.limitMilliSecBetweenCrunches) {
 						crunchDown = true;
 						nrOfCrunches--;
 
@@ -134,12 +171,19 @@ public class Game extends Activity implements OnClickListener,
 							mCountdownCrunches.setText(nrOfCrunches
 									+ " CRUNCHES TO GO");
 						} else {
-							// We need an Editor object to make preference
-							// changes.
+							if(day_nb == 1){
+								SharedPreferences schedule = getSharedPreferences(
+										WorkOutConstants.DAY_PREFS, 0);
+								SharedPreferences.Editor editor = schedule.edit();
+								editor.putInt("day_nb", c.get(Calendar.DAY_OF_YEAR));
+								editor.commit();
+							}
+							
+
 							SharedPreferences schedule = getSharedPreferences(
-									DAY_PREFS, 0);
+									WorkOutConstants.DONE_WORKOUT_PREFS, 0);
 							SharedPreferences.Editor editor = schedule.edit();
-							editor.putInt("day_nb", day_nb + 1);
+							editor.putInt(""+day_nb, WorkOutConstants.DONE);
 							editor.commit();
 
 							Music.playOnce(this, R.raw.beep);

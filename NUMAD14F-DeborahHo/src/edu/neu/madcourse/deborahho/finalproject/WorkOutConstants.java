@@ -2,6 +2,16 @@ package edu.neu.madcourse.deborahho.finalproject;
 
 public class WorkOutConstants
 {
-	public static final int day[]={10,12,16,9,12,10,12,16,13};
-	public static final int repetition[]={1,1,1,2,2,3,3,2,3};
+	public static final int DAY[]={10,12,16,9,12,10,12,16,13};
+	public static final int REPITITIONS[]={1,1,1,2,2,3,3,2,3};
+	
+	public static final String DAY_PREFS = "DayNumber";
+	public static final String DONE_WORKOUT_PREFS = "DoneWorkOut";
+	
+	public static final int DONE = 2;
+	public static final int MISS = 0;
+	public static final int UPCOMING = 1;
+	
+	static final int LIMITLUX = 10;
+	static final int limitMilliSecBetweenCrunches = 1500;
 }
