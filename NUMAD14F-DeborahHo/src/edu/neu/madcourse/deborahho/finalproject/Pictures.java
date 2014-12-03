@@ -12,8 +12,8 @@ public class Pictures extends Activity implements OnClickListener {
 	
 	ImageView iView;
 	TextView namePicture;
-	Integer img = R.drawable.panda_bunny;
-	Integer img2 = R.drawable.bunny_toothbrush;
+	Integer img = R.drawable.picture_correct;
+	Integer img2 = R.drawable.picture_false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class Pictures extends Activity implements OnClickListener {
 		iView = (ImageView) findViewById(R.id.finalproject_picture);
 		iView.setImageResource(img);
 		namePicture = (TextView) findViewById(R.id.finalproject_name_picture);
-		namePicture.setText("Pictures of Krish");
+		namePicture.setText("Pictures of Elyes");
 		
 		View nextButton = findViewById(R.id.finalproject_next_button);
         nextButton.setOnClickListener(this);

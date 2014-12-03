@@ -139,7 +139,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2 Times 8 Crunches"
+                android:text="1 Time 12 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -174,7 +174,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="1 Time 16 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -209,7 +209,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="2 Times 9 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -244,7 +244,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="2 Times 12 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -279,7 +279,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="3 Times 10 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -314,7 +314,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="3 Times 12 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -349,7 +349,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="2 Times 16 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -384,7 +384,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="3 Times 13 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -419,7 +419,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="4 Times 10 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -454,7 +454,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="4 Times 12 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -489,7 +489,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="4 Times 14 Crunches"
                 android:textSize="24sp" />
 
             <View
@@ -524,7 +524,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Time 10 Crunches"
+                android:text="3 Times 17 Crunches"
                 android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
