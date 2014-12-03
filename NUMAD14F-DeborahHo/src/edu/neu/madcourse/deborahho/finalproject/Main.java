@@ -1,5 +1,7 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,14 +22,27 @@ public class Main extends Activity implements OnClickListener {
 		// Check if the app has been used before
 		SharedPreferences first = getSharedPreferences(FIRST_OPEN_PREFS, 0);
 		never_opened = first.getBoolean("never_opened", true);
-
+		
+		int isDone;
+		Calendar c;
+		c = Calendar.getInstance();
+		SharedPreferences schedule = getSharedPreferences(WorkOutConstants.DAY_PREFS, 0);
+		int first_day = schedule.getInt("day_nb", 0);
+		if(first_day == 0){
+			isDone = 1;
+		}
+		else{
+			int day_nb = c.get(Calendar.DAY_OF_YEAR) - first_day;
+			SharedPreferences workout = getSharedPreferences(WorkOutConstants.DONE_WORKOUT_PREFS, 0);
+			isDone = workout.getInt(""+day_nb, WorkOutConstants.DONE);
+		}
 		if (never_opened == true) {
 			setTitle(R.string.crunchy_label);
 			setContentView(R.layout.finalproject_main);
 
 			View nextButton = findViewById(R.id.finalproject_next_button);
 			nextButton.setOnClickListener(this);
-		} else {
+		} else if(isDone == 1){
 			setTitle(R.string.crunchy_label);
 			setContentView(R.layout.finalproject_main_bis);
 
@@ -37,6 +52,9 @@ public class Main extends Activity implements OnClickListener {
 			startButton.setOnClickListener(this);
 			View backButton = findViewById(R.id.finalproject_back_button);
 			backButton.setOnClickListener(this);
+		}
+		else{
+			startActivity(new Intent(this, CrunchyMenu.class));
 		}
 
 	}

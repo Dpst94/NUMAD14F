@@ -35,7 +35,7 @@ public class Game extends Activity implements OnClickListener,
 	int nrOfCrunches = 10;
 	int nrOfRepetitions = 1;
 	
-	int day_nb = 1;
+	int day_nb = 0;
 	Calendar c;
 
 	@Override
@@ -51,14 +51,14 @@ public class Game extends Activity implements OnClickListener,
 
 		// Restore day number
 		SharedPreferences schedule = getSharedPreferences(WorkOutConstants.DAY_PREFS, 0);
-		day_nb = schedule.getInt("day_nb", 1);
+		day_nb = schedule.getInt("day_nb", 0);
 		
-		if (day_nb == 1) {
+		if (day_nb == 0) {
 			
 			nrOfCrunches = WorkOutConstants.DAY[0];
 			nrOfRepetitions = WorkOutConstants.REPITITIONS[0];
 
-			mCurrentDay.append("Day " + day_nb);
+			mCurrentDay.append("Day " + day_nb+1);
 			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
 					+ " crunches");
 			mCountdownCrunches.append(nrOfCrunches + " CRUNCHES TO GO");
@@ -171,14 +171,13 @@ public class Game extends Activity implements OnClickListener,
 							mCountdownCrunches.setText(nrOfCrunches
 									+ " CRUNCHES TO GO");
 						} else {
-							if(day_nb == 1){
+							if(day_nb == 0){
 								SharedPreferences schedule = getSharedPreferences(
 										WorkOutConstants.DAY_PREFS, 0);
 								SharedPreferences.Editor editor = schedule.edit();
 								editor.putInt("day_nb", c.get(Calendar.DAY_OF_YEAR));
 								editor.commit();
-							}
-							
+							}							
 
 							SharedPreferences schedule = getSharedPreferences(
 									WorkOutConstants.DONE_WORKOUT_PREFS, 0);
