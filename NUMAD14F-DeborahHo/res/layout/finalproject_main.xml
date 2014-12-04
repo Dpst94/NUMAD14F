@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
         android:text="@string/crunchy_label"
-        android:textSize="32dp" />
+        android:textSize="32sp" />
 
     <TextView
         android:id="@+id/finalproject_description"
@@ -23,7 +23,7 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:text="@string/finalproject_main_screen_text"
-        android:textSize="28dp" />
+        android:textSize="28sp" />
 
     <Button
         android:id="@+id/finalproject_next_button"

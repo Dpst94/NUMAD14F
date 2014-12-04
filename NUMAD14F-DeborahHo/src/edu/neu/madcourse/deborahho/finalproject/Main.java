@@ -54,6 +54,7 @@ public class Main extends Activity implements OnClickListener {
 			backButton.setOnClickListener(this);
 		}
 		else{
+			finish();
 			startActivity(new Intent(this, CrunchyMenu.class));
 		}
 

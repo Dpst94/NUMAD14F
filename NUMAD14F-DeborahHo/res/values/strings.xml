@@ -171,5 +171,7 @@
     
     <string name="start_crunches_label">Start Working Out</string>    
     <string name="go_to_menu_label">Go to Menu</string>
+    <string name="register">Register</string>
+    <string name="username_hint">Enter a username</string>
 
 </resources>

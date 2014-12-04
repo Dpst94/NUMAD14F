@@ -20,8 +20,7 @@
         android:layout_below="@+id/crunchy_current_day"
         android:layout_marginTop="18dp"
         android:gravity="center"
-        android:text="You have completed your workout for today!"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/crunchy_current_day"
@@ -31,8 +30,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Day 01"
-        android:textSize="35dp" />
+        android:textSize="35sp" />
 
     <Button
         android:id="@+id/view_scores_button"

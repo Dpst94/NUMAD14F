@@ -3,6 +3,7 @@ package edu.neu.madcourse.deborahho.finalproject;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -70,9 +71,16 @@ public class CrunchyMenu extends Activity implements OnClickListener{
     		startActivity(i);
     		break;
     	case R.id.challenge_friends_button:
-    		Intent j = new Intent(this, ChallengeFriends.class);
-    		startActivity(j);
-    		break;
+    		final SharedPreferences prefs = getSharedPreferences(Main.class.getSimpleName(),
+					Context.MODE_PRIVATE);;
+			String registrationId = prefs.getString("registration_id", "");
+			if (registrationId.isEmpty()) {
+				startActivity(new Intent(this, Register.class));
+				break;
+			}			
+			startActivity(new Intent(this, Users.class));
+			break;	
+    		
     	case R.id.team_up_friends_button:
     		Intent k = new Intent(this, Pictures.class);
     		startActivity(k);

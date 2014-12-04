@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,14 +15,18 @@ public class ViewScores extends Activity implements OnClickListener{
 	
 	TextView user01;
 	TextView score01;
+	Context context;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.finalproject_view_scores);
 		
-		user01 = (TextView) findViewById(R.id.username_01);		
-		user01.append("Debbie");
+		user01 = (TextView) findViewById(R.id.username_01);
+
+		context=getApplicationContext();
+		final SharedPreferences prefs = getGCMPreferences(context);
+		user01.append(prefs.getString("username", "Unknown"));
 		
 		score01 = (TextView) findViewById(R.id.score_01);		
 		score01.append(""+calculateScore());
@@ -71,5 +76,9 @@ public class ViewScores extends Activity implements OnClickListener{
 			}
 		}
 		return score;
+	}
+	private  SharedPreferences getGCMPreferences(Context context) {
+		return getSharedPreferences(Main.class.getSimpleName(),
+				Context.MODE_PRIVATE);
 	}
 }
