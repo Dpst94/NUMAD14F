@@ -35,7 +35,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1"
         android:gravity="center"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <View
         android:id="@+id/view1"
@@ -87,5 +87,17 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/view2"
         android:src="@drawable/crunch_sketch" />
+    <!-- Camera Layout -->
+
+    <FrameLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </FrameLayout>
 
 </RelativeLayout>
