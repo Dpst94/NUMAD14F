@@ -167,11 +167,10 @@
     <string name="take_photo_help">Touch anywhere on screen to take picture</string>
     <string name="title_activity_tutorial_pictures">Crunchy</string>
     <string name="title_activity_pictures">Gallery</string>
-    
-    
-    <string name="start_crunches_label">Start Working Out</string>    
+    <string name="start_crunches_label">Start Working Out</string>
     <string name="go_to_menu_label">Go to Menu</string>
     <string name="register">Register</string>
     <string name="username_hint">Enter a username</string>
+    <string name="title_activity_record_audio">Record Audio</string>
 
 </resources>

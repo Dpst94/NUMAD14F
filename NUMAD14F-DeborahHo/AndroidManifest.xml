@@ -239,16 +239,22 @@
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/title_activity_pictures"
             android:screenOrientation="portrait" />
-            <activity
+        <activity
             android:name=".finalproject.Register"
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/title_activity_pictures"
             android:screenOrientation="portrait" />
-            <activity
+        <activity
             android:name=".finalproject.Users"
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/title_activity_pictures"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".finalproject.RecordAudio"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/title_activity_record_audio" 
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
