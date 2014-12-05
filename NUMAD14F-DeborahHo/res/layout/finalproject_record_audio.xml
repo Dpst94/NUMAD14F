@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity" >
+   
+   <LinearLayout  android:layout_width="match_parent"
+   		android:layout_height="wrap_content"
+   		android:layout_marginTop="10dp"
+   		android:layout_below="@+id/linear1"
+   		android:id="@+id/linear2"
+   		android:orientation="horizontal" >
+
+	</LinearLayout>
+
+   <Button
+       android:id="@+id/listen_recording"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/start"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="15dp"
+       android:enabled="false"
+       android:text="Listen to Recording" />
+
+   <LinearLayout
+       android:id="@+id/linear1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="26dp"
+       android:orientation="horizontal" >
+   </LinearLayout>
+
+   <TextView
+       android:id="@+id/receiver_audio_snippet"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/linear1"
+       android:gravity="center"
+       android:textAppearance="?android:attr/textAppearanceMedium" />
+
+   <Button
+       android:id="@+id/start"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:text="Hold and Record" />
+
+   <ImageView
+       android:id="@+id/micImage"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       android:layout_below="@+id/linear2"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="28dp"
+       android:src="@android:drawable/presence_audio_online" />
+
+   <Button
+       android:id="@+id/send_recording"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignRight="@+id/listen_recording"
+       android:layout_below="@+id/listen_recording"
+       android:layout_marginTop="15dp"
+       android:enabled="false"
+       android:text="Send Audio Snippet" />
+   
+   <Button
+        android:id="@+id/finalproject_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/back_label" />
+
+</RelativeLayout>
