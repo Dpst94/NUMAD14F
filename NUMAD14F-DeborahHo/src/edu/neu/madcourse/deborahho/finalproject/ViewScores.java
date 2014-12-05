@@ -77,6 +77,7 @@ public class ViewScores extends Activity implements OnClickListener{
 		}
 		return score;
 	}
+	
 	private  SharedPreferences getGCMPreferences(Context context) {
 		return getSharedPreferences(Main.class.getSimpleName(),
 				Context.MODE_PRIVATE);

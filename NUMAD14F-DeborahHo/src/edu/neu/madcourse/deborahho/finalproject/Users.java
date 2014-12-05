@@ -53,11 +53,10 @@ public class Users extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.finalproject_users);
-		
+		getUsersList();
 
 		context = getApplicationContext();
 		final ListView listview = (ListView) findViewById(R.id.listview);
-		getUsersList();
 		
 		for (int i = 0; i < usersList.length; ++i) {
 			list.add(usersList[i]);
@@ -70,7 +69,7 @@ public class Users extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				receiver = (String) parent.getItemAtPosition(position);	
-				sendMessage("Click to join the Game");
+				sendMessage("You received a challenge request!");
 				Intent i = new Intent(context, CrunchyMenu.class);
 				finish();
 				startActivity(i);
@@ -138,14 +137,6 @@ public class Users extends Activity {
 		String registrationId = prefs.getString(PROPERTY_REG_ID, "");
 		if (registrationId.isEmpty()) {
 			Log.i(TAG, "Registration not found.");
-			return "";
-		}
-		int registeredVersion = prefs.getInt(PROPERTY_APP_VERSION,
-				Integer.MIN_VALUE);
-		Log.i(TAG, String.valueOf(registeredVersion));
-		int currentVersion = getAppVersion(context);
-		if (registeredVersion != currentVersion) {
-			Log.i(TAG, "App version changed.");
 			return "";
 		}
 		return registrationId;

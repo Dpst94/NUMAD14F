@@ -91,7 +91,7 @@ public class Game extends Activity implements OnClickListener,
 			nrOfCrunches = WorkOutConstants.DAY[day_nb];
 			nrOfRepetitions = WorkOutConstants.REPITITIONS[day_nb];
 
-			mCurrentDay.append("Day " + day_nb+1);
+			mCurrentDay.append("Day " + (day_nb+1));
 			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
 					+ " crunches");
 			mCountdownCrunches.append(nrOfCrunches + " CRUNCHES TO GO");

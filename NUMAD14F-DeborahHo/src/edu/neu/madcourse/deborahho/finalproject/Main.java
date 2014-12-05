@@ -34,7 +34,7 @@ public class Main extends Activity implements OnClickListener {
 		else{
 			int day_nb = c.get(Calendar.DAY_OF_YEAR) - first_day;
 			SharedPreferences workout = getSharedPreferences(WorkOutConstants.DONE_WORKOUT_PREFS, 0);
-			isDone = workout.getInt(""+day_nb, WorkOutConstants.DONE);
+			isDone = workout.getInt(""+day_nb, WorkOutConstants.UPCOMING);
 		}
 		if (never_opened == true) {
 			setTitle(R.string.crunchy_label);
@@ -80,7 +80,5 @@ public class Main extends Activity implements OnClickListener {
 			finish();
 			break;
 		}
-
 	}
-
 }
