@@ -51,7 +51,7 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 		else{
 			day_nb = c.get(Calendar.DAY_OF_YEAR) - first_day;
 			SharedPreferences workout = getSharedPreferences(WorkOutConstants.DONE_WORKOUT_PREFS, 0);
-			isDone = workout.getInt(""+day_nb, WorkOutConstants.DONE);
+			isDone = workout.getInt(""+day_nb, WorkOutConstants.UPCOMING);
 		}
 		
 		dayText.setText("Day "+(day_nb+1));

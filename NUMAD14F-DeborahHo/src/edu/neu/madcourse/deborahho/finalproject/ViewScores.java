@@ -69,10 +69,11 @@ public class ViewScores extends Activity implements OnClickListener{
 			else if(isDone==0){
 				score = score - 5;
 			}
-			else{
+			else if(i != today){
 				SharedPreferences.Editor editor = workout.edit();
 				editor.putInt(""+i, WorkOutConstants.MISS);
 				editor.commit();
+				score = score - 5;
 			}
 		}
 		return score;
