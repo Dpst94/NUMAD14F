@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 public class CheckOutSchedule extends Activity implements OnClickListener{
@@ -23,31 +22,6 @@ public class CheckOutSchedule extends Activity implements OnClickListener{
 	Integer[] icons = new Integer[WorkOutConstants.DAY.length];
 	int day;
 	int isDone;
-	
-//	  String[] web = {
-//	    "Google Plus",
-//	      "Twitter \n Hello World",
-//	      "Windows",
-//	      "Bing",
-//	      "Itunes",
-//	      "Wordpress",
-//	      "Drupal"
-//	  } ;
-//	  Integer[] imageId = {
-//	      R.drawable.check,
-//	      R.drawable.check,
-//	      R.drawable.miss,
-//	      R.drawable.check,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming,
-//	      R.drawable.upcoming
-//	  };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +55,8 @@ public class CheckOutSchedule extends Activity implements OnClickListener{
 			case WorkOutConstants.DONE:
 				icons[i]=R.drawable.check;
 				break;
-			}
-			
-		}
-		
+			}			
+		}		
 	}
 
 	@Override

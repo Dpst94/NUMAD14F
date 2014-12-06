@@ -2,7 +2,6 @@ package edu.neu.madcourse.deborahho.finalproject;
 
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.trickiestpart.Uploader;
-import edu.neu.mhealth.api.KeyValueAPI;
 
 import java.io.IOException;
 import android.media.MediaPlayer;

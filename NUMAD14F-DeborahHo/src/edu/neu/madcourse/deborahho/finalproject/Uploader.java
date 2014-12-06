@@ -1,7 +1,5 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
-import edu.neu.madcourse.deborahho.R;
-
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
@@ -20,7 +17,6 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class Uploader {

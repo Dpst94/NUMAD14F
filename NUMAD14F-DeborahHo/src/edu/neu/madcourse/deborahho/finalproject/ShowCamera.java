@@ -24,8 +24,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         super(context);
 
         mSurfaceView = sv;
-//        addView(mSurfaceView);
-       
+//        addView(mSurfaceView);       
         mHolder = mSurfaceView.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);

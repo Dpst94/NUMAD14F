@@ -73,6 +73,7 @@ public class Main extends Activity implements OnClickListener {
 			break;
 
 		case R.id.finalproject_start_button:
+			finish();
 			startActivity(new Intent(this, Game.class));
 			break;
 			

@@ -66,6 +66,8 @@ public class Game extends Activity implements OnClickListener,
 	Camera camera;
 	Activity act;
 	Context context;
+	
+	int timeToTakePicture = 0;
 
 
 	@Override
@@ -85,13 +87,13 @@ public class Game extends Activity implements OnClickListener,
 		((FrameLayout) findViewById(R.id.layout)).addView(preview);
 		preview.setKeepScreenOn(true);
 
-		preview.setOnClickListener(new OnClickListener() {
+		/*preview.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				camera.takePicture(shutterCallback, rawCallback, jpegCallback);
 			}
-		});
+		});*/
 
 		Toast.makeText(context, getString(R.string.take_photo_help), Toast.LENGTH_LONG).show();
 		
@@ -236,6 +238,11 @@ public class Game extends Activity implements OnClickListener,
 
 						if (nrOfCrunches > 0) {
 							Music.playOnce(this, R.raw.beep);
+							if(timeToTakePicture == 4){
+								camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+								timeToTakePicture = 0;
+							}
+							timeToTakePicture++;
 							mCountdownCrunches.setText(nrOfCrunches
 									+ " CRUNCHES TO GO");
 						} else {
