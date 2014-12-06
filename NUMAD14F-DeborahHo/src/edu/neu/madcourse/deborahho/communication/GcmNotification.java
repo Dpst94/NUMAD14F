@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.communication;
+/*package edu.neu.madcourse.deborahho.communication;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -133,4 +133,4 @@ public class GcmNotification {
 			}
 		}
 	}
-}
+}*/

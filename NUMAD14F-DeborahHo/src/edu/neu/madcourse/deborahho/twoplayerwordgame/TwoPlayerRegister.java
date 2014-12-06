@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.twoplayerwordgame;
+/*package edu.neu.madcourse.deborahho.twoplayerwordgame;
 
 import java.io.IOException;
 
@@ -334,4 +334,4 @@ public class TwoPlayerRegister extends Activity implements OnClickListener{
 	}
 
 
-}
+}*/

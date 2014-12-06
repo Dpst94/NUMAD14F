@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.communication;
+/*package edu.neu.madcourse.deborahho.communication;
 
 import edu.neu.madcourse.deborahho.R;
 
@@ -67,4 +67,4 @@ public class ComFindContacts extends Activity implements OnClickListener{
 		
 	}
 
-}
+}*/

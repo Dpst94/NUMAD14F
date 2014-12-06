@@ -3,9 +3,9 @@ package edu.neu.madcourse.deborahho;
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.sudoku.Sudoku;
 import edu.neu.madcourse.deborahho.trickiestpart.TrickiestPart;
-import edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerWordGame;
+//import edu.neu.madcourse.deborahho.twoplayerwordgame.TwoPlayerWordGame;
 import edu.neu.madcourse.deborahho.bananagrams.Bananagrams;
-import edu.neu.madcourse.deborahho.communication.Communication;
+//import edu.neu.madcourse.deborahho.communication.Communication;
 import edu.neu.madcourse.deborahho.dictionary.*;
 import edu.neu.madcourse.deborahho.finalproject.FinalProjectDescription;
 
@@ -83,14 +83,14 @@ public class MainActivity extends Activity implements OnClickListener {
     		Intent l = new Intent(this, Bananagrams.class);
     		startActivity(l);
     		break;
-    	case R.id.communication_button:
+    	/*case R.id.communication_button:
     		Intent m = new Intent(this, Communication.class);
     		startActivity(m);
-    		break;
-    	case R.id.twoplayer_button:
+    		break;*/
+    	/*case R.id.twoplayer_button:
     		Intent n = new Intent(this, TwoPlayerWordGame.class);
     		startActivity(n);
-    		break;
+    		break;*/
     	case R.id.trickiestpart_button:
     		Intent o = new Intent(this, TrickiestPart.class);
     		startActivity(o);

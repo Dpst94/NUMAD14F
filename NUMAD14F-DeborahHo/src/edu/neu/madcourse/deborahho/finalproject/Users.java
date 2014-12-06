@@ -68,8 +68,10 @@ public class Users extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
-				receiver = (String) parent.getItemAtPosition(position);	
+				receiver = (String) parent.getItemAtPosition(position);
+				Log.d("RECEIVER",receiver);
 				sendMessage("You received a challenge request!");
+				Toast.makeText(context, "You invited "+ receiver, Toast.LENGTH_LONG).show();
 				Intent i = new Intent(context, CrunchyMenu.class);
 				finish();
 				startActivity(i);

@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.communication;
+/*package edu.neu.madcourse.deborahho.communication;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -422,4 +422,4 @@ public class Communication extends Activity implements OnClickListener {
 			}
 		}.execute(null, null, null);
 	}
-}
+}*/

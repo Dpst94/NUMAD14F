@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.communication;
+/*package edu.neu.madcourse.deborahho.communication;
 
 public class CommunicationConstants
 {
@@ -13,4 +13,4 @@ public class CommunicationConstants
     public static final long GCM_TIME_TO_LIVE = 60L * 60L * 24L * 7L * 4L; // 4 Weeks
     public static int mode = 0;
     
-}
+}*/

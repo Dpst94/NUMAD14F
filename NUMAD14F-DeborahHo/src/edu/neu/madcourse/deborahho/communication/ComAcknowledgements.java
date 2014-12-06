@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.communication;
+/*package edu.neu.madcourse.deborahho.communication;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,4 +12,4 @@ public class ComAcknowledgements extends Activity {
 		
 	}
 
-}
+}*/

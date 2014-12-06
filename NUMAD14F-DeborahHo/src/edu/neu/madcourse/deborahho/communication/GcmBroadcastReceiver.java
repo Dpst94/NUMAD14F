@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.communication;
+/*package edu.neu.madcourse.deborahho.communication;
 
 import edu.neu.madcourse.deborahho.communication.GcmIntentService;
 import android.app.Activity;
@@ -15,4 +15,4 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 		startWakefulService(context, (intent.setComponent(comp)));
 		setResultCode(Activity.RESULT_OK);
 	}
-}
+}*/

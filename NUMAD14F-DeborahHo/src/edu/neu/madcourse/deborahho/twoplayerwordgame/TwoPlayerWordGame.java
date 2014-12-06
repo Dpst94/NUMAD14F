@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.twoplayerwordgame;
+/*package edu.neu.madcourse.deborahho.twoplayerwordgame;
 
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
@@ -54,4 +54,4 @@ public class TwoPlayerWordGame extends Activity implements OnClickListener {
 	private static final String TAG = "Two Player Word Game";
 	
 
-}
+}*/

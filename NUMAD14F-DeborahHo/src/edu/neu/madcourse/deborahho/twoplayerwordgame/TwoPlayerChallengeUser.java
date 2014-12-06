@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.twoplayerwordgame;
+/*package edu.neu.madcourse.deborahho.twoplayerwordgame;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -269,3 +269,4 @@ public class TwoPlayerChallengeUser extends Activity {
 		}.execute(null, null, null);
 	}
 }
+*/

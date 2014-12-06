@@ -1,4 +1,4 @@
-package edu.neu.madcourse.deborahho.twoplayerwordgame;
+/*package edu.neu.madcourse.deborahho.twoplayerwordgame;
 
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
@@ -42,4 +42,4 @@ public class TwoPlayerSelectGame extends Activity implements OnClickListener{
 		
 	}
 
-}
+}*/
