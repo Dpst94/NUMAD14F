@@ -1,63 +1,90 @@
+// source: http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
+
 package edu.neu.madcourse.deborahho.finalproject;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.finalproject.WorkOutConstants;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ListView;
 import android.widget.TextView;
+
 
 public class CheckOutSchedule extends Activity implements OnClickListener{
 	
-	TextView day01;
-	TextView day02;
-	TextView day03;
-	TextView day04;
-	TextView day05;
-	TextView day06;
-	TextView day07;
-	TextView day08;
-	TextView day09;
-	TextView day10;
-	TextView day11;
-	TextView day12;
-	TextView day13;
+	ListView list;
+	
+	SharedPreferences schedule;
+	String[] workout = new String[WorkOutConstants.DAY.length];
+	Integer[] icons = new Integer[WorkOutConstants.DAY.length];
+	int day;
+	int isDone;
+	
+//	  String[] web = {
+//	    "Google Plus",
+//	      "Twitter \n Hello World",
+//	      "Windows",
+//	      "Bing",
+//	      "Itunes",
+//	      "Wordpress",
+//	      "Drupal"
+//	  } ;
+//	  Integer[] imageId = {
+//	      R.drawable.check,
+//	      R.drawable.check,
+//	      R.drawable.miss,
+//	      R.drawable.check,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming,
+//	      R.drawable.upcoming
+//	  };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.finalproject_check_out_schedule);
-		
-		day01 = (TextView) findViewById(R.id.schedule_day_1);
-		day02 = (TextView) findViewById(R.id.schedule_day_2);
-		day03 = (TextView) findViewById(R.id.schedule_day_3);
-		day04 = (TextView) findViewById(R.id.schedule_day_4);
-		day05 = (TextView) findViewById(R.id.schedule_day_5);
-		day06 = (TextView) findViewById(R.id.schedule_day_6);
-		day07 = (TextView) findViewById(R.id.schedule_day_7);
-		day08 = (TextView) findViewById(R.id.schedule_day_8);
-		day09 = (TextView) findViewById(R.id.schedule_day_9);
-		day10 = (TextView) findViewById(R.id.schedule_day_10);
-		day11 = (TextView) findViewById(R.id.schedule_day_11);
-		day12 = (TextView) findViewById(R.id.schedule_day_12);
-		day13 = (TextView) findViewById(R.id.schedule_day_13);
-		
-		day01.append("Day 01");
-		day02.append("Day 02");
-		day03.append("Day 03");	
-		day04.append("Day 04");
-		day05.append("Day 05");
-		day06.append("Day 06");
-		day07.append("Day 07");
-		day08.append("Day 08");
-		day09.append("Day 09");
-		day10.append("Day 10");
-		day11.append("Day 11");
-		day12.append("Day 12");
-		day13.append("Day 13");
+		setContentView(R.layout.finalproject_check_out_schedule);	
 
         View backButton = findViewById(R.id.finalproject_back_button);
         backButton.setOnClickListener(this);
+        
+        getWorkoutSchedule();
+        
+        CustomList adapter = new CustomList(CheckOutSchedule.this, workout, icons);
+        list=(ListView)findViewById(R.id.listview_schedule);
+        list.setAdapter(adapter);
+	}
+	
+	void getWorkoutSchedule() {
+		for(int i=0; i<WorkOutConstants.DAY.length; i++) {
+			day = i+1;
+			workout[i] = "Day " + day + "\n" + WorkOutConstants.REPETITIONS[i] + " Times " + WorkOutConstants.DAY[i] + " Crunches";
+			schedule = getSharedPreferences(
+					WorkOutConstants.DONE_WORKOUT_PREFS, 0);
+			isDone = schedule.getInt(""+i, WorkOutConstants.UPCOMING);
+			switch (isDone) {
+			case WorkOutConstants.MISS:
+				icons[i]=R.drawable.miss;
+				break;
+			case WorkOutConstants.UPCOMING:
+				icons[i]=R.drawable.upcoming;
+				break;
+			case WorkOutConstants.DONE:
+				icons[i]=R.drawable.check;
+				break;
+			}
+			
+		}
+		
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.trickiestpart.Uploader;
 
 import java.util.Calendar;
 
@@ -108,7 +109,7 @@ public class Game extends Activity implements OnClickListener,
 		if (day_nb == 0) {
 			
 			nrOfCrunches = WorkOutConstants.DAY[0];
-			nrOfRepetitions = WorkOutConstants.REPITITIONS[0];
+			nrOfRepetitions = WorkOutConstants.REPETITIONS[0];
 
 			mCurrentDay.append("Day " + day_nb+1);
 			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
@@ -141,7 +142,7 @@ public class Game extends Activity implements OnClickListener,
 			}
 			
 			nrOfCrunches = WorkOutConstants.DAY[day_nb];
-			nrOfRepetitions = WorkOutConstants.REPITITIONS[day_nb];
+			nrOfRepetitions = WorkOutConstants.REPETITIONS[day_nb];
 
 			mCurrentDay.append("Day " + (day_nb+1));
 			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
