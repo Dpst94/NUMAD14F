@@ -95,7 +95,7 @@ public class Game extends Activity implements OnClickListener,
 			}
 		});*/
 
-		Toast.makeText(context, getString(R.string.take_photo_help), Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, getString(R.string.take_photo_help), Toast.LENGTH_LONG).show();
 		
 
 		mCurrentDay = (TextView) findViewById(R.id.crunchy_current_day);
@@ -311,14 +311,17 @@ public class Game extends Activity implements OnClickListener,
 		@Override
 		protected Void doInBackground(byte[]... data) {
 			FileOutputStream outStream = null;
-
+			
+			final SharedPreferences prefs = getGCMPreferences(context);
+			prefs.getString("username", "UNKNOWN");
+			
 			// Write to SD Card
 			try {
 				File sdCard = Environment.getExternalStorageDirectory();
 				File dir = new File (sdCard.getAbsolutePath() + "/crunchy");
 				dir.mkdirs();				
 
-				String fileName = String.format("%d.jpg", System.currentTimeMillis());
+				String fileName = String.format(prefs.getString("username", "UNKNOWN")+"%d.jpg", System.currentTimeMillis());
 				File outFile = new File(dir, fileName);
 
 				outStream = new FileOutputStream(outFile);
@@ -343,6 +346,9 @@ public class Game extends Activity implements OnClickListener,
 			}
 			return null;
 		}
-
+	}
+	private  SharedPreferences getGCMPreferences(Context context) {
+		return getSharedPreferences(Main.class.getSimpleName(),
+				Context.MODE_PRIVATE);
 	}
 }
