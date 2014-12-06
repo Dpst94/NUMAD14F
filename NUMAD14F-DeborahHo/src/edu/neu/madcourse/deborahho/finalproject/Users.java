@@ -56,7 +56,7 @@ public class Users extends Activity {
 		getUsersList();
 
 		context = getApplicationContext();
-		final ListView listview = (ListView) findViewById(R.id.listview);
+		final ListView listview = (ListView) findViewById(R.id.listview_users);
 		
 		for (int i = 0; i < usersList.length; ++i) {
 			list.add(usersList[i]);
