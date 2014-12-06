@@ -112,24 +112,24 @@
         <activity
             android:name=".communication.ComFindContacts"
             android:label="@string/find_contacts_label" />
-
+		<!-- Changed from communication package to finalproject -->
         <receiver
-            android:name=".communication.GcmBroadcastReceiver"
+            android:name=".finalproject.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="edu.neu.madcourse.deborahho.communication" />
+                <category android:name="edu.neu.madcourse.deborahho.finalproject" />
             </intent-filter>
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <category android:name="edu.neu.madcourse.deborahho.communication" />
+                <category android:name="edu.neu.madcourse.deborahho.finalproject" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".communication.GcmIntentService" />
-
+        <service android:name=".finalproject.GcmIntentService" />
+		<!-- END of changes -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
