@@ -64,7 +64,7 @@ public class ViewScores extends Activity implements OnClickListener{
 			SharedPreferences workout = getSharedPreferences(WorkOutConstants.DONE_WORKOUT_PREFS, 0);
 			isDone = workout.getInt(""+i, WorkOutConstants.DONE);
 			if(isDone==2){
-				score = score + 5;
+				score = score + 10;
 			}
 			else if(isDone==0){
 				score = score - 5;
