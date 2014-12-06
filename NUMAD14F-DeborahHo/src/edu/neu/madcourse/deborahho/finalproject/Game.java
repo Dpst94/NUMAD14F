@@ -209,6 +209,7 @@ public class Game extends Activity implements OnClickListener,
 			break;
 		case R.id.finalproject_menu_button:
 			Intent i = new Intent(this, CrunchyMenu.class);
+			finish();
 			startActivity(i);
 			break;
 		}
