@@ -19,6 +19,9 @@ public class Main extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		ViewScores vs = new ViewScores();
+		int score = vs.calculateScore();
+		
 		// Check if the app has been used before
 		SharedPreferences first = getSharedPreferences(FIRST_OPEN_PREFS, 0);
 		never_opened = first.getBoolean("never_opened", true);
