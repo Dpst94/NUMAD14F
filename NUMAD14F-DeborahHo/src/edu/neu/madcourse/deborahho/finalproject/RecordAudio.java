@@ -39,7 +39,7 @@ public class RecordAudio extends Activity{
       
       receiverAudio = (TextView) findViewById(R.id.receiver_audio_snippet);      
       
-       name = getSharedPreferences("audio_receiver", 0);     
+      name = getSharedPreferences("audio_receiver", 0);     
       
       receiverAudio.setText("Send Audio To "+name.getString("receiver", "UNKNOWN"));
       // store it to sd card
@@ -80,22 +80,11 @@ public class RecordAudio extends Activity{
       
       listenBtn = (Button)findViewById(R.id.listen_recording);
       
-      listenBtn.setOnTouchListener(new View.OnTouchListener() {
+      listenBtn.setOnClickListener(new OnClickListener() {
 
           @Override
-          public boolean onTouch(View v, MotionEvent event) {
-              // TODO Auto-generated method stub
-              switch(event.getAction()){
-               case MotionEvent.ACTION_DOWN:
-                   Log.d("listen", "play Recording");
+          public void onClick(View v) {
                    play(v);
-                   break;
-               case MotionEvent.ACTION_UP:
-                   Log.d("listen", "stop Recording");
-                   stopPlay(v);
-                   break;
-              }
-              return false;
           }
 
       });

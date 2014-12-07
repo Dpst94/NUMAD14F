@@ -152,8 +152,8 @@
     <string name="previous_label">Previous</string>
     <string name="menu_label">Go To Menu</string>
     <string name="share_facebook_label">Share on Facebook</string>
-    <string name="challenge_friends_label">Challenge Friends</string>
-    <string name="team_up_friends_label"> Team up with Friends</string>
+    <string name="challenge_friends_label">Invite Friends</string>
+    <string name="team_up_friends_label">See Pictures</string>
     <string name="view_scores_label">View Scores</string>
     <string name="check_schedule_label">Check out Schedule</string>
     <string name="share_fb_not_logged_in_text">In order to share your workout on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
@@ -173,16 +173,15 @@
     <string name="username_hint">Enter a username</string>
     <string name="title_activity_record_audio">Record Audio</string>
     <string name="title_activity_challenge_invitation">Challenge Invitation</string>
-	<string name="finalproject_ack_text"> \<b>First of all, we would like to thank Professor S. Intille and TAs J. Paralkar and D. Chandramohan for their help. 
+    <string name="finalproject_ack_text"> \<b>First of all, we would like to thank Professor S. Intille and TAs J. Paralkar and D. Chandramohan for their help. 
 	        This assignment would not be completed if it were not for the following sources: </b> 	    \n
 	    \nTo implement the camera we have used the following tutorial:
 	    \n<url>http://www.tutorialspoint.com/android/android_camera.htm</url> 	    \n
 	    \nTo implement the light sensor to detect crunches, we have used the following code:
 	    \n<url>http://android-apps-blog.blogspot.com/2011/05/how-to-use-light-sensor-on-android.html</url> 	    \n
 	    \nTo record audio we used the following example:
-	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url>
-	    \nThe following tutorials were used to incorporate a listview into the design:
-	    \n<url>http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html</url>
-	    \n<url>two column listview scores: http://kb4dev.com/tutorial/android-listview/multicolumn-listview-in-android</url>
-	    </string>
+	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url> 	    \nThe following tutorials were used to incorporate a listview into the design:
+	    \n<url>http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html</url> 	    \n<url>two column listview scores: http://kb4dev.com/tutorial/android-listview/multicolumn-listview-in-android</url></string>
+    <string name="title_activity_users_picture">Pick A Friend To See His Picture</string>
+
 </resources>

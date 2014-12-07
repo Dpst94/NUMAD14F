@@ -82,7 +82,7 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 			break;	
     		
     	case R.id.team_up_friends_button:
-    		Intent k = new Intent(this, Pictures.class);
+    		Intent k = new Intent(this, UsersPicture.class);
     		startActivity(k);
     		break;
     	case R.id.view_scores_button:

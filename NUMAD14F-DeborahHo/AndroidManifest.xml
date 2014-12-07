@@ -255,8 +255,12 @@
             android:label="@string/title_activity_record_audio"
             android:screenOrientation="portrait" />
         <activity
-            android:name="edu.neu.madcourse.deborahho.finalproject.ChallengeInvitation"
+            android:name=".finalproject.ChallengeInvitation"
             android:label="@string/title_activity_challenge_invitation" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.UsersPicture"
+            android:label="@string/title_activity_users_picture" >
         </activity>
     </application>
 

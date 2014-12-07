@@ -102,9 +102,7 @@ public class Game extends Activity implements OnClickListener,
 
 		// Restore day number
 		SharedPreferences schedule = getSharedPreferences(WorkOutConstants.DAY_PREFS, 0);
-		day_nb = schedule.getInt("day_nb", 0);
-		
-		
+		day_nb = schedule.getInt("day_nb", 0);	
 		
 		if (day_nb == 0) {
 			
@@ -125,7 +123,7 @@ public class Game extends Activity implements OnClickListener,
 
 				@Override
 				public void onTick(long millisUntilFinished) {
-					mCountdownCrunches.setText("The workout will start in\n" + String.format("%d seconds!", 
+					mCountdownCrunches.setText("Get Ready! The workout will start in\n" + String.format("%d seconds!", 
 		                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
 		                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 					
@@ -159,7 +157,7 @@ public class Game extends Activity implements OnClickListener,
 
 				@Override
 				public void onTick(long millisUntilFinished) {
-					mCountdownCrunches.setText("The workout will start in\n" + String.format("%d seconds!", 
+					mCountdownCrunches.setText("Get Ready! The workout will start in\n" + String.format("%d seconds!", 
 		                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
 		                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 					
