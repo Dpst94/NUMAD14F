@@ -256,8 +256,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="edu.neu.madcourse.deborahho.finalproject.ChallengeInvitation"
+            android:icon="@drawable/crunchy_transparent"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_challenge_invitation" >
         </activity>
+        <activity 
+            android:name=".finalproject.Ack"
+            android:icon="@drawable/crunchy_transparent"
+            android:label="@string/acknowledgements_label"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

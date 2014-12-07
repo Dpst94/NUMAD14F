@@ -25,12 +25,21 @@
         android:textSize="32dp" />
 
     <Button
-        android:id="@+id/finalproject_start_app_button"
+        android:id="@+id/finalproject_ack_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="58dp" 
-        android:text="@string/start_crunchy_label"/>
+        android:layout_marginBottom="14dp"
+        android:text="@string/acknowledgements_label" />
+
+    <Button
+        android:id="@+id/finalproject_start_app_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/finalproject_ack_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:text="@string/start_crunchy_label" />
 
 </RelativeLayout>
