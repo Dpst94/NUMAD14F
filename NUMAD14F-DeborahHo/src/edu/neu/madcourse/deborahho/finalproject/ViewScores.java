@@ -66,6 +66,15 @@ public class ViewScores extends Activity implements OnClickListener{
 					int position, long id) {				
 				HashMap<String,String> mapy =(HashMap<String,String>)parent.getItemAtPosition(position);
 				String receiver = mapy.get("user");
+				
+
+			      
+			      SharedPreferences name = getSharedPreferences(
+							"audio_receiver", 0);
+					SharedPreferences.Editor editor = name.edit();
+					editor.putString("receiver", receiver);
+					editor.commit();
+				
 				Log.d("RECEIVER",receiver);
 				//final SharedPreferences prefs = getGCMPreferences(context);
 				//sendMessage(prefs.getString("username", "Unknown"));
@@ -107,7 +116,7 @@ public class ViewScores extends Activity implements OnClickListener{
 		
 		for(int i  = 0; i < today+1; i++){
 			SharedPreferences workout = getSharedPreferences(WorkOutConstants.DONE_WORKOUT_PREFS, 0);
-			isDone = workout.getInt(""+i, WorkOutConstants.DONE);
+			isDone = workout.getInt(""+i, WorkOutConstants.UPCOMING);
 			if(isDone==2){
 				score = score + 10;
 			}

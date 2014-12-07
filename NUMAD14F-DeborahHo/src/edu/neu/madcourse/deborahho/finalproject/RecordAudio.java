@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,13 +30,18 @@ public class RecordAudio extends Activity{
    private Button backBtn;
    private TextView receiverAudio;
    
+   SharedPreferences name;
+   
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.finalproject_record_audio);
       
-      receiverAudio = (TextView) findViewById(R.id.receiver_audio_snippet);
-      receiverAudio.setText("Send Audio To Krish");
+      receiverAudio = (TextView) findViewById(R.id.receiver_audio_snippet);      
+      
+       name = getSharedPreferences("audio_receiver", 0);     
+      
+      receiverAudio.setText("Send Audio To "+name.getString("receiver", "UNKNOWN"));
       // store it to sd card
       outputFile = Environment.getExternalStorageDirectory().
     		  getAbsolutePath() + "/javacodegeeksRecording.3gpp";
