@@ -172,5 +172,6 @@
     <string name="register">Register</string>
     <string name="username_hint">Enter a username</string>
     <string name="title_activity_record_audio">Record Audio</string>
+    <string name="title_activity_challenge_invitation">Challenge Invitation</string>
 
 </resources>

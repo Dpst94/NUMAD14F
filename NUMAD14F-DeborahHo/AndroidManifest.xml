@@ -112,7 +112,7 @@
         <activity
             android:name=".communication.ComFindContacts"
             android:label="@string/find_contacts_label" />
-		<!-- Changed from communication package to finalproject -->
+        <!-- Changed from communication package to finalproject -->
         <receiver
             android:name=".finalproject.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -129,7 +129,7 @@
         </receiver>
 
         <service android:name=".finalproject.GcmIntentService" />
-		<!-- END of changes -->
+        <!-- END of changes -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -252,9 +252,12 @@
         <activity
             android:name=".finalproject.RecordAudio"
             android:icon="@drawable/crunchy_transparent"
-            android:label="@string/title_activity_record_audio" 
+            android:label="@string/title_activity_record_audio"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.ChallengeInvitation"
+            android:label="@string/title_activity_challenge_invitation" >
+        </activity>
     </application>
 
 </manifest>

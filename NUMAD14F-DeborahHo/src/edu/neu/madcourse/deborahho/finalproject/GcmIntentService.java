@@ -1,5 +1,7 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
+import java.util.Calendar;
+
 import edu.neu.madcourse.deborahho.R;
 
 import android.app.IntentService;
@@ -7,6 +9,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -34,6 +37,13 @@ public class GcmIntentService extends IntentService {
 			alertText = KeyValueAPI.get("eighilaza", "eighilaza", "alertText");
 			titleText = KeyValueAPI.get("eighilaza", "eighilaza", "titleText");
 			contentText = KeyValueAPI.get("eighilaza", "eighilaza", "contentText");
+			
+			SharedPreferences challengersName = getSharedPreferences(
+					"challenger", 0);
+			SharedPreferences.Editor editor = challengersName.edit();
+			editor.putString("challenger", contentText);
+			editor.commit();
+			
 			sendNotification(alertText, titleText, contentText);
 		}
 		// Release the wake lock provided by the WakefulBroadcastReceiver.
@@ -49,11 +59,11 @@ public class GcmIntentService extends IntentService {
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 		Intent notificationIntent;
 		notificationIntent = new Intent(this,
-				CrunchyMenu.class);
+				ChallengeInvitation.class);
 		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		notificationIntent.putExtra("show_response", "show_response");
 		PendingIntent intent = PendingIntent.getActivity(this, 0, new Intent(
-				this, CrunchyMenu.class),
+				this, ChallengeInvitation.class),
 				PendingIntent.FLAG_UPDATE_CURRENT);
 
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
@@ -68,5 +78,4 @@ public class GcmIntentService extends IntentService {
 		mBuilder.setContentIntent(intent);
 		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 	}
-
 }

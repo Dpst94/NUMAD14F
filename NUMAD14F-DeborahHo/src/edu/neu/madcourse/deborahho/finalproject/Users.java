@@ -70,7 +70,8 @@ public class Users extends Activity {
 					int position, long id) {
 				receiver = (String) parent.getItemAtPosition(position);
 				Log.d("RECEIVER",receiver);
-				sendMessage("You received a challenge request!");
+				final SharedPreferences prefs = getGCMPreferences(context);
+				sendMessage(prefs.getString("username", "Unknown"));
 				Toast.makeText(context, "You invited "+ receiver, Toast.LENGTH_LONG).show();
 				Intent i = new Intent(context, CrunchyMenu.class);
 				finish();
