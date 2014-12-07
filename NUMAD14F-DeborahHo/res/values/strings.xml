@@ -152,18 +152,18 @@
     <string name="previous_label">Previous</string>
     <string name="menu_label">Go To Menu</string>
     <string name="share_facebook_label">Share on Facebook</string>
-    <string name="challenge_friends_label">Challenge Friends</string>
-    <string name="team_up_friends_label"> Team up with Friends</string>
+    <string name="challenge_friends_label">Invite Friends</string>
+    <string name="team_up_friends_label">Team up with Friends</string>
     <string name="view_scores_label">View Scores</string>
     <string name="check_schedule_label">Check out Schedule</string>
-    <string name="share_fb_not_logged_in_text">In order to share your workout on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
+    <string name="share_fb_not_logged_in_text">This feature is not yet available. We are sorry for the inconvenience.</string>
     <string name="login_facebook_label">Log in with Facebook</string>
     <string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
     <string name="post_wall_facebook_label">Post to Wall</string>
     <string name="send_audio_label">Send Audio Snippet</string>
     <string name="facebook_app_id">1495717887358201</string>
     <!-- Toast Messages -->
-    <string name="camera_not_found">No camera harware found</string>
+    <string name="camera_not_found">No camera hardware found</string>
     <string name="take_photo_help">Touch anywhere on screen to take picture</string>
     <string name="title_activity_tutorial_pictures">Crunchy</string>
     <string name="title_activity_pictures">Gallery</string>
@@ -180,9 +180,10 @@
 	    \nTo implement the light sensor to detect crunches, we have used the following code:
 	    \n<url>http://android-apps-blog.blogspot.com/2011/05/how-to-use-light-sensor-on-android.html</url> 	    \n
 	    \nTo record audio we used the following example:
-	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url>
+	    \n<url>http://examples.javacodegeeks.com/android/core/media/mediarecorder/android-audio-capture-example/</url>\n
 	    \nThe following tutorials were used to incorporate a listview into the design:
-	    \n<url>http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html</url>
-	    \n<url>two column listview scores: http://kb4dev.com/tutorial/android-listview/multicolumn-listview-in-android</url>
-	    </string>
+	    \n<url>http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html</url>\n
+	    \n<url>http://kb4dev.com/tutorial/android-listview/multicolumn-listview-in-android</url>\n
+	    \nWe have used the following code to play an audio file from the server:
+	    \n<url>http://stackoverflow.com/questions/7441140/how-to-play-audio-file-from-server-in-android</url>\n</string>
 </resources>
