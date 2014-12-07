@@ -69,6 +69,13 @@ public class UsersPicture extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				receiver = (String) parent.getItemAtPosition(position);
+				
+				SharedPreferences name = getSharedPreferences(
+						"picure_model", 0);
+				SharedPreferences.Editor editor = name.edit();
+				editor.putString("model", receiver);
+				editor.commit();
+				
 				Log.d("RECEIVER",receiver);
 				Intent i = new Intent(context, Pictures.class);
 				finish();

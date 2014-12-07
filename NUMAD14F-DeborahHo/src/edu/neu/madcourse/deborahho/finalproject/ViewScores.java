@@ -36,23 +36,15 @@ public class ViewScores extends Activity implements OnClickListener{
 		
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
 		HashMap<String, String> map = new HashMap<String, String>();
-		
-		
-//		user01 = (TextView) findViewById(R.id.username_01);
 
 		context=getApplicationContext();
 		final SharedPreferences prefs = getGCMPreferences(context);
-//		user01.append(prefs.getString("username", "Unknown"));
 
 		score = calculateScore();
-//		map.put("user", prefs.getString("username", "Unknown"));
-//		map.put("score", Integer.toString(score));
 		map.put("user", "USERNAME");
 		map.put("score", "SCORE");
 		list.add(map);
-		//score01 = (TextView) findViewById(R.id.score_01);		
-		//score01.append(""+calculateScore());
-
+		
 		map = new HashMap<String, String>();
 		map.put("user", prefs.getString("username", "Unknown"));
 		map.put("score", Integer.toString(score));
@@ -65,10 +57,7 @@ public class ViewScores extends Activity implements OnClickListener{
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {				
 				HashMap<String,String> mapy =(HashMap<String,String>)parent.getItemAtPosition(position);
-				String receiver = mapy.get("user");
-				
-
-			      
+				String receiver = mapy.get("user");					      
 			      SharedPreferences name = getSharedPreferences(
 							"audio_receiver", 0);
 					SharedPreferences.Editor editor = name.edit();
@@ -76,11 +65,7 @@ public class ViewScores extends Activity implements OnClickListener{
 					editor.commit();
 				
 				Log.d("RECEIVER",receiver);
-				//final SharedPreferences prefs = getGCMPreferences(context);
-				//sendMessage(prefs.getString("username", "Unknown"));
-				//Toast.makeText(context, "You invited "+ receiver, Toast.LENGTH_LONG).show();
 				Intent i = new Intent(context, RecordAudio.class);
-				//finish();
 				startActivity(i);
 			}
 		});

@@ -17,6 +17,8 @@ public class Pictures extends Activity implements OnClickListener {
 	TextView namePicture;
 	Integer img = R.drawable.picture_correct;
 	Integer img2 = R.drawable.picture_false;
+	
+	SharedPreferences name;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,8 @@ public class Pictures extends Activity implements OnClickListener {
 		
 		final SharedPreferences prefs = getGCMPreferences(this);
 		
-		myWebView.loadUrl("http://www.eighilaza.tk/GetPicture.php?username="+prefs.getString("username", "UNKNOWN"));
+		name = getSharedPreferences("picure_model", 0);  
+		myWebView.loadUrl("http://www.eighilaza.tk/GetPicture.php?username="+name.getString("model", "UNKNOWN"));
 		
 		namePicture = (TextView) findViewById(R.id.finalproject_name_picture);
 		namePicture.setText("Pictures of Elyes");

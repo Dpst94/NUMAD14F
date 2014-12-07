@@ -44,9 +44,7 @@ public class RecordAudio extends Activity{
       receiverAudio.setText("Send Audio To "+name.getString("receiver", "UNKNOWN"));
       // store it to sd card
       outputFile = Environment.getExternalStorageDirectory().
-    		  getAbsolutePath() + "/javacodegeeksRecording.3gpp";
-
-      
+    		  getAbsolutePath() + "/javacodegeeksRecording.3gpp";      
       
       backBtn = (Button) findViewById(R.id.finalproject_back_button);
       backBtn.setOnClickListener(new OnClickListener() {
