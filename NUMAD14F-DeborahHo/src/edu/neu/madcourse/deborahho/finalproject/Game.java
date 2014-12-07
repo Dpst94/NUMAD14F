@@ -68,6 +68,8 @@ public class Game extends Activity implements OnClickListener,
 	Context context;
 	
 	int timeToTakePicture = 0;
+	boolean cameraIsAvailable = false;
+	
 
 
 	@Override
@@ -183,6 +185,7 @@ public class Game extends Activity implements OnClickListener,
 				camera = Camera.open(1);
 				camera.startPreview();
 				preview.setCamera(camera);
+				cameraIsAvailable = true;
 			} catch (RuntimeException ex){
 				Toast.makeText(context, getString(R.string.camera_not_found), Toast.LENGTH_LONG).show();
 			}
@@ -240,7 +243,9 @@ public class Game extends Activity implements OnClickListener,
 						if (nrOfCrunches > 0) {
 							Music.playOnce(this, R.raw.beep);
 							if(timeToTakePicture == 4){
-								camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+								if(cameraIsAvailable == true){
+									camera.takePicture(shutterCallback, rawCallback, jpegCallback);
+								}
 								timeToTakePicture = 0;
 							}
 							timeToTakePicture++;
