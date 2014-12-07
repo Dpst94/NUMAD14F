@@ -1,9 +1,11 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
 import edu.neu.madcourse.deborahho.R;
+import edu.neu.madcourse.deborahho.bananagrams.CountDownTimerPausable;
 import edu.neu.madcourse.deborahho.trickiestpart.Uploader;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -47,6 +49,7 @@ public class Game extends Activity implements OnClickListener,
 	TextView mCurrentDay;
 	TextView mNrOfCrunches;
 	TextView mCountdownCrunches;
+	private CountDownTimerPausable countDownTimer;
 
 	private SensorManager sensorManager = null;
 	private Sensor currentSensor = null;
@@ -112,7 +115,7 @@ public class Game extends Activity implements OnClickListener,
 		SharedPreferences schedule = getSharedPreferences(WorkOutConstants.DAY_PREFS, 0);
 		day_nb = schedule.getInt("day_nb", 0);
 		
-		playAudio();
+		
 		
 		if (day_nb == 0) {
 			
@@ -122,24 +125,24 @@ public class Game extends Activity implements OnClickListener,
 			mCurrentDay.append("Day " + day_nb+1);
 			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
 					+ " crunches");
-			mCountdownCrunches.append(nrOfCrunches + " CRUNCHES TO GO");
-
-			View nextButton = findViewById(R.id.finalproject_menu_button);
-			nextButton.setOnClickListener(this);
-			View backButton = findViewById(R.id.finalproject_back_button);
-			backButton.setOnClickListener(this);
 			
-			oldSeconds = c.getTimeInMillis();
-			sensorManager = (SensorManager) this
-					.getSystemService(SENSOR_SERVICE);
-			currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-			if (currentSensor != null) {
-				sensorManager.registerListener(this, currentSensor,
-						SensorManager.SENSOR_DELAY_FASTEST);
-			} else {
-				Toast.makeText(this, "Can't initialize the LIGHT sensor.",
-						Toast.LENGTH_LONG).show();
-			}
+			countDownTimer = new CountDownTimerPausable(15000, 1000) {
+
+				@Override
+				public void onFinish() {
+					startWorkout();
+						
+				}
+
+				@Override
+				public void onTick(long millisUntilFinished) {
+					mCountdownCrunches.setText("The workout will start in\n" + String.format("%d seconds!", 
+		                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
+		                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+					
+				}
+	        	
+	        }.start();	
 
 		} else {
 			
@@ -151,32 +154,57 @@ public class Game extends Activity implements OnClickListener,
 			
 			nrOfCrunches = WorkOutConstants.DAY[day_nb];
 			nrOfRepetitions = WorkOutConstants.REPETITIONS[day_nb];
-
+			
 			mCurrentDay.append("Day " + (day_nb+1));
 			mNrOfCrunches.append("Do " + nrOfRepetitions + "x " + nrOfCrunches
 					+ " crunches");
-			mCountdownCrunches.append(nrOfCrunches + " CRUNCHES TO GO");
+			
+			countDownTimer = new CountDownTimerPausable(10000, 1000) {
 
-			View nextButton = findViewById(R.id.finalproject_menu_button);
-			nextButton.setOnClickListener(this);
-			View backButton = findViewById(R.id.finalproject_back_button);
-			backButton.setOnClickListener(this);
+				@Override
+				public void onFinish() {
+					startWorkout();
+					
+					
+				}
 
-			oldSeconds = c.getTimeInMillis();
-			sensorManager = (SensorManager) this
-					.getSystemService(SENSOR_SERVICE);
-			currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-			if (currentSensor != null) {
-				sensorManager.registerListener(this, currentSensor,
-						SensorManager.SENSOR_DELAY_FASTEST);
-			} else {
-				Toast.makeText(this, "Can't initialize the LIGHT sensor.",
-						Toast.LENGTH_LONG).show();
-			}
+				@Override
+				public void onTick(long millisUntilFinished) {
+					mCountdownCrunches.setText("The workout will start in\n" + String.format("%d seconds!", 
+		                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
+		                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+					
+				}
+	        	
+	        }.start();
 
 		}
 		
 	      
+	}
+	
+	void startWorkout() {
+		mCountdownCrunches.setText(nrOfCrunches + " CRUNCHES TO GO");
+
+		playAudio();
+		
+		View nextButton = findViewById(R.id.finalproject_menu_button);
+		nextButton.setOnClickListener(this);
+		View backButton = findViewById(R.id.finalproject_back_button);
+		backButton.setOnClickListener(this);
+		
+		oldSeconds = c.getTimeInMillis();
+		sensorManager = (SensorManager) this
+				.getSystemService(SENSOR_SERVICE);
+		currentSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+		if (currentSensor != null) {
+			sensorManager.registerListener(this, currentSensor,
+					SensorManager.SENSOR_DELAY_FASTEST);
+		} else {
+			Toast.makeText(this, "Can't initialize the LIGHT sensor.",
+					Toast.LENGTH_LONG).show();
+		}
+		
 	}
 
 	@Override
@@ -270,9 +298,9 @@ public class Game extends Activity implements OnClickListener,
 									WorkOutConstants.DONE_WORKOUT_PREFS, 0);
 							SharedPreferences.Editor editor = schedule.edit();
 							editor.putInt(""+day_nb, WorkOutConstants.DONE);
-							editor.commit();
-
-							Music.playOnce(this, R.raw.beep);
+							editor.commit(); 
+							
+							Music.playOnce(this, R.raw.youaredone);
 							Intent i = new Intent(this, CrunchyMenu.class);
 							finish();
 							startActivity(i);
