@@ -192,5 +192,5 @@
 		\n<url>two column listview scores: http://kb4dev.com/tutorial/android-listview/multicolumn-listview-in-android</url>
 	</string>   
 	
-	<string name="title_activity_users_picture">Pick A Friend To See His Picture</string>
+	<string name="title_activity_users_picture">Pick A Friend To See His Pictures</string>
 </resources>
