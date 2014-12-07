@@ -92,18 +92,7 @@ public class Game extends Activity implements OnClickListener,
 		preview = new Preview(this, (SurfaceView)findViewById(R.id.surfaceView));
 		preview.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		((FrameLayout) findViewById(R.id.layout)).addView(preview);
-		preview.setKeepScreenOn(true);
-
-		/*preview.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				camera.takePicture(shutterCallback, rawCallback, jpegCallback);
-			}
-		});*/
-
-		//Toast.makeText(context, getString(R.string.take_photo_help), Toast.LENGTH_LONG).show();
-		
+		preview.setKeepScreenOn(true);		
 
 		mCurrentDay = (TextView) findViewById(R.id.crunchy_current_day);
 		mNrOfCrunches = (TextView) findViewById(R.id.crunchy_nr_of_crunches);
@@ -419,5 +408,4 @@ public class Game extends Activity implements OnClickListener,
 		return getSharedPreferences(Main.class.getSimpleName(),
 				Context.MODE_PRIVATE);
 	}
-
 }
