@@ -1,5 +1,3 @@
-// source: http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
-// two column listview scores: http://kb4dev.com/tutorial/android-listview/multicolumn-listview-in-android
 package edu.neu.madcourse.deborahho.finalproject;
 
 import edu.neu.madcourse.deborahho.R;
