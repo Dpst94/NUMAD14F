@@ -27,6 +27,8 @@ import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -110,6 +112,8 @@ public class Game extends Activity implements OnClickListener,
 		SharedPreferences schedule = getSharedPreferences(WorkOutConstants.DAY_PREFS, 0);
 		day_nb = schedule.getInt("day_nb", 0);
 		
+		playAudio();
+		
 		if (day_nb == 0) {
 			
 			nrOfCrunches = WorkOutConstants.DAY[0];
@@ -171,6 +175,8 @@ public class Game extends Activity implements OnClickListener,
 			}
 
 		}
+		
+	      
 	}
 
 	@Override
@@ -281,6 +287,34 @@ public class Game extends Activity implements OnClickListener,
 			}
 		}
 	}
+	
+	void playAudio() {
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+
+				try {
+				    MediaPlayer player = new MediaPlayer();
+				    player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+				    player.setDataSource("http://eighilaza.tk/crunchy/javacodegeeksRecording.3gpp"
+				            );
+				    player.prepare();
+				                player.start();
+				                
+				    return "play audio";
+
+				} catch (Exception e) {
+				    // TODO: handle exception
+				}
+				return null;
+			}
+			@Override
+			protected void onPostExecute(String msg) {
+			}
+		}.execute(null, null, null);
+		
+	}
+	
 	private void resetCam() {
 		camera.startPreview();
 		preview.setCamera(camera);
@@ -357,4 +391,5 @@ public class Game extends Activity implements OnClickListener,
 		return getSharedPreferences(Main.class.getSimpleName(),
 				Context.MODE_PRIVATE);
 	}
+
 }
