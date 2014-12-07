@@ -1,63 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <ScrollView
+    tools:context=".MainActivity" >
+    
+    <TextView 
+        android:id="@+id/text_scores"
+        android:layout_above="@+id/listview_scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*"
-                android:orientation="vertical" >
-
-                <TableRow
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" >
-
-                    <TextView
-                        android:id="@+id/username_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="USERNAME"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/score_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="SCORE"
-                        android:textSize="24sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent" >
-
-                    <TextView
-                        android:id="@+id/username_01"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/score_01"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="24sp" />
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
-    </ScrollView>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Click on the username to see pictures"/>
+        
+    <ListView
+        android:id="@+id/listview_scores"
+        android:layout_above="@+id/finalproject_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"> 
+    </ListView>
 
     <Button
         android:id="@+id/finalproject_back_button"
@@ -66,5 +27,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/back_label" />
-
+    
 </RelativeLayout>

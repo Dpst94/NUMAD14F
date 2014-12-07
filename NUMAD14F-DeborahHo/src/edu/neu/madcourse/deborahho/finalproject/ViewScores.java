@@ -1,6 +1,8 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import edu.neu.madcourse.deborahho.R;
 import android.app.Activity;
@@ -9,6 +11,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class ViewScores extends Activity implements OnClickListener{
@@ -16,21 +20,42 @@ public class ViewScores extends Activity implements OnClickListener{
 	TextView user01;
 	TextView score01;
 	Context context;
+	ListView listview;
+	int score;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.finalproject_view_scores);
+	
+		listview = (ListView) findViewById(R.id.listview_scores);
 		
-		user01 = (TextView) findViewById(R.id.username_01);
+		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		
+//		user01 = (TextView) findViewById(R.id.username_01);
 
 		context=getApplicationContext();
 		final SharedPreferences prefs = getGCMPreferences(context);
-		user01.append(prefs.getString("username", "Unknown"));
-		
-		score01 = (TextView) findViewById(R.id.score_01);		
-		score01.append(""+calculateScore());
+//		user01.append(prefs.getString("username", "Unknown"));
 
+		score = calculateScore();
+//		map.put("user", prefs.getString("username", "Unknown"));
+//		map.put("score", Integer.toString(score));
+		map.put("user", "USERNAME");
+		map.put("score", "SCORE");
+		list.add(map);
+		//score01 = (TextView) findViewById(R.id.score_01);		
+		//score01.append(""+calculateScore());
+
+		map = new HashMap<String, String>();
+		map.put("user", prefs.getString("username", "Unknown"));
+		map.put("score", Integer.toString(score));
+		list.add(map);
+		SimpleAdapter simpleAdapter = new SimpleAdapter(this, list, R.layout.finalproject_two_column_list, new String[]{"user", "score"}, new int[]{R.id.finalproject_scores_username, R.id.finalproject_scores});
+        listview.setAdapter(simpleAdapter);
+		
         View backButton = findViewById(R.id.finalproject_back_button);
         backButton.setOnClickListener(this);
 	}
