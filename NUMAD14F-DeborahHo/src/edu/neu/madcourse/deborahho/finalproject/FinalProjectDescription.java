@@ -15,6 +15,8 @@ public class FinalProjectDescription extends Activity implements OnClickListener
 		
 		View startAppButton = findViewById(R.id.finalproject_start_app_button);
         startAppButton.setOnClickListener(this);
+        View ackButton = findViewById(R.id.finalproject_ack_button);
+        ackButton.setOnClickListener(this);
 		
 	}
 
@@ -24,6 +26,10 @@ public class FinalProjectDescription extends Activity implements OnClickListener
     	case R.id.finalproject_start_app_button:
     		Intent i = new Intent(this, Main.class);
     		startActivity(i);
+    		break;
+    	case R.id.finalproject_ack_button:
+    		Intent j = new Intent(this, Ack.class);
+    		startActivity(j);
     		break;
 		}
     		

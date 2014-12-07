@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:text="@string/share_fb_not_logged_in_text"
         android:textSize="24dp" />
+    
+    <!--  
 
     <Button
         android:id="@+id/login_facebook_button"
@@ -19,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:gravity="center"
-        android:text="@string/login_facebook_label" />
+        android:text="@string/login_facebook_label" /> -->
     
     <Button
         android:id="@+id/finalproject_back_button"

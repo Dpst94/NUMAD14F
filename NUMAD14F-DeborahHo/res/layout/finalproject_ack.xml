@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/finalproject_acknowledgements"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/finalproject_ack_text" />
     
