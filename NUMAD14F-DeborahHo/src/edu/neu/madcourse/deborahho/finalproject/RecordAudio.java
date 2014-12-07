@@ -40,11 +40,7 @@ public class RecordAudio extends Activity{
       outputFile = Environment.getExternalStorageDirectory().
     		  getAbsolutePath() + "/javacodegeeksRecording.3gpp";
 
-      myRecorder = new MediaRecorder();
-      myRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-      myRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-      myRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
-      myRecorder.setOutputFile(outputFile);
+      
       
       backBtn = (Button) findViewById(R.id.finalproject_back_button);
       backBtn.setOnClickListener(new OnClickListener() {
@@ -57,14 +53,10 @@ public class RecordAudio extends Activity{
       });
       
       recordBtn = (Button)findViewById(R.id.start);
-      
-      // ======================================================
-      // Added thiss...
       recordBtn.setOnTouchListener(new View.OnTouchListener() {
 
           @Override
           public boolean onTouch(View v, MotionEvent event) {
-              // TODO Auto-generated method stub
               switch(event.getAction()){
                case MotionEvent.ACTION_DOWN:
                    Log.d("record", "Start Recording");
@@ -79,28 +71,6 @@ public class RecordAudio extends Activity{
           }
 
       });
-      
-   // ======================================================
-      
-      
-//      startBtn.setOnClickListener(new OnClickListener() {
-//		
-//		@Override
-//		public void onClick(View v) {
-//			// TODO Auto-generated method stub
-//			start(v);
-//		}
-//      });
-//      
-//      stopBtn = (Button)findViewById(R.id.stop);
-//      stopBtn.setOnClickListener(new OnClickListener() {
-//  		
-//  		@Override
-//  		public void onClick(View v) {
-//  			// TODO Auto-generated method stub
-//  			stop(v);
-//  		}
-//      });
       
       listenBtn = (Button)findViewById(R.id.listen_recording);
       
@@ -132,7 +102,6 @@ public class RecordAudio extends Activity{
     		new AsyncTask<Void, Void, String>() {
 				@Override
 				protected String doInBackground(Void... params) {
-
 				      Uploader.uploadFile(outputFile);
 				      return "uploaded";
 				}
@@ -148,31 +117,14 @@ public class RecordAudio extends Activity{
       });
       
    }
-   
-      
-      
-//      playBtn.setOnClickListener(new OnClickListener() {
-//  		
-//  		@Override
-//  		public void onClick(View v) {
-//  			// TODO Auto-generated method stub
-//				play(v);	
-//  		}
-//      });
-//      
-//      stopPlayBtn = (Button)findViewById(R.id.stopPlay);
-//      stopPlayBtn.setOnClickListener(new OnClickListener() {
-//  		
-//  		@Override
-//  		public void onClick(View v) {
-//  			// TODO Auto-generated method stub
-//  			stopPlay(v);
-//  		}
-//      });
-//   }
 
    public void start(View view){
 	   try {
+		   myRecorder = new MediaRecorder();
+		      myRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+		      myRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+		      myRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+		      myRecorder.setOutputFile(outputFile);
           myRecorder.prepare();
           myRecorder.start();
        } catch (IllegalStateException e) {
@@ -183,9 +135,6 @@ public class RecordAudio extends Activity{
            // prepare() fails
            e.printStackTrace();
         }
-	  
-       //startBtn.setEnabled(false);
-       //stopBtn.setEnabled(true);
        
        Toast.makeText(getApplicationContext(), "Start recording...", 
     		   Toast.LENGTH_SHORT).show();
@@ -199,18 +148,6 @@ public class RecordAudio extends Activity{
 	      
 	      listenBtn.setEnabled(true);
 	      sendBtn.setEnabled(true);
-
-//	      new AsyncTask<Void, Void, String>() {
-//				@Override
-//				protected String doInBackground(Void... params) {
-//
-//				      Uploader.uploadFile(outputFile);
-//				      return "uploaded";
-//				}
-//				@Override
-//				protected void onPostExecute(String msg) {
-//				}
-//			}.execute(null, null, null);
 	      
 	      Toast.makeText(getApplicationContext(), "Stop recording...",
 	    		  Toast.LENGTH_SHORT).show();
@@ -228,10 +165,7 @@ public class RecordAudio extends Activity{
 		   myPlayer = new MediaPlayer();
 		   myPlayer.setDataSource(outputFile);
 		   myPlayer.prepare();
-		   myPlayer.start();
-		   
-		   //listenBtn.setEnabled(false);
-		   
+		   myPlayer.start();		   
 		   Toast.makeText(getApplicationContext(), "Start playing the recording...", 
 				   Toast.LENGTH_SHORT).show();
 	   } catch (Exception e) {
