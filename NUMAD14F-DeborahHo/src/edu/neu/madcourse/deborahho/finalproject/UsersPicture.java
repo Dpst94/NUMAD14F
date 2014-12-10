@@ -51,6 +51,7 @@ public class UsersPicture extends Activity implements OnClickListener{
 	GoogleCloudMessaging gcm;
 	String receiver = "";
 	String username;
+	boolean isEmpty = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,18 +78,24 @@ public class UsersPicture extends Activity implements OnClickListener{
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
-				receiver = (String) parent.getItemAtPosition(position);
-				
-				SharedPreferences name = getSharedPreferences(
-						"picure_model", 0);
-				SharedPreferences.Editor editor = name.edit();
-				editor.putString("model", receiver);
-				editor.commit();
-				
-				Log.d("RECEIVER",receiver);
-				Intent i = new Intent(context, Pictures.class);
-				finish();
-				startActivity(i);
+				if(!isEmpty){
+					receiver = (String) parent.getItemAtPosition(position);
+					
+					SharedPreferences name = getSharedPreferences(
+							"picure_model", 0);
+					SharedPreferences.Editor editor = name.edit();
+					editor.putString("model", receiver);
+					editor.commit();
+					
+					Log.d("RECEIVER",receiver);
+					Intent i = new Intent(context, Pictures.class);
+					finish();
+					startActivity(i);
+				}
+				else{
+					Toast.makeText(context, "Click on Invite Friends to add users to your friend list", Toast.LENGTH_LONG).show();
+					finish();
+				}
 			}
 		});
 	}
@@ -118,9 +125,13 @@ public class UsersPicture extends Activity implements OnClickListener{
 						"Error"))
 					cnt = Integer.parseInt(KeyValueAPI.get("eighilaza",
 							"eighilaza", "friends_"+ username +"_cnt"));
-				else {
-					msg = KeyValueAPI.get("eighilaza", "eighilaza", "cnt");
-					return msg;
+				else {					
+					//msg = KeyValueAPI.get("eighilaza", "eighilaza", "friends_"+ username +"_cnt");
+					//Log.d("EMPTY?",msg);
+					usersList = new String [1];
+					usersList[0]="Your friend list is empty";
+					isEmpty = true;
+					return "";
 				}
 				usersList = new String [cnt];
 				for (int i = 1; i <= cnt; i++) {
