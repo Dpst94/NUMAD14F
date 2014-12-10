@@ -1,5 +1,7 @@
 package edu.neu.madcourse.deborahho.finalproject;
 
+import java.util.Calendar;
+
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.finalproject.WorkOutConstants;
 
@@ -29,6 +31,7 @@ public class CheckOutSchedule extends Activity implements OnClickListener{
         View backButton = findViewById(R.id.finalproject_back_button);
         backButton.setOnClickListener(this);
         
+        calculateScore();
         getWorkoutSchedule();
         
         CustomList adapter = new CustomList(CheckOutSchedule.this, workout, icons);
@@ -64,5 +67,39 @@ public class CheckOutSchedule extends Activity implements OnClickListener{
 			finish();
 			break;
 		}
+	}
+	
+	public int calculateScore() {
+		int score = 0;
+		int today = 0;
+		int isDone = 1;
+
+		Calendar c;
+		c = Calendar.getInstance();
+		SharedPreferences schedule = getSharedPreferences(
+				WorkOutConstants.DAY_PREFS, 0);
+		int first_day = schedule.getInt("day_nb", 0);
+		if (first_day == 0) {
+			today = 0;
+		} else {
+			today = c.get(Calendar.DAY_OF_YEAR) - first_day;
+		}
+
+		for (int i = 0; i < today + 1; i++) {
+			SharedPreferences workout = getSharedPreferences(
+					WorkOutConstants.DONE_WORKOUT_PREFS, 0);
+			isDone = workout.getInt("" + i, WorkOutConstants.UPCOMING);
+			if (isDone == 2) {
+				score = score + 10;
+			} else if (isDone == 0) {
+				score = score - 5;
+			} else if (i != today) {
+				SharedPreferences.Editor editor = workout.edit();
+				editor.putInt("" + i, WorkOutConstants.MISS);
+				editor.commit();
+				score = score - 5;
+			}
+		}
+		return score;
 	}
 }

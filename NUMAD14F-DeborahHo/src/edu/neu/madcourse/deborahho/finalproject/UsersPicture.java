@@ -24,13 +24,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import edu.neu.mhealth.api.KeyValueAPI;
 
-public class UsersPicture extends Activity {
+public class UsersPicture extends Activity implements OnClickListener{
 	
 	public static final String EXTRA_MESSAGE = "message";
 	public static final String PROPERTY_REG_ID = "registration_id";
@@ -54,6 +55,9 @@ public class UsersPicture extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.finalproject_users);
+		
+		View backButton = findViewById(R.id.finalproject_back_button);
+        backButton.setOnClickListener(this);
 		
 		SharedPreferences usersName = getGCMPreferences(context);
 		username = usersName.getString("username", "UNKNOWN");
@@ -87,6 +91,15 @@ public class UsersPicture extends Activity {
 				startActivity(i);
 			}
 		});
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.finalproject_back_button:
+			finish();
+			break;
+		}
 	}
 	
 	private void getUsersList() {

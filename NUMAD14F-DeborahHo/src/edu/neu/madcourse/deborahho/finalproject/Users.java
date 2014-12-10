@@ -22,13 +22,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import edu.neu.mhealth.api.KeyValueAPI;
 
-public class Users extends Activity {
+public class Users extends Activity implements OnClickListener{
 	
 	static final String TAG = "GCM_Communication";
 	
@@ -44,12 +45,15 @@ public class Users extends Activity {
 	boolean isEmpty = false;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
 		getUsersList();
 		
 		setContentView(R.layout.finalproject_users);
+		
+		View backButton = findViewById(R.id.finalproject_back_button);
+        backButton.setOnClickListener(this);
 		
 		SharedPreferences usersName = getGCMPreferences(context);
 		username = usersName.getString("username", "UNKNOWN");		
@@ -82,6 +86,15 @@ public class Users extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.finalproject_back_button:
+			finish();
+			break;
+		}
+	}	
 	
 	private void getUsersList() {
 		if (!isOnline()) {

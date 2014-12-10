@@ -255,7 +255,9 @@
             android:label="@string/title_activity_record_audio"
             android:screenOrientation="portrait" />
         <activity
-            android:name="edu.neu.madcourse.deborahho.finalproject.UsersPicture"
+            android:name="edu.neu.madcourse.deborahho.finalproject.UsersPicture"            
+            android:icon="@drawable/crunchy_transparent"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_users_picture" >
         </activity>
 		<activity
