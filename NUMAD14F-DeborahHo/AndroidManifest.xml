@@ -247,7 +247,7 @@
         <activity
             android:name=".finalproject.Users"
             android:icon="@drawable/crunchy_transparent"
-            android:label="@string/title_activity_pictures"
+            android:label="Users List"
             android:screenOrientation="portrait" />
         <activity
             android:name=".finalproject.RecordAudio"

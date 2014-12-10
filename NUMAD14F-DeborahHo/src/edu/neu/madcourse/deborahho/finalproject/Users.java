@@ -16,8 +16,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -42,20 +40,25 @@ public class Users extends Activity {
 	GoogleCloudMessaging gcm;
 	String receiver = "";
 	String username;
+	int length = 0;
+	boolean isEmpty = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		getUsersList();
+		
 		setContentView(R.layout.finalproject_users);
 		
 		SharedPreferences usersName = getGCMPreferences(context);
-		username = usersName.getString("username", "UNKNOWN");
+		username = usersName.getString("username", "UNKNOWN");		
 		
-		getUsersList();
 
 		context = getApplicationContext();
 		final ListView listview = (ListView) findViewById(R.id.listview_users);
 		
-		for (int i = 0; i < usersList.length; ++i) {
+		for (int i = 0; i < length; ++i) {
 			list.add(usersList[i]);
 		}
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
@@ -65,14 +68,17 @@ public class Users extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
-				receiver = (String) parent.getItemAtPosition(position);
-				Log.d("RECEIVER",receiver);
-				final SharedPreferences prefs = getGCMPreferences(context);
-				sendMessage(prefs.getString("username", "Unknown"));
-				//Toast.makeText(context, "You invited "+ receiver, Toast.LENGTH_LONG).show();
-				Intent i = new Intent(context, CrunchyMenu.class);
-				finish();
-				startActivity(i);
+				if(!isEmpty){
+					receiver = (String) parent.getItemAtPosition(position);
+					Log.d("RECEIVER",receiver);
+					final SharedPreferences prefs = getGCMPreferences(context);
+					sendMessage(prefs.getString("username", "Unknown"));
+					finish();
+				}
+				else{
+					Toast.makeText(context, "No more users to invite right now", Toast.LENGTH_LONG).show();
+					finish();
+				}
 			}
 		});
 	}
@@ -103,15 +109,19 @@ public class Users extends Activity {
 					String tmpUser = KeyValueAPI.get("eighilaza", "eighilaza", "user"
 							+ String.valueOf(i));					
 					if((!KeyValueAPI.get("eighilaza", "eighilaza",
-									"friends_" + username + "_" + tmpUser).equals("yes"))/*||(KeyValueAPI.get("eighilaza", "eighilaza",
-											"friends_" + tmpUser + "_" + username).equals("yes"))*/){
+									"friends_" + username + "_" + tmpUser).equals("yes"))){
 						usersList[j] = tmpUser;						
 						Log.d("User List",usersList[j]);
 						j++;
 					}
 				}
-				if(j == 0){
-					usersList[j] = "All registered users are already your friends";
+				if(j == 1){
+					length = 1;
+				}
+				else if(j == 0){
+					length = 1;
+					usersList[j] = "You Already Added All Registered Users.";
+					isEmpty = true;
 				}
 				return msg;
 			}
@@ -120,15 +130,15 @@ public class Users extends Activity {
 			protected void onPostExecute(String msg) {
 				list.clear();
 				
-				for (int i = 0; i < usersList.length; ++i) {
+				for (int i = 0; i < length; ++i) {
 					list.add(usersList[i]);
 				}
-				Log.d("list",list.get(0));
-				runOnUiThread(new Runnable() {
-			    public void run() {
-			        adapter.notifyDataSetChanged();
-			    }
-			});
+				Log.d("list",list.get(0)+length);
+					runOnUiThread(new Runnable() {
+					    public void run() {
+					        adapter.notifyDataSetChanged();
+					    }
+					});				
 			}
 		}.execute(null, null, null);
 	}
