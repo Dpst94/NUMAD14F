@@ -201,6 +201,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".finalproject.CrunchyMenu"
+            android:launchMode="singleTop"
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/crunchy_label"
             android:screenOrientation="portrait" />
