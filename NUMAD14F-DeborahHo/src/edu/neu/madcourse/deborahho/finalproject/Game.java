@@ -178,9 +178,7 @@ public class Game extends Activity implements OnClickListener,
 	void startWorkout() {
 		mCountdownCrunches.setText(nrOfCrunches + " CRUNCHES TO GO");
 
-		playAudio();
-		
-		
+		playAudio();	
 		
 		oldSeconds = c.getTimeInMillis();
 		sensorManager = (SensorManager) this

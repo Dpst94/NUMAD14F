@@ -24,6 +24,7 @@ public class About extends Activity {
 		TextView tv = (TextView) findViewById(R.id.imei_content);
 		tv.setTypeface(null, 2);
 		tv.setText("\nPhone's ID (IMEI): "+imei);
+		
 	}
 	
 	

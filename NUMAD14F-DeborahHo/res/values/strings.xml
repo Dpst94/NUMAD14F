@@ -153,7 +153,7 @@
     <string name="menu_label">Go To Menu</string>
     <string name="share_facebook_label">Share on Facebook</string>
     <string name="challenge_friends_label">Invite Friends</string>
-    <string name="team_up_friends_label">See Pictures</string>
+    <string name="team_up_friends_label">See Pictures of Friends</string>
     <string name="view_scores_label">View Scores</string>
     <string name="check_schedule_label">Check out Schedule</string>
     <string name="share_fb_not_logged_in_text">This feature is not yet available. We are sorry for the inconvenience.</string>
