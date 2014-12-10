@@ -98,6 +98,11 @@ public class Game extends Activity implements OnClickListener,
 		mNrOfCrunches = (TextView) findViewById(R.id.crunchy_nr_of_crunches);
 		mCountdownCrunches = (TextView) findViewById(R.id.crunchy_countdown_crunches);
 		
+		View nextButton = findViewById(R.id.finalproject_menu_button);
+		nextButton.setOnClickListener(this);
+		View backButton = findViewById(R.id.finalproject_back_button);
+		backButton.setOnClickListener(this);
+		
 		c = Calendar.getInstance();
 
 		// Restore day number
@@ -175,10 +180,7 @@ public class Game extends Activity implements OnClickListener,
 
 		playAudio();
 		
-		View nextButton = findViewById(R.id.finalproject_menu_button);
-		nextButton.setOnClickListener(this);
-		View backButton = findViewById(R.id.finalproject_back_button);
-		backButton.setOnClickListener(this);
+		
 		
 		oldSeconds = c.getTimeInMillis();
 		sensorManager = (SensorManager) this
@@ -197,6 +199,7 @@ public class Game extends Activity implements OnClickListener,
 	@Override
 	public void onResume() {
 		super.onResume();
+		countDownTimer.start();
 		if (currentSensor != null)
 			sensorManager.registerListener(this, currentSensor,
 					SensorManager.SENSOR_DELAY_FASTEST);
@@ -222,7 +225,11 @@ public class Game extends Activity implements OnClickListener,
 			camera = null;
 		}
 		super.onPause();
-		sensorManager.unregisterListener(this);
+		countDownTimer.cancel();
+		if(sensorManager != null) {
+			sensorManager.unregisterListener(this);
+		}
+		
 	}
 
 	@Override
