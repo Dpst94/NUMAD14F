@@ -30,30 +30,42 @@ public class ViewScores extends Activity implements OnClickListener {
 	Context context;
 	ListView listview;
 	int score;
+	String username;
+	HashMap<String, String> friendsMap = new HashMap<String, String>();
+	String [] usersList = {""};
+	String [] scoresList = {""};
+	SimpleAdapter simpleAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.finalproject_view_scores);
-
+		setContentView(R.layout.finalproject_view_scores);	
+		
 		listview = (ListView) findViewById(R.id.listview_scores);
 
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 		HashMap<String, String> map = new HashMap<String, String>();
 
 		context = getApplicationContext();
-		final SharedPreferences prefs = getGCMPreferences(context);
+	
+		SharedPreferences usersName = getGCMPreferences(context);
+		username = usersName.getString("username", "UNKNOWN");
 
 		score = calculateScore();
+		uploadScore();
 		map.put("user", "USERNAME");
 		map.put("score", "SCORE");
 		list.add(map);
 
 		map = new HashMap<String, String>();
-		map.put("user", prefs.getString("username", "Unknown"));
+		map.put("user", username);
 		map.put("score", Integer.toString(score));
 		list.add(map);
-		SimpleAdapter simpleAdapter = new SimpleAdapter(this, list,
+		
+		getUsersList();
+		list.add(friendsMap);
+		
+		simpleAdapter = new SimpleAdapter(this, list,
 				R.layout.finalproject_two_column_list, new String[] { "user",
 						"score" }, new int[] {
 						R.id.finalproject_scores_username,
@@ -131,7 +143,7 @@ public class ViewScores extends Activity implements OnClickListener {
 				Context.MODE_PRIVATE);
 	}
 
-	/*public void uploadScore() {
+	public void uploadScore() {
 		if (!isOnline()) {
 			Toast.makeText(this, "Failed to connect to the Internet",
 					Toast.LENGTH_LONG).show();
@@ -142,24 +154,8 @@ public class ViewScores extends Activity implements OnClickListener {
 			protected String doInBackground(Void... params) {
 				String msg = "";
 				if (KeyValueAPI.isServerAvailable()) {
-					try {
-						if (gcm == null) {
-							gcm = GoogleCloudMessaging.getInstance(context);
-						}
-						regid = gcm
-								.register(CommunicationConstants.GCM_SENDER_ID);
-						KeyValueAPI.put("eighilaza", "eighilaza", "cnt",
-								String.valueOf(cnt + 1));
-						KeyValueAPI.put("eighilaza", "eighilaza", "regid"
-								+ String.valueOf(cnt + 1), regid);
-						KeyValueAPI.put("eighilaza", "eighilaza", username,
-								regid);
-						KeyValueAPI.put("eighilaza", "eighilaza", "user"
-								+ String.valueOf(cnt + 1), username);
-
-					} catch (IOException ex) {
-						msg = "Error :" + ex.getMessage();
-					}
+						KeyValueAPI.put("eighilaza", "eighilaza", "score_"+username,
+								""+score);
 				} else {
 					msg = "Error :" + "Backup Server is not available";
 					return msg;
@@ -171,7 +167,7 @@ public class ViewScores extends Activity implements OnClickListener {
 			protected void onPostExecute(String msg) {
 			}
 		}.execute(null, null, null);
-	}*/
+	}
 
 	// Checks if connected to the Internet
 	public boolean isOnline() {
@@ -181,5 +177,58 @@ public class ViewScores extends Activity implements OnClickListener {
 			return true;
 		}
 		return false;
+	}
+	
+	private void getUsersList() {
+		if (!isOnline()) {
+			Toast.makeText(this, "Failed to connect to the Internet",
+					Toast.LENGTH_LONG).show();
+			return;
+		}
+        Toast.makeText(this, "Loading friends list", Toast.LENGTH_LONG).show();
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+				String msg = "";
+				int cnt = 0;
+				if (!KeyValueAPI.get("eighilaza", "eighilaza", "friends_"+ username +"_cnt").contains(
+						"Error"))
+					cnt = Integer.parseInt(KeyValueAPI.get("eighilaza",
+							"eighilaza", "friends_"+ username +"_cnt"));
+				else {
+					/*usersList = new String [1];
+					usersList[0]="Your friend list is empty";
+					isEmpty = true;*/
+					return "";
+				}
+				usersList = new String [cnt];
+				scoresList = new String [cnt];
+				for (int i = 1; i <= cnt; i++) {
+					usersList[i-1] = KeyValueAPI.get("eighilaza", "eighilaza", "friends_"+username+"_"+ String.valueOf(i));
+					if (!KeyValueAPI.get("eighilaza", "eighilaza", "score_"+username).contains(
+							"Error")){
+						scoresList[i-1] = KeyValueAPI.get("eighilaza", "eighilaza", "score_"+username);
+					}
+					else{
+						scoresList[i-1] = ""+0;
+					}
+				}				
+				return msg;
+			}
+
+			@Override
+			protected void onPostExecute(String msg) {
+				//list.clear();				
+				for (int i = 0; i < usersList.length; ++i) {
+					friendsMap.put("user", usersList[i]);
+					friendsMap.put("score", scoresList[i]);
+				}
+				runOnUiThread(new Runnable() {
+			    public void run() {
+			        simpleAdapter.notifyDataSetChanged();
+			    }
+			});
+			}
+		}.execute(null, null, null);
 	}
 }

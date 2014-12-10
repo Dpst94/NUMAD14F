@@ -125,9 +125,7 @@ public class UsersPicture extends Activity implements OnClickListener{
 						"Error"))
 					cnt = Integer.parseInt(KeyValueAPI.get("eighilaza",
 							"eighilaza", "friends_"+ username +"_cnt"));
-				else {					
-					//msg = KeyValueAPI.get("eighilaza", "eighilaza", "friends_"+ username +"_cnt");
-					//Log.d("EMPTY?",msg);
+				else {
 					usersList = new String [1];
 					usersList[0]="Your friend list is empty";
 					isEmpty = true;
