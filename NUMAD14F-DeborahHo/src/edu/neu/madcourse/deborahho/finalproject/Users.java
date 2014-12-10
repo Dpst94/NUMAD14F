@@ -103,8 +103,8 @@ public class Users extends Activity {
 					String tmpUser = KeyValueAPI.get("eighilaza", "eighilaza", "user"
 							+ String.valueOf(i));					
 					if((!KeyValueAPI.get("eighilaza", "eighilaza",
-									"friends_" + username + "_" + tmpUser).equals("yes"))||(KeyValueAPI.get("eighilaza", "eighilaza",
-											"friends_" + tmpUser + "_" + username).equals("yes"))){
+									"friends_" + username + "_" + tmpUser).equals("yes"))/*||(KeyValueAPI.get("eighilaza", "eighilaza",
+											"friends_" + tmpUser + "_" + username).equals("yes"))*/){
 						usersList[j] = tmpUser;						
 						Log.d("User List",usersList[j]);
 						j++;

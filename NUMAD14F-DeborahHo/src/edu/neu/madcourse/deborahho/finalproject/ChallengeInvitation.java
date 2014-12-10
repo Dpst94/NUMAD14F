@@ -89,8 +89,6 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 							if (!KeyValueAPI.get("eighilaza", "eighilaza",
 									"friends_" + username + "_cnt").contains(
 									"Error")) {
-								Log.d("????", KeyValueAPI.get("eighilaza",
-										"eighilaza", "cnt"));
 								cnt = Integer.parseInt(KeyValueAPI.get(
 										"eighilaza", "eighilaza", "friends_"
 												+ username + "_cnt"));
@@ -105,6 +103,30 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 									"yes");
 							KeyValueAPI.put("eighilaza", "eighilaza",
 									"friends_" + username + "_cnt", ""+newCnt);
+							
+							cnt = 0;
+							if (KeyValueAPI.isServerAvailable()) {
+								if (!KeyValueAPI.get("eighilaza", "eighilaza",
+										"friends_" + challenger + "_cnt").contains(
+										"Error")) {
+									cnt = Integer.parseInt(KeyValueAPI.get(
+											"eighilaza", "eighilaza", "friends_"
+													+ challenger + "_cnt"));
+								}
+								newCnt = cnt + 1;
+								KeyValueAPI.put("eighilaza", "eighilaza",
+										"friends_" + challenger + "_" + newCnt,
+										username);
+
+								KeyValueAPI.put("eighilaza", "eighilaza",
+										"friends_" + challenger + "_" + username,
+										"yes");
+								KeyValueAPI.put("eighilaza", "eighilaza",
+										"friends_" + challenger + "_cnt", ""+newCnt);
+							} else {
+								msg = "Error :" + "Backup Server is not available";
+								return msg;
+							}
 						} else {
 							msg = "Error :" + "Backup Server is not available";
 							return msg;
