@@ -27,7 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:layout_above="@+id/finalproject_back_button"
-        android:layout_alignParentTop="true" />
+        android:layout_below="@+id/finalproject_name_picture" />
 
     <!--
     <ImageView

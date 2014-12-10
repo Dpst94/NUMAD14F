@@ -3,6 +3,7 @@ package edu.neu.madcourse.deborahho.finalproject;
 import edu.neu.madcourse.deborahho.R;
 import edu.neu.madcourse.deborahho.bananagrams.CountDownTimerPausable;
 import edu.neu.madcourse.deborahho.trickiestpart.Uploader;
+import edu.neu.mhealth.api.KeyValueAPI;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +32,8 @@ import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -75,7 +78,7 @@ public class Game extends Activity implements OnClickListener,
 	int timeToTakePicture = 0;
 	boolean cameraIsAvailable = false;
 	
-
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -122,8 +125,7 @@ public class Game extends Activity implements OnClickListener,
 
 				@Override
 				public void onFinish() {
-					startWorkout();
-						
+					startWorkout();						
 				}
 
 				@Override
@@ -156,8 +158,6 @@ public class Game extends Activity implements OnClickListener,
 				@Override
 				public void onFinish() {
 					startWorkout();
-					
-					
 				}
 
 				@Override
@@ -165,14 +165,9 @@ public class Game extends Activity implements OnClickListener,
 					mCountdownCrunches.setText("Get Ready! The workout will start in\n" + String.format("%d seconds!", 
 		                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 
 		                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
-					
 				}
-	        	
 	        }.start();
-
-		}
-		
-	      
+		}  
 	}
 	
 	void startWorkout() {
@@ -226,8 +221,7 @@ public class Game extends Activity implements OnClickListener,
 		countDownTimer.cancel();
 		if(sensorManager != null) {
 			sensorManager.unregisterListener(this);
-		}
-		
+		}		
 	}
 
 	@Override
@@ -309,6 +303,9 @@ public class Game extends Activity implements OnClickListener,
 	}
 	
 	void playAudio() {
+		if (!isOnline()) {
+			return;
+		}
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
@@ -397,6 +394,7 @@ public class Game extends Activity implements OnClickListener,
 				String imgpath = Uploader.getPath(context, uri);
 				Log.d("IMGPATH",imgpath);
 				Uploader.uploadFile(imgpath);
+				atLeastOneImgUploaded();
 				
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -411,4 +409,38 @@ public class Game extends Activity implements OnClickListener,
 		return getSharedPreferences(Main.class.getSimpleName(),
 				Context.MODE_PRIVATE);
 	}
+	
+	public void atLeastOneImgUploaded() {
+		if (!isOnline()) {
+			return;
+		}
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+				String msg = "";
+				if (KeyValueAPI.isServerAvailable()) {
+						SharedPreferences usersName = getGCMPreferences(context);
+						String username = usersName.getString("username", "UNKNOWN");
+						KeyValueAPI.put("eighilaza", "eighilaza", username+"_picture", "yes");
+				} else {
+					msg = "Error :" + "Backup Server is not available";
+					return msg;
+				}
+				return msg;
+			}
+
+			@Override
+			protected void onPostExecute(String msg) {
+			}
+		}.execute(null, null, null);
+	}
+	// Checks if connected to the Internet
+		public boolean isOnline() {
+			ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo netInfo = cm.getActiveNetworkInfo();
+			if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+				return true;
+			}
+			return false;
+		}
 }
