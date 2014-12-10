@@ -71,7 +71,7 @@ public class GcmIntentService extends IntentService {
 		}
 		else{
 			intent = PendingIntent.getActivity(this, 0, new Intent(
-					this, CrunchyMenu.class),
+					this, CrunchyMenu.class).setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
 					PendingIntent.FLAG_UPDATE_CURRENT);
 		}		
 		

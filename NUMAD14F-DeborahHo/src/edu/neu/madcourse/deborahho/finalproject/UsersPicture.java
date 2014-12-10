@@ -49,10 +49,15 @@ public class UsersPicture extends Activity {
 	String regid; 
 	GoogleCloudMessaging gcm;
 	String receiver = "";
+	String username;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.finalproject_users);
+		
+		SharedPreferences usersName = getGCMPreferences(context);
+		username = usersName.getString("username", "UNKNOWN");
+		
 		getUsersList();
 
 		context = getApplicationContext();
@@ -90,24 +95,23 @@ public class UsersPicture extends Activity {
 					Toast.LENGTH_LONG).show();
 			return;
 		}
-        Toast.makeText(this, "Loading users list", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Loading friends list", Toast.LENGTH_LONG).show();
 		new AsyncTask<Void, Void, String>() {
 			@Override
 			protected String doInBackground(Void... params) {
 				String msg = "";
 				int cnt = 0;
-				if (!KeyValueAPI.get("eighilaza", "eighilaza", "cnt").contains(
+				if (!KeyValueAPI.get("eighilaza", "eighilaza", "friends_"+ username +"_cnt").contains(
 						"Error"))
 					cnt = Integer.parseInt(KeyValueAPI.get("eighilaza",
-							"eighilaza", "cnt"));
+							"eighilaza", "friends_"+ username +"_cnt"));
 				else {
 					msg = KeyValueAPI.get("eighilaza", "eighilaza", "cnt");
 					return msg;
 				}
 				usersList = new String [cnt];
 				for (int i = 1; i <= cnt; i++) {
-					usersList[i-1] = KeyValueAPI.get("eighilaza", "eighilaza", "user"
-									+ String.valueOf(i));
+					usersList[i-1] = KeyValueAPI.get("eighilaza", "eighilaza", "friends_"+username+"_"+ String.valueOf(i));
 					Log.d("User List",usersList[i-1]);
 				}				
 				return msg;
@@ -115,8 +119,7 @@ public class UsersPicture extends Activity {
 
 			@Override
 			protected void onPostExecute(String msg) {
-				list.clear();
-				
+				list.clear();				
 				for (int i = 0; i < usersList.length; ++i) {
 					list.add(usersList[i]);
 				}
@@ -136,5 +139,9 @@ public class UsersPicture extends Activity {
 			return true;
 		}
 		return false;
+	}
+	private  SharedPreferences getGCMPreferences(Context context) {
+		return getSharedPreferences(Main.class.getSimpleName(),
+				Context.MODE_PRIVATE);
 	}
 }

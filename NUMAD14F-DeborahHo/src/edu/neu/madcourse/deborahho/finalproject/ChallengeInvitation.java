@@ -66,6 +66,9 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.no_button:
+			sendNoMessage(username+ " denied your friend request.");
+			Toast.makeText(context, "Friend Request Denied",
+					Toast.LENGTH_LONG).show();
 			finish();
 			break;
 		}
@@ -96,6 +99,10 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 							KeyValueAPI.put("eighilaza", "eighilaza",
 									"friends_" + username + "_" + newCnt,
 									challenger);
+
+							KeyValueAPI.put("eighilaza", "eighilaza",
+									"friends_" + username + "_" + challenger,
+									"yes");
 							KeyValueAPI.put("eighilaza", "eighilaza",
 									"friends_" + username + "_cnt", ""+newCnt);
 						} else {
@@ -107,7 +114,7 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 
 			@Override
 			protected void onPostExecute(String msg) {
-				sendMessage(username+ " accepted you friend request!");
+				sendYesMessage(username+ " accepted your friend request!");
 			}
 		}.execute(null, null, null);
 	}
@@ -128,7 +135,7 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 	}
 	
 	@SuppressLint("NewApi")
-	private void sendMessage(final String message) {
+	private void sendYesMessage(final String message) {
 		regid = getRegistrationId(context);
 		if (!isOnline()) {
 			Toast.makeText(context, "Failed to connect to the Internet",
@@ -188,5 +195,57 @@ public class ChallengeInvitation extends Activity implements OnClickListener {
 			return "";
 		}
 		return registrationId;
+	}
+	
+	@SuppressLint("NewApi")
+	private void sendNoMessage(final String message) {
+		regid = getRegistrationId(context);
+		if (!isOnline()) {
+			Toast.makeText(context, "Failed to connect to the Internet",
+					Toast.LENGTH_LONG).show();
+			return;
+		}
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+				String msg = "";
+				List<String> regIds = new ArrayList<String>();
+				String reg_device = regid;
+				int nIcon = R.drawable.ic_stat_cloud;
+				int nType = CommunicationConstants.SIMPLE_NOTIFICATION;
+				Map<String, String> msgParams;
+				msgParams = new HashMap<String, String>();
+				msgParams.put("data.alertText", "Notification");
+				msgParams.put("data.titleText", "Notification Title");
+				msgParams.put("data.contentText", message);
+				msgParams.put("data.nIcon", String.valueOf(nIcon));
+				msgParams.put("data.nType", String.valueOf(nType));
+				KeyValueAPI.put("eighilaza", "eighilaza", "alertText",
+						"Message Notification");
+				KeyValueAPI.put("eighilaza", "eighilaza", "titleText",
+						"Invitation Denied");
+				KeyValueAPI.put("eighilaza", "eighilaza", "contentText",
+						message);
+				KeyValueAPI.put("eighilaza", "eighilaza", "nIcon",
+						String.valueOf(nIcon));
+				KeyValueAPI.put("eighilaza", "eighilaza", "nType",
+						String.valueOf(nType));
+				GcmNotification gcmNotification = new GcmNotification();
+				regIds.clear();
+				reg_device = KeyValueAPI.get("eighilaza", "eighilaza", challenger);
+				regIds.add(reg_device);
+				gcmNotification
+						.sendNotification(
+								msgParams,
+								regIds,context);
+				msg = "replying to invitation...";
+				return msg;
+			}
+
+			@Override
+			protected void onPostExecute(String msg) {
+				Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+			}
+		}.execute(null, null, null);
 	}
 }
