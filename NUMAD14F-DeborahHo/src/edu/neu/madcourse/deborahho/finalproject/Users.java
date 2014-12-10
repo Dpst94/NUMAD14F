@@ -41,10 +41,15 @@ public class Users extends Activity {
 	String regid; 
 	GoogleCloudMessaging gcm;
 	String receiver = "";
+	String username;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.finalproject_users);
+		
+		SharedPreferences usersName = getGCMPreferences(context);
+		username = usersName.getString("username", "UNKNOWN");
+		
 		getUsersList();
 
 		context = getApplicationContext();
@@ -93,11 +98,20 @@ public class Users extends Activity {
 					return msg;
 				}
 				usersList = new String [cnt];
+				int j = 0;
 				for (int i = 1; i <= cnt; i++) {
-					usersList[i-1] = KeyValueAPI.get("eighilaza", "eighilaza", "user"
-									+ String.valueOf(i));
-					Log.d("User List",usersList[i-1]);
-				}				
+					String tmpUser = KeyValueAPI.get("eighilaza", "eighilaza", "user"
+							+ String.valueOf(i));					
+					if(!KeyValueAPI.get("eighilaza", "eighilaza",
+									"friends_" + username + "_" + tmpUser).equals("yes")){
+						usersList[j] = tmpUser;						
+						Log.d("User List",usersList[j]);
+						j++;
+					}
+				}
+				if(j == 0){
+					usersList[j] = "All registered users are already your friends";
+				}
 				return msg;
 			}
 
