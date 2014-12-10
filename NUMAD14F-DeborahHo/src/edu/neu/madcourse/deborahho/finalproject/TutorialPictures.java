@@ -21,7 +21,9 @@ public class TutorialPictures extends Activity implements OnClickListener{
 		setContentView(R.layout.finalproject_tutorial_pictures);
 		
 		View nextButton = findViewById(R.id.finalproject_next_button);
-        nextButton.setOnClickListener(this);        
+        nextButton.setOnClickListener(this); 
+        View backButton = findViewById(R.id.finalproject_back_button);
+        backButton.setOnClickListener(this);
         
 		Calendar c;
 		c = Calendar.getInstance();
@@ -57,6 +59,10 @@ public class TutorialPictures extends Activity implements OnClickListener{
 	    		startActivity(i);
 			}			
     		break;
-		}		
+    	case R.id.finalproject_back_button:
+    		finish();
+    		break;
+		}	
+		
 	}
 }

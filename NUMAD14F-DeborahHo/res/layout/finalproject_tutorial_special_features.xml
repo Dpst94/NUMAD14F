@@ -25,13 +25,27 @@
         android:text="@string/crunchy_label"
         android:textSize="32dp" />
 
-    <Button
-        android:id="@+id/finalproject_next_button"
+         <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="25dp"
-        android:layout_toRightOf="@+id/textView1"
-        android:text="@string/next_label" />
+        android:layout_gravity="center"
+        android:stretchColumns="*" 
+        android:layout_alignParentBottom="true">
+
+        <TableRow>
+
+            <Button
+		        android:id="@+id/finalproject_back_button"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/back_label" />
+
+            <Button
+		        android:id="@+id/finalproject_next_button"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/next_label" />
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

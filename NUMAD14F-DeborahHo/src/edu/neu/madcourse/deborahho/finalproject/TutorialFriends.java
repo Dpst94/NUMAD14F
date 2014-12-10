@@ -15,6 +15,8 @@ public class TutorialFriends extends Activity implements OnClickListener{
 		
 		View nextButton = findViewById(R.id.finalproject_next_button);
         nextButton.setOnClickListener(this);
+        View backButton = findViewById(R.id.finalproject_back_button);
+        backButton.setOnClickListener(this);
 		
 	}
 
@@ -24,6 +26,9 @@ public class TutorialFriends extends Activity implements OnClickListener{
     	case R.id.finalproject_next_button:
     		Intent i = new Intent(this, TutorialSpecialFeatures.class);
     		startActivity(i);
+    		break;
+    	case R.id.finalproject_back_button:
+    		finish();
     		break;
 		}
     		

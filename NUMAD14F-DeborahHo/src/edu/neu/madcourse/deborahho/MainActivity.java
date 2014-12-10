@@ -83,8 +83,8 @@ public class MainActivity extends Activity implements OnClickListener {
     		Intent l = new Intent(this, Bananagrams.class);
     		startActivity(l);
     		break;
-    	/*case R.id.communication_button:
-    		Intent m = new Intent(this, Communication.class);
+    	case R.id.communication_button:
+    	/*	Intent m = new Intent(this, Communication.class);
     		startActivity(m);
     		break;*/
     	/*case R.id.twoplayer_button:
