@@ -62,10 +62,19 @@ public class GcmIntentService extends IntentService {
 				ChallengeInvitation.class);
 		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		notificationIntent.putExtra("show_response", "show_response");
-		PendingIntent intent = PendingIntent.getActivity(this, 0, new Intent(
-				this, ChallengeInvitation.class),
-				PendingIntent.FLAG_UPDATE_CURRENT);
-
+		PendingIntent intent;
+		Log.d("TITLETEXT", titleText);
+		if(titleText.equals("Received Invitation From")){
+			intent = PendingIntent.getActivity(this, 0, new Intent(
+					this, ChallengeInvitation.class),
+					PendingIntent.FLAG_UPDATE_CURRENT);
+		}
+		else{
+			intent = PendingIntent.getActivity(this, 0, new Intent(
+					this, CrunchyMenu.class),
+					PendingIntent.FLAG_UPDATE_CURRENT);
+		}		
+		
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 				this)
 				.setSmallIcon(R.drawable.ic_stat_cloud)

@@ -12,23 +12,22 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="59dp"
         android:gravity="center"
-        android:textSize="35sp" />
+        android:textSize="35sp" />    
 
     <Button
         android:id="@+id/yes_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/no_button"
         android:layout_alignParentLeft="true"
-        android:text="NO" />
+        android:text="YES" />
 
     <Button
         android:id="@+id/no_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/yes_button"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="16dp"
-        android:text="YES" />
+        android:text="NO" />
 
 </RelativeLayout>

@@ -32,14 +32,6 @@ import edu.neu.mhealth.api.KeyValueAPI;
 
 public class Users extends Activity {
 	
-	public static final String EXTRA_MESSAGE = "message";
-	public static final String PROPERTY_REG_ID = "registration_id";
-	public static final String PROPERTY_APP_VERSION = "appVersion";
-	public static final String PROPERTY_ALERT_TEXT = "alertText";
-	public static final String PROPERTY_TITLE_TEXT = "titleText";
-	public static final String PROPERTY_CONTENT_TEXT = "contentText";
-	public static final String PROPERTY_NTYPE = "nType";
-	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	static final String TAG = "GCM_Communication";
 	
 	String [] usersList = {""};
@@ -72,7 +64,7 @@ public class Users extends Activity {
 				Log.d("RECEIVER",receiver);
 				final SharedPreferences prefs = getGCMPreferences(context);
 				sendMessage(prefs.getString("username", "Unknown"));
-				Toast.makeText(context, "You invited "+ receiver, Toast.LENGTH_LONG).show();
+				//Toast.makeText(context, "You invited "+ receiver, Toast.LENGTH_LONG).show();
 				Intent i = new Intent(context, CrunchyMenu.class);
 				finish();
 				startActivity(i);
@@ -137,7 +129,7 @@ public class Users extends Activity {
 	@SuppressLint("NewApi")
 	public String getRegistrationId(Context context) {
 		final SharedPreferences prefs = getGCMPreferences(context);
-		String registrationId = prefs.getString(PROPERTY_REG_ID, "");
+		String registrationId = prefs.getString(CommunicationConstants.PROPERTY_REG_ID, "");
 		if (registrationId.isEmpty()) {
 			Log.i(TAG, "Registration not found.");
 			return "";
@@ -150,24 +142,12 @@ public class Users extends Activity {
 				Context.MODE_PRIVATE);
 	}
 
-	public static int getAppVersion(Context context) {
-		try {
-			PackageInfo packageInfo = context.getPackageManager()
-					.getPackageInfo(context.getPackageName(), 0);
-			return packageInfo.versionCode;
-		} catch (NameNotFoundException e) {
-			// should never happen
-			throw new RuntimeException("Could not get package name: " + e);
-		}
-	}
-
 	public boolean checkPlayServices() {
 		int resultCode = GooglePlayServicesUtil
 				.isGooglePlayServicesAvailable(this);
 		if (resultCode != ConnectionResult.SUCCESS) {
 			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-				GooglePlayServicesUtil.getErrorDialog(resultCode, this,
-						PLAY_SERVICES_RESOLUTION_REQUEST).show();
+				GooglePlayServicesUtil.getErrorDialog(resultCode, this, CommunicationConstants.PLAY_SERVICES_RESOLUTION_REQUEST).show();
 			} else {
 				Log.i(TAG, "This device is not supported.");
 				finish();
@@ -221,7 +201,7 @@ public class Users extends Activity {
 				KeyValueAPI.put("eighilaza", "eighilaza", "alertText",
 						"Message Notification");
 				KeyValueAPI.put("eighilaza", "eighilaza", "titleText",
-						"Sending Message");
+						"Received Invitation From");
 				KeyValueAPI.put("eighilaza", "eighilaza", "contentText",
 						message);
 				KeyValueAPI.put("eighilaza", "eighilaza", "nIcon",
@@ -236,7 +216,7 @@ public class Users extends Activity {
 						.sendNotification(
 								msgParams,
 								regIds,context);
-				msg = "sending information...";
+				msg = "sending invitation...";
 				return msg;
 			}
 

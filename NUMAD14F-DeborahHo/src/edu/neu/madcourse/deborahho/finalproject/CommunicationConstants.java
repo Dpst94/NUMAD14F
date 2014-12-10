@@ -10,4 +10,13 @@ public class CommunicationConstants
     public static final int SIMPLE_NOTIFICATION = 22;
     public static final long GCM_TIME_TO_LIVE = 60L * 60L * 24L * 7L * 4L; // 4 Weeks
     public static int mode = 0;
+    
+	public static final String EXTRA_MESSAGE = "message";
+	public static final String PROPERTY_REG_ID = "registration_id";
+	public static final String PROPERTY_APP_VERSION = "appVersion";
+	public static final String PROPERTY_ALERT_TEXT = "alertText";
+	public static final String PROPERTY_TITLE_TEXT = "titleText";
+	public static final String PROPERTY_CONTENT_TEXT = "contentText";
+	public static final String PROPERTY_NTYPE = "nType";
+	public final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 }
