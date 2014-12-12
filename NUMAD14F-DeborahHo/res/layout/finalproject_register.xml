@@ -4,24 +4,44 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <Button
-        android:id="@+id/register_button"
+    <TextView
+        android:id="@+id/register_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/register" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="@string/register_textview"
+        android:textSize="24dp" />
+    
+    <Button
+        android:id="@+id/finalproject_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/back_label" />
 
     <EditText
         android:id="@+id/username_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/username_hint"
-        android:layout_above="@+id/register_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="67dp"
-        android:ems="10" >
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/username_hint" >
+
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:text="@string/register" />
 
 </RelativeLayout>

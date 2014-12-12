@@ -170,7 +170,7 @@
     <string name="start_crunches_label">Start Working Out</string>
     <string name="go_to_menu_label">Go to Menu</string>
     <string name="register">Register</string>
-    <string name="username_hint">Enter a username</string>
+    <string name="username_hint">Enter your username</string>
     <string name="title_activity_record_audio">Record Audio</string>
     <string name="title_activity_challenge_invitation">Challenge Invitation</string>
     <string name="finalproject_ack_text"> \<b>First of all, we would like to thank Professor S. Intille and TAs J. Paralkar and D. Chandramohan for their help. 
@@ -193,4 +193,5 @@
 	</string>   
 	
 	<string name="title_activity_users_picture">Pick A Friend To See His Pictures</string>
+	<string name="register_textview">In order to interact with your friends, we need to know who you are! Please choose a username and register below!</string>
 </resources>

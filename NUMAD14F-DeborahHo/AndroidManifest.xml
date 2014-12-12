@@ -218,12 +218,12 @@
         <activity
             android:name=".finalproject.ChallengeFriends"
             android:icon="@drawable/crunchy_transparent"
-            android:label="@string/challenge_friends_label"
+            android:label="@string/invite_friends_label"
             android:screenOrientation="portrait" />
         <activity
             android:name=".finalproject.TeamUpWithFriends"
             android:icon="@drawable/crunchy_transparent"
-            android:label="@string/team_up_friends_label"
+            android:label="@string/view_pictures_friends_label"
             android:screenOrientation="portrait" />
         <activity
             android:name=".finalproject.ViewScores"
@@ -243,7 +243,7 @@
         <activity
             android:name=".finalproject.Register"
             android:icon="@drawable/crunchy_transparent"
-            android:label="@string/title_activity_pictures"
+            android:label="@string/register"
             android:screenOrientation="portrait" />
         <activity
             android:name=".finalproject.Users"

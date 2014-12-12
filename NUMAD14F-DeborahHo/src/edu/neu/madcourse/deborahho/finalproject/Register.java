@@ -57,6 +57,8 @@ public class Register extends Activity implements OnClickListener {
 		mUsername = (EditText) findViewById(R.id.username_input);
 		View registerButton = findViewById(R.id.register_button);
 		registerButton.setOnClickListener(this);
+		View backButton = findViewById(R.id.finalproject_back_button);
+		backButton.setOnClickListener(this);
 		
 		gcm = GoogleCloudMessaging.getInstance(this);
 		context = getApplicationContext();
@@ -85,6 +87,9 @@ public class Register extends Activity implements OnClickListener {
 			Intent i = new Intent(this, Users.class);
 			finish();
 			startActivity(i);
+			break;
+		case R.id.finalproject_back_button:
+			finish();
 			break;
 		}
 	}

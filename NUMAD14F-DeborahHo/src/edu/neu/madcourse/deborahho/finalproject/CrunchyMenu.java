@@ -14,6 +14,7 @@ import edu.neu.madcourse.deborahho.R;
 
 public class CrunchyMenu extends Activity implements OnClickListener{
 	
+	String registrationId;
 	TextView dayText;
 	TextView doneText;
 	int isDone;
@@ -26,10 +27,10 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 		
 		View shareButton = findViewById(R.id.share_facebook_button);
         shareButton.setOnClickListener(this);
-        View challengeButton = findViewById(R.id.challenge_friends_button);
-        challengeButton.setOnClickListener(this);
-        View teamUpButton = findViewById(R.id.team_up_friends_button);
-        teamUpButton.setOnClickListener(this);
+        View inviteButton = findViewById(R.id.invite_friends_button);
+        inviteButton.setOnClickListener(this);
+        View viewPicturesButton = findViewById(R.id.view_pictures_friends_button);
+        viewPicturesButton.setOnClickListener(this);
         View scoresButton = findViewById(R.id.view_scores_button);
         scoresButton.setOnClickListener(this);
         View scheduleButton = findViewById(R.id.check_schedule_button);
@@ -70,10 +71,10 @@ public class CrunchyMenu extends Activity implements OnClickListener{
     		Intent i = new Intent(this, ShareOnFacebookLogIn.class);
     		startActivity(i);
     		break;
-    	case R.id.challenge_friends_button:
+    	case R.id.invite_friends_button:
     		final SharedPreferences prefs = getSharedPreferences(Main.class.getSimpleName(),
 					Context.MODE_PRIVATE);;
-			String registrationId = prefs.getString("registration_id", "");
+			registrationId = prefs.getString("registration_id", "");
 			if (registrationId.isEmpty()) {
 				startActivity(new Intent(this, Register.class));
 				break;
@@ -81,7 +82,14 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 			startActivity(new Intent(this, Users.class));
 			break;	
     		
-    	case R.id.team_up_friends_button:
+    	case R.id.view_pictures_friends_button:
+    		final SharedPreferences prefs2 = getSharedPreferences(Main.class.getSimpleName(),
+					Context.MODE_PRIVATE);;
+			registrationId = prefs2.getString("registration_id", "");
+			if (registrationId.isEmpty()) {
+				startActivity(new Intent(this, Register.class));
+				break;
+			}	
     		Intent k = new Intent(this, UsersPicture.class);
     		startActivity(k);
     		break;
