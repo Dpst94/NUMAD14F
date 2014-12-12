@@ -147,13 +147,13 @@
     <string name="finalproject_main_screen_text">Crunchy is a workout app. It helps you do crunches on a daily basis, easily using smart sensing!</string>
     <string name="finalproject_tutorial_friends_text">To help you keep up your motivation, Crunchy lets you challenge your friends or invite them to team up and workout together!</string>
     <string name="finalproject_tutorial_features_text"> While you are working out, Crunchy will play the inspirational messages that your friends left you.  </string>
-    <string name="finalproject_tutorial_pictures_text">During the workout, the app will take a couple of random pictures. You can check out your friend\'s pictures so you know they are not fooling you!</string>
+    <string name="finalproject_tutorial_pictures_text">During the workout, the app will take a couple of pictures through your front-facing camera. You can check out your friend\'s pictures so you know they are not fooling you!</string>
     <string name="back_label">Go Back</string>
     <string name="previous_label">Previous</string>
     <string name="menu_label">Go To Menu</string>
     <string name="share_facebook_label">Share on Facebook</string>
-    <string name="challenge_friends_label">Invite Friends</string>
-    <string name="team_up_friends_label">See Pictures of Friends</string>
+    <string name="invite_friends_label">Invite Friends</string>
+    <string name="view_pictures_friends_label">View Pictures of Friends</string>
     <string name="view_scores_label">View Scores</string>
     <string name="check_schedule_label">Check out Schedule</string>
     <string name="share_fb_not_logged_in_text">This feature is not yet available. We are sorry for the inconvenience.</string>
