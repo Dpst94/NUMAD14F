@@ -146,7 +146,7 @@ public class Users extends Activity implements OnClickListener{
 				for (int i = 0; i < length; ++i) {
 					list.add(usersList[i]);
 				}
-				Log.d("list",list.get(0)+length);
+				//Log.d("list",list.get(0)+length);
 					runOnUiThread(new Runnable() {
 					    public void run() {
 					        adapter.notifyDataSetChanged();
