@@ -136,6 +136,9 @@ public class Users extends Activity implements OnClickListener{
 					usersList[j] = "You Already Added All Registered Users.";
 					isEmpty = true;
 				}
+				else{
+					length = j;
+				}
 				return msg;
 			}
 
