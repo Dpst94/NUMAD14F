@@ -88,7 +88,7 @@ public class UsersAudio extends Activity implements OnClickListener{
 					editor.commit();
 					
 					Log.d("RECEIVER",receiver);
-					Intent i = new Intent(context, Pictures.class);
+					Intent i = new Intent(context, RecordAudio.class);
 					finish();
 					startActivity(i);
 				}

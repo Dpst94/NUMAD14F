@@ -313,7 +313,8 @@ public class Game extends Activity implements OnClickListener,
 				try {
 				    MediaPlayer player = new MediaPlayer();
 				    player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-				    player.setDataSource("http://eighilaza.tk/crunchy/javacodegeeksRecording.3gpp"
+				    final SharedPreferences prefs = getGCMPreferences(context);
+				    player.setDataSource("http://eighilaza.tk/crunchy/"+prefs.getString("username", "UNKNOWN")+".3gpp"
 				            );
 				    player.prepare();
 				                player.start();

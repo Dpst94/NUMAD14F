@@ -31,6 +31,7 @@ public class RecordAudio extends Activity{
    private TextView receiverAudio;
    
    SharedPreferences name;
+   String username;
    
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,10 @@ public class RecordAudio extends Activity{
       
       receiverAudio.setText("Send Audio To "+name.getString("receiver", "UNKNOWN"));
       // store it to sd card
+      name = getSharedPreferences("picure_model", 0);
+      username = name.getString("model", "UNKNOWN");
       outputFile = Environment.getExternalStorageDirectory().
-    		  getAbsolutePath() + "/javacodegeeksRecording.3gpp";      
+    		  getAbsolutePath() + "/"+username+".3gpp";      
       
       backBtn = (Button) findViewById(R.id.finalproject_back_button);
       backBtn.setOnClickListener(new OnClickListener() {

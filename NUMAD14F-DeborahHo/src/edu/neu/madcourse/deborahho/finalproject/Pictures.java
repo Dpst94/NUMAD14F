@@ -36,7 +36,7 @@ public class Pictures extends Activity implements OnClickListener {
 		
 		WebView myWebView = (WebView) findViewById(R.id.webview);
 		
-		final SharedPreferences prefs = getGCMPreferences(this);
+		//final SharedPreferences prefs = getGCMPreferences(this);
 		
 		name = getSharedPreferences("picure_model", 0);
 		username = name.getString("model", "UNKNOWN");
@@ -61,10 +61,10 @@ public class Pictures extends Activity implements OnClickListener {
 		}
 	}
 
-	private  SharedPreferences getGCMPreferences(Context context) {
+	/*private  SharedPreferences getGCMPreferences(Context context) {
 		return getSharedPreferences(Main.class.getSimpleName(),
 				Context.MODE_PRIVATE);
-	}
+	}*/
 	
 	public void atLeastOneImgUploaded() {
 		if (!isOnline()) {
