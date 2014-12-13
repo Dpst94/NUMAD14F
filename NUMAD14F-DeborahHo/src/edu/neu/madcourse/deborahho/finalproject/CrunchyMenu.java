@@ -34,7 +34,9 @@ public class CrunchyMenu extends Activity implements OnClickListener{
         View scoresButton = findViewById(R.id.view_scores_button);
         scoresButton.setOnClickListener(this);
         View scheduleButton = findViewById(R.id.check_schedule_button);
-        scheduleButton.setOnClickListener(this);        
+        scheduleButton.setOnClickListener(this);    
+        View sendAudioButton = findViewById(R.id.send_audio_button);
+        sendAudioButton.setOnClickListener(this);
         View backButton = findViewById(R.id.finalproject_back_button);
         backButton.setOnClickListener(this);
         
@@ -104,6 +106,17 @@ public class CrunchyMenu extends Activity implements OnClickListener{
     	case R.id.finalproject_back_button:
 			finish();
 			break;
+    	case R.id.send_audio_button:
+    		final SharedPreferences prefs3 = getSharedPreferences(Main.class.getSimpleName(),
+					Context.MODE_PRIVATE);;
+			registrationId = prefs3.getString("registration_id", "");
+			if (registrationId.isEmpty()) {
+				startActivity(new Intent(this, Register.class));
+				break;
+			}
+			startActivity(new Intent(this, UsersAudio.class));
+			break;	
+    		
 		}	
 	}
 }

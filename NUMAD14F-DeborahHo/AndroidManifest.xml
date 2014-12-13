@@ -272,6 +272,12 @@
             android:icon="@drawable/crunchy_transparent"
             android:label="@string/acknowledgements_label"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="edu.neu.madcourse.deborahho.finalproject.UsersAudio"            
+            android:icon="@drawable/crunchy_transparent"
+            android:screenOrientation="portrait"
+            android:label="@string/send_audio_label" >
+        </activity>
     </application>
 
 </manifest>

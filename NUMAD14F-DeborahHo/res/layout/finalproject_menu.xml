@@ -61,7 +61,7 @@
         android:id="@+id/view_pictures_friends_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/view_scores_button"
+        android:layout_above="@+id/send_audio_button"
         android:layout_alignParentLeft="true"
         android:text="@string/view_pictures_friends_label" />
 
@@ -72,5 +72,14 @@
         android:layout_above="@+id/invite_friends_button"
         android:layout_alignParentLeft="true"
         android:text="@string/share_facebook_label" />
+    
+    <Button
+        android:id="@+id/send_audio_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view_scores_button"
+        android:layout_alignParentLeft="true"
+        android:text="@string/send_audio_label" />
+    
 
 </RelativeLayout>

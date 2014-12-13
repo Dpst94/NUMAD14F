@@ -72,24 +72,24 @@ public class ViewScores extends Activity implements OnClickListener {
 						R.id.finalproject_scores });
 		listview.setAdapter(simpleAdapter);
 
-		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, final View view,
-					int position, long id) {
-				HashMap<String, String> mapy = (HashMap<String, String>) parent
-						.getItemAtPosition(position);
-				String receiver = mapy.get("user");
-				SharedPreferences name = getSharedPreferences("audio_receiver",
-						0);
-				SharedPreferences.Editor editor = name.edit();
-				editor.putString("receiver", receiver);
-				editor.commit();
-
-				Log.d("RECEIVER", receiver);
-				Intent i = new Intent(context, RecordAudio.class);
-				startActivity(i);
-			}
-		});
+//		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, final View view,
+//					int position, long id) {
+//				HashMap<String, String> mapy = (HashMap<String, String>) parent
+//						.getItemAtPosition(position);
+//				String receiver = mapy.get("user");
+//				SharedPreferences name = getSharedPreferences("audio_receiver",
+//						0);
+//				SharedPreferences.Editor editor = name.edit();
+//				editor.putString("receiver", receiver);
+//				editor.commit();
+//
+//				Log.d("RECEIVER", receiver);
+//				Intent i = new Intent(context, RecordAudio.class);
+//				startActivity(i);
+//			}
+//		});
 
 		View backButton = findViewById(R.id.finalproject_back_button);
 		backButton.setOnClickListener(this);
