@@ -40,11 +40,12 @@ public class RecordAudio extends Activity{
       
       receiverAudio = (TextView) findViewById(R.id.receiver_audio_snippet);      
       
-      name = getSharedPreferences("audio_receiver", 0);     
       
-      receiverAudio.setText("Send Audio To "+name.getString("receiver", "UNKNOWN"));
+
+      name = getSharedPreferences("picure_model", 0);     
+      
+      receiverAudio.setText("Send Audio To "+name.getString("model", "UNKNOWN"));
       // store it to sd card
-      name = getSharedPreferences("picure_model", 0);
       username = name.getString("model", "UNKNOWN");
       outputFile = Environment.getExternalStorageDirectory().
     		  getAbsolutePath() + "/"+username+".3gpp";      
