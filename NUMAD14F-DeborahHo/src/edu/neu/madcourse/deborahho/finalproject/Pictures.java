@@ -78,6 +78,7 @@ public class Pictures extends Activity implements OnClickListener {
 			protected String doInBackground(Void... params) {
 				String msg = "";
 				if (KeyValueAPI.isServerAvailable()) {
+						//KeyValueAPI.put("eighilaza", "eighilaza", "Elyes_picture","yes");
 						if(KeyValueAPI.get("eighilaza", "eighilaza", username+"_picture").equals("yes")){
 							isEmpty = false;
 							return msg;

@@ -70,7 +70,8 @@ public class CrunchyMenu extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
     	case R.id.share_facebook_button:
-    		Intent i = new Intent(this, ShareOnFacebookLogIn.class);
+    		//
+    		Intent i = new Intent(this, ChallengeFriends.class);
     		startActivity(i);
     		break;
     	case R.id.invite_friends_button:
