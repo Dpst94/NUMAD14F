@@ -157,8 +157,8 @@
     <string name="view_scores_label">View Scores</string>
     <string name="check_schedule_label">Check out Schedule</string>
     <string name="share_fb_not_logged_in_text">This feature is not yet available. We are sorry for the inconvenience.</string>
-    <string name="login_facebook_label">Log in with Facebook</string>
-    <string name="challenge_friends_not_logged_in_text">In order to challenge your friends on Facebook, you need to log in first. Crunchy will not use your information blabla</string>
+    <string name="login_facebook_label">Share on Facebook</string>
+    <string name="challenge_friends_not_logged_in_text">If you want to share your experience with your friends and you have the Facebook app installed on your phone, click on the Share button!</string>
     <string name="post_wall_facebook_label">Post to Wall</string>
     <string name="send_audio_label">Send Audio Snippet</string>
     <string name="facebook_app_id">1495717887358201</string>

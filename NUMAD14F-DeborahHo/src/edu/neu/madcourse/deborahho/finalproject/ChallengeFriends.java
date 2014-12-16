@@ -34,7 +34,7 @@ public class ChallengeFriends extends Activity implements OnClickListener{
 		switch (v.getId()) {
     	case R.id.login_facebook_button:
     		FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
-            .setLink("https://developers.facebook.com/android").setApplicationName("Crunchy")
+            .setLink("https://play.google.com/store/apps/details?id=edu.neu.madcourse.deborahho&ah=0l3mDVA-uHjaDniPnR0Q4-AZu1M").setApplicationName("Crunchy")
             .build();
     uiHelper.trackPendingDialogCall(shareDialog.present());
     		break;
